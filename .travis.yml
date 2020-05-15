@@ -9,9 +9,6 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
   - 7.0
   - 7.1
   - hhvm
@@ -26,7 +23,7 @@ matrix:
     - php: hhvm
   fast_finish: true
   include:
-    - php: 5.4
+    - php: 7.0
       sudo: required
       services:
         - docker
@@ -34,7 +31,11 @@ matrix:
 
 before_install:
   - sudo apt-cache madison docker-engine
-  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-engine=${DOCKER_VERSION}
+  - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+  - sudo apt-get update
+  - sudo apt-get install docker-ce
   - travis_retry composer self-update
 
 install:
