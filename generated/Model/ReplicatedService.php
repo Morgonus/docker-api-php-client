@@ -8,7 +8,6 @@ class ReplicatedService
      * @var int
      */
     protected $replicas;
-
     /**
      * @return int
      */
@@ -16,7 +15,6 @@ class ReplicatedService
     {
         return $this->replicas;
     }
-
     /**
      * @param int $replicas
      *
@@ -25,7 +23,6 @@ class ReplicatedService
     public function setReplicas($replicas = null)
     {
         $this->replicas = $replicas;
-
         return $this;
     }
 }

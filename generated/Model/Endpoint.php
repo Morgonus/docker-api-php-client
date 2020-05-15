@@ -16,7 +16,6 @@ class Endpoint
      * @var EndpointVirtualIP[]|null
      */
     protected $virtualIPs;
-
     /**
      * @return EndpointSpec
      */
@@ -24,7 +23,6 @@ class Endpoint
     {
         return $this->spec;
     }
-
     /**
      * @param EndpointSpec $spec
      *
@@ -33,10 +31,8 @@ class Endpoint
     public function setSpec(EndpointSpec $spec = null)
     {
         $this->spec = $spec;
-
         return $this;
     }
-
     /**
      * @return PortConfig[]|null
      */
@@ -44,7 +40,6 @@ class Endpoint
     {
         return $this->exposedPorts;
     }
-
     /**
      * @param PortConfig[]|null $exposedPorts
      *
@@ -53,10 +48,8 @@ class Endpoint
     public function setExposedPorts($exposedPorts = null)
     {
         $this->exposedPorts = $exposedPorts;
-
         return $this;
     }
-
     /**
      * @return EndpointVirtualIP[]|null
      */
@@ -64,7 +57,6 @@ class Endpoint
     {
         return $this->virtualIPs;
     }
-
     /**
      * @param EndpointVirtualIP[]|null $virtualIPs
      *
@@ -73,7 +65,6 @@ class Endpoint
     public function setVirtualIPs($virtualIPs = null)
     {
         $this->virtualIPs = $virtualIPs;
-
         return $this;
     }
 }

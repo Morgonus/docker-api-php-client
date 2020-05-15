@@ -12,7 +12,6 @@ class SwarmIPAMOptions
      * @var IPAMConfig[]|null
      */
     protected $configs;
-
     /**
      * @return Driver
      */
@@ -20,7 +19,6 @@ class SwarmIPAMOptions
     {
         return $this->driver;
     }
-
     /**
      * @param Driver $driver
      *
@@ -29,10 +27,8 @@ class SwarmIPAMOptions
     public function setDriver(Driver $driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return IPAMConfig[]|null
      */
@@ -40,7 +36,6 @@ class SwarmIPAMOptions
     {
         return $this->configs;
     }
-
     /**
      * @param IPAMConfig[]|null $configs
      *
@@ -49,7 +44,6 @@ class SwarmIPAMOptions
     public function setConfigs($configs = null)
     {
         $this->configs = $configs;
-
         return $this;
     }
 }

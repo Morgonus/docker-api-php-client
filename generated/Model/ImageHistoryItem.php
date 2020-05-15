@@ -28,7 +28,6 @@ class ImageHistoryItem
      * @var string
      */
     protected $comment;
-
     /**
      * @return string
      */
@@ -36,7 +35,6 @@ class ImageHistoryItem
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -45,10 +43,8 @@ class ImageHistoryItem
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -56,7 +52,6 @@ class ImageHistoryItem
     {
         return $this->created;
     }
-
     /**
      * @param int $created
      *
@@ -65,10 +60,8 @@ class ImageHistoryItem
     public function setCreated($created = null)
     {
         $this->created = $created;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -76,7 +69,6 @@ class ImageHistoryItem
     {
         return $this->createdBy;
     }
-
     /**
      * @param string $createdBy
      *
@@ -85,10 +77,8 @@ class ImageHistoryItem
     public function setCreatedBy($createdBy = null)
     {
         $this->createdBy = $createdBy;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -96,7 +86,6 @@ class ImageHistoryItem
     {
         return $this->tags;
     }
-
     /**
      * @param string[]|null $tags
      *
@@ -105,10 +94,8 @@ class ImageHistoryItem
     public function setTags($tags = null)
     {
         $this->tags = $tags;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -116,7 +103,6 @@ class ImageHistoryItem
     {
         return $this->size;
     }
-
     /**
      * @param int $size
      *
@@ -125,10 +111,8 @@ class ImageHistoryItem
     public function setSize($size = null)
     {
         $this->size = $size;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -136,7 +120,6 @@ class ImageHistoryItem
     {
         return $this->comment;
     }
-
     /**
      * @param string $comment
      *
@@ -145,7 +128,6 @@ class ImageHistoryItem
     public function setComment($comment = null)
     {
         $this->comment = $comment;
-
         return $this;
     }
 }

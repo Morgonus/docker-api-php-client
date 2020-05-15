@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class TaskStatusNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class TaskStatusNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\TaskStatus') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\TaskStatus) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\TaskStatus();
         if (property_exists($data, 'Timestamp')) {
@@ -44,11 +40,9 @@ class TaskStatusNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'ContainerStatus')) {
             $object->setContainerStatus($this->serializer->deserialize($data->{'ContainerStatus'}, 'Docker\\API\\Model\\ContainerStatus', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getTimestamp()) {
@@ -66,7 +60,6 @@ class TaskStatusNormalizer extends SerializerAwareNormalizer implements Denormal
         if (null !== $object->getContainerStatus()) {
             $data->{'ContainerStatus'} = $this->serializer->serialize($object->getContainerStatus(), 'raw', $context);
         }
-
         return $data;
     }
 }

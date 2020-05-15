@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class UpdateStatusNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class UpdateStatusNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\UpdateStatus') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\UpdateStatus) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\UpdateStatus();
         if (property_exists($data, 'State')) {
@@ -41,11 +37,9 @@ class UpdateStatusNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'Message')) {
             $object->setMessage($data->{'Message'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getState()) {
@@ -60,7 +54,6 @@ class UpdateStatusNormalizer extends SerializerAwareNormalizer implements Denorm
         if (null !== $object->getMessage()) {
             $data->{'Message'} = $object->getMessage();
         }
-
         return $data;
     }
 }

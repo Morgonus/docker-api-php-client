@@ -12,7 +12,6 @@ class GraphDriver
      * @var mixed
      */
     protected $data;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class GraphDriver
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -29,10 +27,8 @@ class GraphDriver
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -40,7 +36,6 @@ class GraphDriver
     {
         return $this->data;
     }
-
     /**
      * @param mixed $data
      *
@@ -49,7 +44,6 @@ class GraphDriver
     public function setData($data = null)
     {
         $this->data = $data;
-
         return $this;
     }
 }

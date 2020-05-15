@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if ($type !== 'Docker\\API\\Model\\Node') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Node) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\Node();
         if (property_exists($data, 'ID')) {
@@ -53,11 +49,9 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'ManagerStatus')) {
             $object->setManagerStatus($this->serializer->deserialize($data->{'ManagerStatus'}, 'Docker\\API\\Model\\NodeManagerStatus', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getID()) {
@@ -84,7 +78,6 @@ class NodeNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getManagerStatus()) {
             $data->{'ManagerStatus'} = $this->serializer->serialize($object->getManagerStatus(), 'raw', $context);
         }
-
         return $data;
     }
 }

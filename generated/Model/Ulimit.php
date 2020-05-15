@@ -16,7 +16,6 @@ class Ulimit
      * @var int
      */
     protected $hard;
-
     /**
      * @return string
      */
@@ -24,7 +23,6 @@ class Ulimit
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -33,10 +31,8 @@ class Ulimit
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -44,7 +40,6 @@ class Ulimit
     {
         return $this->soft;
     }
-
     /**
      * @param int $soft
      *
@@ -53,10 +48,8 @@ class Ulimit
     public function setSoft($soft = null)
     {
         $this->soft = $soft;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -64,7 +57,6 @@ class Ulimit
     {
         return $this->hard;
     }
-
     /**
      * @param int $hard
      *
@@ -73,7 +65,6 @@ class Ulimit
     public function setHard($hard = null)
     {
         $this->hard = $hard;
-
         return $this;
     }
 }

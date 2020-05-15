@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ImageSearchResultNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ImageSearchResultNormalizer extends SerializerAwareNormalizer implements D
         if ($type !== 'Docker\\API\\Model\\ImageSearchResult') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ImageSearchResult) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ImageSearchResult();
         if (property_exists($data, 'description')) {
@@ -44,11 +40,9 @@ class ImageSearchResultNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'star_count')) {
             $object->setStarCount($data->{'star_count'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getDescription()) {
@@ -66,7 +60,6 @@ class ImageSearchResultNormalizer extends SerializerAwareNormalizer implements D
         if (null !== $object->getStarCount()) {
             $data->{'star_count'} = $object->getStarCount();
         }
-
         return $data;
     }
 }

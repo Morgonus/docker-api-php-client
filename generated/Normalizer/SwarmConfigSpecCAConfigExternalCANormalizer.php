@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class SwarmConfigSpecCAConfigExternalCANormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class SwarmConfigSpecCAConfigExternalCANormalizer extends SerializerAwareNormali
         if ($type !== 'Docker\\API\\Model\\SwarmConfigSpecCAConfigExternalCA') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmConfigSpecCAConfigExternalCA) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\SwarmConfigSpecCAConfigExternalCA();
         if (property_exists($data, 'Protocol')) {
@@ -38,7 +34,7 @@ class SwarmConfigSpecCAConfigExternalCANormalizer extends SerializerAwareNormali
         if (property_exists($data, 'Options')) {
             $value = $data->{'Options'};
             if (is_object($data->{'Options'})) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Options'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -49,11 +45,9 @@ class SwarmConfigSpecCAConfigExternalCANormalizer extends SerializerAwareNormali
             }
             $object->setOptions($value);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getProtocol()) {
@@ -74,7 +68,6 @@ class SwarmConfigSpecCAConfigExternalCANormalizer extends SerializerAwareNormali
             $value = $object->getOptions();
         }
         $data->{'Options'} = $value;
-
         return $data;
     }
 }

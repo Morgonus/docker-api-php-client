@@ -20,7 +20,6 @@ class SwarmConfig
      * @var SwarmConfigSpec
      */
     protected $spec;
-
     /**
      * @return string
      */
@@ -28,7 +27,6 @@ class SwarmConfig
     {
         return $this->listenAddr;
     }
-
     /**
      * @param string $listenAddr
      *
@@ -37,10 +35,8 @@ class SwarmConfig
     public function setListenAddr($listenAddr = null)
     {
         $this->listenAddr = $listenAddr;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -48,7 +44,6 @@ class SwarmConfig
     {
         return $this->advertiseAddr;
     }
-
     /**
      * @param string $advertiseAddr
      *
@@ -57,10 +52,8 @@ class SwarmConfig
     public function setAdvertiseAddr($advertiseAddr = null)
     {
         $this->advertiseAddr = $advertiseAddr;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -68,7 +61,6 @@ class SwarmConfig
     {
         return $this->forceNewCluster;
     }
-
     /**
      * @param bool $forceNewCluster
      *
@@ -77,10 +69,8 @@ class SwarmConfig
     public function setForceNewCluster($forceNewCluster = null)
     {
         $this->forceNewCluster = $forceNewCluster;
-
         return $this;
     }
-
     /**
      * @return SwarmConfigSpec
      */
@@ -88,7 +78,6 @@ class SwarmConfig
     {
         return $this->spec;
     }
-
     /**
      * @param SwarmConfigSpec $spec
      *
@@ -97,7 +86,6 @@ class SwarmConfig
     public function setSpec(SwarmConfigSpec $spec = null)
     {
         $this->spec = $spec;
-
         return $this;
     }
 }

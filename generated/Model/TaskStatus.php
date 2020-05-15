@@ -24,7 +24,6 @@ class TaskStatus
      * @var ContainerStatus
      */
     protected $containerStatus;
-
     /**
      * @return string
      */
@@ -32,7 +31,6 @@ class TaskStatus
     {
         return $this->timestamp;
     }
-
     /**
      * @param string $timestamp
      *
@@ -41,10 +39,8 @@ class TaskStatus
     public function setTimestamp($timestamp = null)
     {
         $this->timestamp = $timestamp;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -52,7 +48,6 @@ class TaskStatus
     {
         return $this->state;
     }
-
     /**
      * @param string $state
      *
@@ -61,10 +56,8 @@ class TaskStatus
     public function setState($state = null)
     {
         $this->state = $state;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -72,7 +65,6 @@ class TaskStatus
     {
         return $this->message;
     }
-
     /**
      * @param string $message
      *
@@ -81,10 +73,8 @@ class TaskStatus
     public function setMessage($message = null)
     {
         $this->message = $message;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -92,7 +82,6 @@ class TaskStatus
     {
         return $this->err;
     }
-
     /**
      * @param string $err
      *
@@ -101,10 +90,8 @@ class TaskStatus
     public function setErr($err = null)
     {
         $this->err = $err;
-
         return $this;
     }
-
     /**
      * @return ContainerStatus
      */
@@ -112,7 +99,6 @@ class TaskStatus
     {
         return $this->containerStatus;
     }
-
     /**
      * @param ContainerStatus $containerStatus
      *
@@ -121,7 +107,6 @@ class TaskStatus
     public function setContainerStatus(ContainerStatus $containerStatus = null)
     {
         $this->containerStatus = $containerStatus;
-
         return $this;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ContainerConnectNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,37 +13,31 @@ class ContainerConnectNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\ContainerConnect') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerConnect) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ContainerConnect();
         if (property_exists($data, 'Container')) {
             $object->setContainer($data->{'Container'});
         }
         if (property_exists($data, 'EndpointConfig')) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'EndpointConfig'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\EndpointConfig', 'raw', $context);
             }
             $object->setEndpointConfig($values);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getContainer()) {
@@ -56,7 +50,6 @@ class ContainerConnectNormalizer extends SerializerAwareNormalizer implements De
             }
             $data->{'EndpointConfig'} = $values;
         }
-
         return $data;
     }
 }

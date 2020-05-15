@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class VolumeNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class VolumeNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if ($type !== 'Docker\\API\\Model\\Volume') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Volume) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\Volume();
         if (property_exists($data, 'Name')) {
@@ -38,11 +34,9 @@ class VolumeNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if (property_exists($data, 'Mountpoint')) {
             $object->setMountpoint($data->{'Mountpoint'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -54,7 +48,6 @@ class VolumeNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if (null !== $object->getMountpoint()) {
             $data->{'Mountpoint'} = $object->getMountpoint();
         }
-
         return $data;
     }
 }

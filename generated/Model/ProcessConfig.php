@@ -24,7 +24,6 @@ class ProcessConfig
      * @var string[]|null
      */
     protected $arguments;
-
     /**
      * @return bool
      */
@@ -32,7 +31,6 @@ class ProcessConfig
     {
         return $this->privileged;
     }
-
     /**
      * @param bool $privileged
      *
@@ -41,10 +39,8 @@ class ProcessConfig
     public function setPrivileged($privileged = null)
     {
         $this->privileged = $privileged;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -52,7 +48,6 @@ class ProcessConfig
     {
         return $this->user;
     }
-
     /**
      * @param string $user
      *
@@ -61,10 +56,8 @@ class ProcessConfig
     public function setUser($user = null)
     {
         $this->user = $user;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -72,7 +65,6 @@ class ProcessConfig
     {
         return $this->tty;
     }
-
     /**
      * @param bool $tty
      *
@@ -81,10 +73,8 @@ class ProcessConfig
     public function setTty($tty = null)
     {
         $this->tty = $tty;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -92,7 +82,6 @@ class ProcessConfig
     {
         return $this->entrypoint;
     }
-
     /**
      * @param string $entrypoint
      *
@@ -101,10 +90,8 @@ class ProcessConfig
     public function setEntrypoint($entrypoint = null)
     {
         $this->entrypoint = $entrypoint;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -112,7 +99,6 @@ class ProcessConfig
     {
         return $this->arguments;
     }
-
     /**
      * @param string[]|null $arguments
      *
@@ -121,7 +107,6 @@ class ProcessConfig
     public function setArguments($arguments = null)
     {
         $this->arguments = $arguments;
-
         return $this;
     }
 }

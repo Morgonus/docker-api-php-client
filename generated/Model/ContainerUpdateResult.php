@@ -8,7 +8,6 @@ class ContainerUpdateResult
      * @var string[]|null
      */
     protected $warnings;
-
     /**
      * @return string[]|null
      */
@@ -16,7 +15,6 @@ class ContainerUpdateResult
     {
         return $this->warnings;
     }
-
     /**
      * @param string[]|null $warnings
      *
@@ -25,7 +23,6 @@ class ContainerUpdateResult
     public function setWarnings($warnings = null)
     {
         $this->warnings = $warnings;
-
         return $this;
     }
 }

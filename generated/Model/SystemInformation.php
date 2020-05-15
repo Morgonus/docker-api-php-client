@@ -176,7 +176,6 @@ class SystemInformation
      * @var string
      */
     protected $serverVersion;
-
     /**
      * @return string
      */
@@ -184,7 +183,6 @@ class SystemInformation
     {
         return $this->architecture;
     }
-
     /**
      * @param string $architecture
      *
@@ -193,10 +191,8 @@ class SystemInformation
     public function setArchitecture($architecture = null)
     {
         $this->architecture = $architecture;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -204,7 +200,6 @@ class SystemInformation
     {
         return $this->clusterStore;
     }
-
     /**
      * @param string $clusterStore
      *
@@ -213,10 +208,8 @@ class SystemInformation
     public function setClusterStore($clusterStore = null)
     {
         $this->clusterStore = $clusterStore;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -224,7 +217,6 @@ class SystemInformation
     {
         return $this->cgroupDriver;
     }
-
     /**
      * @param string $cgroupDriver
      *
@@ -233,10 +225,8 @@ class SystemInformation
     public function setCgroupDriver($cgroupDriver = null)
     {
         $this->cgroupDriver = $cgroupDriver;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -244,7 +234,6 @@ class SystemInformation
     {
         return $this->containers;
     }
-
     /**
      * @param int $containers
      *
@@ -253,10 +242,8 @@ class SystemInformation
     public function setContainers($containers = null)
     {
         $this->containers = $containers;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -264,7 +251,6 @@ class SystemInformation
     {
         return $this->containersRunning;
     }
-
     /**
      * @param int $containersRunning
      *
@@ -273,10 +259,8 @@ class SystemInformation
     public function setContainersRunning($containersRunning = null)
     {
         $this->containersRunning = $containersRunning;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -284,7 +268,6 @@ class SystemInformation
     {
         return $this->containersStopped;
     }
-
     /**
      * @param int $containersStopped
      *
@@ -293,10 +276,8 @@ class SystemInformation
     public function setContainersStopped($containersStopped = null)
     {
         $this->containersStopped = $containersStopped;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -304,7 +285,6 @@ class SystemInformation
     {
         return $this->containersPaused;
     }
-
     /**
      * @param int $containersPaused
      *
@@ -313,10 +293,8 @@ class SystemInformation
     public function setContainersPaused($containersPaused = null)
     {
         $this->containersPaused = $containersPaused;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -324,7 +302,6 @@ class SystemInformation
     {
         return $this->cpuCfsPeriod;
     }
-
     /**
      * @param bool $cpuCfsPeriod
      *
@@ -333,10 +310,8 @@ class SystemInformation
     public function setCpuCfsPeriod($cpuCfsPeriod = null)
     {
         $this->cpuCfsPeriod = $cpuCfsPeriod;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -344,7 +319,6 @@ class SystemInformation
     {
         return $this->cpuCfsQuota;
     }
-
     /**
      * @param bool $cpuCfsQuota
      *
@@ -353,10 +327,8 @@ class SystemInformation
     public function setCpuCfsQuota($cpuCfsQuota = null)
     {
         $this->cpuCfsQuota = $cpuCfsQuota;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -364,7 +336,6 @@ class SystemInformation
     {
         return $this->debug;
     }
-
     /**
      * @param bool $debug
      *
@@ -373,10 +344,8 @@ class SystemInformation
     public function setDebug($debug = null)
     {
         $this->debug = $debug;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -384,7 +353,6 @@ class SystemInformation
     {
         return $this->discoveryBackend;
     }
-
     /**
      * @param string $discoveryBackend
      *
@@ -393,10 +361,8 @@ class SystemInformation
     public function setDiscoveryBackend($discoveryBackend = null)
     {
         $this->discoveryBackend = $discoveryBackend;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -404,7 +370,6 @@ class SystemInformation
     {
         return $this->dockerRootDir;
     }
-
     /**
      * @param string $dockerRootDir
      *
@@ -413,10 +378,8 @@ class SystemInformation
     public function setDockerRootDir($dockerRootDir = null)
     {
         $this->dockerRootDir = $dockerRootDir;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -424,7 +387,6 @@ class SystemInformation
     {
         return $this->driver;
     }
-
     /**
      * @param string $driver
      *
@@ -433,10 +395,8 @@ class SystemInformation
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return string[][]|null[]|null
      */
@@ -444,7 +404,6 @@ class SystemInformation
     {
         return $this->driverStatus;
     }
-
     /**
      * @param string[][]|null[]|null $driverStatus
      *
@@ -453,10 +412,8 @@ class SystemInformation
     public function setDriverStatus($driverStatus = null)
     {
         $this->driverStatus = $driverStatus;
-
         return $this;
     }
-
     /**
      * @return string[][]|null[]|null
      */
@@ -464,7 +421,6 @@ class SystemInformation
     {
         return $this->systemStatus;
     }
-
     /**
      * @param string[][]|null[]|null $systemStatus
      *
@@ -473,10 +429,8 @@ class SystemInformation
     public function setSystemStatus($systemStatus = null)
     {
         $this->systemStatus = $systemStatus;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -484,7 +438,6 @@ class SystemInformation
     {
         return $this->experimentalBuild;
     }
-
     /**
      * @param bool $experimentalBuild
      *
@@ -493,10 +446,8 @@ class SystemInformation
     public function setExperimentalBuild($experimentalBuild = null)
     {
         $this->experimentalBuild = $experimentalBuild;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -504,7 +455,6 @@ class SystemInformation
     {
         return $this->httpProxy;
     }
-
     /**
      * @param string $httpProxy
      *
@@ -513,10 +463,8 @@ class SystemInformation
     public function setHttpProxy($httpProxy = null)
     {
         $this->httpProxy = $httpProxy;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -524,7 +472,6 @@ class SystemInformation
     {
         return $this->httpsProxy;
     }
-
     /**
      * @param string $httpsProxy
      *
@@ -533,10 +480,8 @@ class SystemInformation
     public function setHttpsProxy($httpsProxy = null)
     {
         $this->httpsProxy = $httpsProxy;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -544,7 +489,6 @@ class SystemInformation
     {
         return $this->iD;
     }
-
     /**
      * @param string $iD
      *
@@ -553,10 +497,8 @@ class SystemInformation
     public function setID($iD = null)
     {
         $this->iD = $iD;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -564,7 +506,6 @@ class SystemInformation
     {
         return $this->iPv4Forwarding;
     }
-
     /**
      * @param bool $iPv4Forwarding
      *
@@ -573,10 +514,8 @@ class SystemInformation
     public function setIPv4Forwarding($iPv4Forwarding = null)
     {
         $this->iPv4Forwarding = $iPv4Forwarding;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -584,7 +523,6 @@ class SystemInformation
     {
         return $this->images;
     }
-
     /**
      * @param int $images
      *
@@ -593,10 +531,8 @@ class SystemInformation
     public function setImages($images = null)
     {
         $this->images = $images;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -604,7 +540,6 @@ class SystemInformation
     {
         return $this->indexServerAddress;
     }
-
     /**
      * @param string $indexServerAddress
      *
@@ -613,10 +548,8 @@ class SystemInformation
     public function setIndexServerAddress($indexServerAddress = null)
     {
         $this->indexServerAddress = $indexServerAddress;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -624,7 +557,6 @@ class SystemInformation
     {
         return $this->initPath;
     }
-
     /**
      * @param string $initPath
      *
@@ -633,10 +565,8 @@ class SystemInformation
     public function setInitPath($initPath = null)
     {
         $this->initPath = $initPath;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -644,7 +574,6 @@ class SystemInformation
     {
         return $this->initSha1;
     }
-
     /**
      * @param string $initSha1
      *
@@ -653,10 +582,8 @@ class SystemInformation
     public function setInitSha1($initSha1 = null)
     {
         $this->initSha1 = $initSha1;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -664,7 +591,6 @@ class SystemInformation
     {
         return $this->kernelMemory;
     }
-
     /**
      * @param bool $kernelMemory
      *
@@ -673,10 +599,8 @@ class SystemInformation
     public function setKernelMemory($kernelMemory = null)
     {
         $this->kernelMemory = $kernelMemory;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -684,7 +608,6 @@ class SystemInformation
     {
         return $this->kernelVersion;
     }
-
     /**
      * @param string $kernelVersion
      *
@@ -693,10 +616,8 @@ class SystemInformation
     public function setKernelVersion($kernelVersion = null)
     {
         $this->kernelVersion = $kernelVersion;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -704,7 +625,6 @@ class SystemInformation
     {
         return $this->labels;
     }
-
     /**
      * @param string[]|null $labels
      *
@@ -713,10 +633,8 @@ class SystemInformation
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -724,7 +642,6 @@ class SystemInformation
     {
         return $this->memTotal;
     }
-
     /**
      * @param int $memTotal
      *
@@ -733,10 +650,8 @@ class SystemInformation
     public function setMemTotal($memTotal = null)
     {
         $this->memTotal = $memTotal;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -744,7 +659,6 @@ class SystemInformation
     {
         return $this->memoryLimit;
     }
-
     /**
      * @param bool $memoryLimit
      *
@@ -753,10 +667,8 @@ class SystemInformation
     public function setMemoryLimit($memoryLimit = null)
     {
         $this->memoryLimit = $memoryLimit;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -764,7 +676,6 @@ class SystemInformation
     {
         return $this->nCPU;
     }
-
     /**
      * @param int $nCPU
      *
@@ -773,10 +684,8 @@ class SystemInformation
     public function setNCPU($nCPU = null)
     {
         $this->nCPU = $nCPU;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -784,7 +693,6 @@ class SystemInformation
     {
         return $this->nEventsListener;
     }
-
     /**
      * @param int $nEventsListener
      *
@@ -793,10 +701,8 @@ class SystemInformation
     public function setNEventsListener($nEventsListener = null)
     {
         $this->nEventsListener = $nEventsListener;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -804,7 +710,6 @@ class SystemInformation
     {
         return $this->nFd;
     }
-
     /**
      * @param int $nFd
      *
@@ -813,10 +718,8 @@ class SystemInformation
     public function setNFd($nFd = null)
     {
         $this->nFd = $nFd;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -824,7 +727,6 @@ class SystemInformation
     {
         return $this->nGoroutines;
     }
-
     /**
      * @param int $nGoroutines
      *
@@ -833,10 +735,8 @@ class SystemInformation
     public function setNGoroutines($nGoroutines = null)
     {
         $this->nGoroutines = $nGoroutines;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -844,7 +744,6 @@ class SystemInformation
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -853,10 +752,8 @@ class SystemInformation
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -864,7 +761,6 @@ class SystemInformation
     {
         return $this->noProxy;
     }
-
     /**
      * @param string $noProxy
      *
@@ -873,10 +769,8 @@ class SystemInformation
     public function setNoProxy($noProxy = null)
     {
         $this->noProxy = $noProxy;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -884,7 +778,6 @@ class SystemInformation
     {
         return $this->oomKillDisable;
     }
-
     /**
      * @param bool $oomKillDisable
      *
@@ -893,10 +786,8 @@ class SystemInformation
     public function setOomKillDisable($oomKillDisable = null)
     {
         $this->oomKillDisable = $oomKillDisable;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -904,7 +795,6 @@ class SystemInformation
     {
         return $this->oSType;
     }
-
     /**
      * @param string $oSType
      *
@@ -913,10 +803,8 @@ class SystemInformation
     public function setOSType($oSType = null)
     {
         $this->oSType = $oSType;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -924,7 +812,6 @@ class SystemInformation
     {
         return $this->operatingSystem;
     }
-
     /**
      * @param string $operatingSystem
      *
@@ -933,10 +820,8 @@ class SystemInformation
     public function setOperatingSystem($operatingSystem = null)
     {
         $this->operatingSystem = $operatingSystem;
-
         return $this;
     }
-
     /**
      * @return RegistryConfig
      */
@@ -944,7 +829,6 @@ class SystemInformation
     {
         return $this->registryConfig;
     }
-
     /**
      * @param RegistryConfig $registryConfig
      *
@@ -953,10 +837,8 @@ class SystemInformation
     public function setRegistryConfig(RegistryConfig $registryConfig = null)
     {
         $this->registryConfig = $registryConfig;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -964,7 +846,6 @@ class SystemInformation
     {
         return $this->securityOptions;
     }
-
     /**
      * @param string[]|null $securityOptions
      *
@@ -973,10 +854,8 @@ class SystemInformation
     public function setSecurityOptions($securityOptions = null)
     {
         $this->securityOptions = $securityOptions;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -984,7 +863,6 @@ class SystemInformation
     {
         return $this->swapLimit;
     }
-
     /**
      * @param bool $swapLimit
      *
@@ -993,10 +871,8 @@ class SystemInformation
     public function setSwapLimit($swapLimit = null)
     {
         $this->swapLimit = $swapLimit;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -1004,7 +880,6 @@ class SystemInformation
     {
         return $this->systemTime;
     }
-
     /**
      * @param string $systemTime
      *
@@ -1013,10 +888,8 @@ class SystemInformation
     public function setSystemTime($systemTime = null)
     {
         $this->systemTime = $systemTime;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -1024,7 +897,6 @@ class SystemInformation
     {
         return $this->serverVersion;
     }
-
     /**
      * @param string $serverVersion
      *
@@ -1033,7 +905,6 @@ class SystemInformation
     public function setServerVersion($serverVersion = null)
     {
         $this->serverVersion = $serverVersion;
-
         return $this;
     }
 }

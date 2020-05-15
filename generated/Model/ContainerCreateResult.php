@@ -12,7 +12,6 @@ class ContainerCreateResult
      * @var string[]|null
      */
     protected $warnings;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class ContainerCreateResult
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -29,10 +27,8 @@ class ContainerCreateResult
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -40,7 +36,6 @@ class ContainerCreateResult
     {
         return $this->warnings;
     }
-
     /**
      * @param string[]|null $warnings
      *
@@ -49,7 +44,6 @@ class ContainerCreateResult
     public function setWarnings($warnings = null)
     {
         $this->warnings = $warnings;
-
         return $this;
     }
 }

@@ -36,7 +36,6 @@ class Node
      * @var NodeManagerStatus
      */
     protected $managerStatus;
-
     /**
      * @return string
      */
@@ -44,7 +43,6 @@ class Node
     {
         return $this->iD;
     }
-
     /**
      * @param string $iD
      *
@@ -53,10 +51,8 @@ class Node
     public function setID($iD = null)
     {
         $this->iD = $iD;
-
         return $this;
     }
-
     /**
      * @return NodeVersion
      */
@@ -64,7 +60,6 @@ class Node
     {
         return $this->version;
     }
-
     /**
      * @param NodeVersion $version
      *
@@ -73,10 +68,8 @@ class Node
     public function setVersion(NodeVersion $version = null)
     {
         $this->version = $version;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -84,7 +77,6 @@ class Node
     {
         return $this->createdAt;
     }
-
     /**
      * @param \DateTime $createdAt
      *
@@ -93,10 +85,8 @@ class Node
     public function setCreatedAt(\DateTime $createdAt = null)
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -104,7 +94,6 @@ class Node
     {
         return $this->updatedAt;
     }
-
     /**
      * @param \DateTime $updatedAt
      *
@@ -113,10 +102,8 @@ class Node
     public function setUpdatedAt(\DateTime $updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
-
     /**
      * @return NodeSpec
      */
@@ -124,7 +111,6 @@ class Node
     {
         return $this->spec;
     }
-
     /**
      * @param NodeSpec $spec
      *
@@ -133,10 +119,8 @@ class Node
     public function setSpec(NodeSpec $spec = null)
     {
         $this->spec = $spec;
-
         return $this;
     }
-
     /**
      * @return NodeDescription
      */
@@ -144,7 +128,6 @@ class Node
     {
         return $this->description;
     }
-
     /**
      * @param NodeDescription $description
      *
@@ -153,10 +136,8 @@ class Node
     public function setDescription(NodeDescription $description = null)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * @return NodeStatus
      */
@@ -164,7 +145,6 @@ class Node
     {
         return $this->status;
     }
-
     /**
      * @param NodeStatus $status
      *
@@ -173,10 +153,8 @@ class Node
     public function setStatus(NodeStatus $status = null)
     {
         $this->status = $status;
-
         return $this;
     }
-
     /**
      * @return NodeManagerStatus
      */
@@ -184,7 +162,6 @@ class Node
     {
         return $this->managerStatus;
     }
-
     /**
      * @param NodeManagerStatus $managerStatus
      *
@@ -193,7 +170,6 @@ class Node
     public function setManagerStatus(NodeManagerStatus $managerStatus = null)
     {
         $this->managerStatus = $managerStatus;
-
         return $this;
     }
 }

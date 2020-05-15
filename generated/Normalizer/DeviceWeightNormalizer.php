@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class DeviceWeightNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class DeviceWeightNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\DeviceWeight') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\DeviceWeight) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\DeviceWeight();
         if (property_exists($data, 'Path')) {
@@ -35,11 +31,9 @@ class DeviceWeightNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'Weight')) {
             $object->setWeight($data->{'Weight'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getPath()) {
@@ -48,7 +42,6 @@ class DeviceWeightNormalizer extends SerializerAwareNormalizer implements Denorm
         if (null !== $object->getWeight()) {
             $data->{'Weight'} = $object->getWeight();
         }
-
         return $data;
     }
 }

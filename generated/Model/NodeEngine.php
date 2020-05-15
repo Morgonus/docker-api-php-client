@@ -16,7 +16,6 @@ class NodeEngine
      * @var NodePlugin[]
      */
     protected $plugins;
-
     /**
      * @return bool
      */
@@ -24,7 +23,6 @@ class NodeEngine
     {
         return $this->engineVersion;
     }
-
     /**
      * @param bool $engineVersion
      *
@@ -33,10 +31,8 @@ class NodeEngine
     public function setEngineVersion($engineVersion = null)
     {
         $this->engineVersion = $engineVersion;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -44,7 +40,6 @@ class NodeEngine
     {
         return $this->labels;
     }
-
     /**
      * @param string[]|null $labels
      *
@@ -53,10 +48,8 @@ class NodeEngine
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
-
         return $this;
     }
-
     /**
      * @return NodePlugin[]
      */
@@ -64,7 +57,6 @@ class NodeEngine
     {
         return $this->plugins;
     }
-
     /**
      * @param NodePlugin[] $plugins
      *
@@ -73,7 +65,6 @@ class NodeEngine
     public function setPlugins(array $plugins = null)
     {
         $this->plugins = $plugins;
-
         return $this;
     }
 }

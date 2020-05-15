@@ -16,7 +16,6 @@ class NodeManagerStatus
      * @var string
      */
     protected $addr;
-
     /**
      * @return bool
      */
@@ -24,7 +23,6 @@ class NodeManagerStatus
     {
         return $this->leader;
     }
-
     /**
      * @param bool $leader
      *
@@ -33,10 +31,8 @@ class NodeManagerStatus
     public function setLeader($leader = null)
     {
         $this->leader = $leader;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -44,7 +40,6 @@ class NodeManagerStatus
     {
         return $this->reachability;
     }
-
     /**
      * @param string $reachability
      *
@@ -53,10 +48,8 @@ class NodeManagerStatus
     public function setReachability($reachability = null)
     {
         $this->reachability = $reachability;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -64,7 +57,6 @@ class NodeManagerStatus
     {
         return $this->addr;
     }
-
     /**
      * @param string $addr
      *
@@ -73,7 +65,6 @@ class NodeManagerStatus
     public function setAddr($addr = null)
     {
         $this->addr = $addr;
-
         return $this;
     }
 }

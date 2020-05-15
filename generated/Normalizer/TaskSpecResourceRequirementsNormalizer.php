@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class TaskSpecResourceRequirementsNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class TaskSpecResourceRequirementsNormalizer extends SerializerAwareNormalizer i
         if ($type !== 'Docker\\API\\Model\\TaskSpecResourceRequirements') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\TaskSpecResourceRequirements) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\TaskSpecResourceRequirements();
         if (property_exists($data, 'Limits')) {
@@ -35,11 +31,9 @@ class TaskSpecResourceRequirementsNormalizer extends SerializerAwareNormalizer i
         if (property_exists($data, 'Reservations')) {
             $object->setReservations($this->serializer->deserialize($data->{'Reservations'}, 'Docker\\API\\Model\\NodeResources', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getLimits()) {
@@ -48,7 +42,6 @@ class TaskSpecResourceRequirementsNormalizer extends SerializerAwareNormalizer i
         if (null !== $object->getReservations()) {
             $data->{'Reservations'} = $this->serializer->serialize($object->getReservations(), 'raw', $context);
         }
-
         return $data;
     }
 }

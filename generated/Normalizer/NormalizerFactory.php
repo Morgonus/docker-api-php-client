@@ -6,7 +6,7 @@ class NormalizerFactory
 {
     public static function create()
     {
-        $normalizers   = [];
+        $normalizers = array();
         $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new PortNormalizer();
@@ -119,7 +119,6 @@ class NormalizerFactory
         $normalizers[] = new ReplicatedServiceNormalizer();
         $normalizers[] = new GlobalServiceNormalizer();
         $normalizers[] = new ServiceCreateResponseNormalizer();
-
         return $normalizers;
     }
 }

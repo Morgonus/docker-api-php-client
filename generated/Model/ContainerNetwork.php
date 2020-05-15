@@ -40,7 +40,6 @@ class ContainerNetwork
      * @var string
      */
     protected $macAddress;
-
     /**
      * @return string
      */
@@ -48,7 +47,6 @@ class ContainerNetwork
     {
         return $this->networkID;
     }
-
     /**
      * @param string $networkID
      *
@@ -57,10 +55,8 @@ class ContainerNetwork
     public function setNetworkID($networkID = null)
     {
         $this->networkID = $networkID;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -68,7 +64,6 @@ class ContainerNetwork
     {
         return $this->endpointID;
     }
-
     /**
      * @param string $endpointID
      *
@@ -77,10 +72,8 @@ class ContainerNetwork
     public function setEndpointID($endpointID = null)
     {
         $this->endpointID = $endpointID;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -88,7 +81,6 @@ class ContainerNetwork
     {
         return $this->gateway;
     }
-
     /**
      * @param string $gateway
      *
@@ -97,10 +89,8 @@ class ContainerNetwork
     public function setGateway($gateway = null)
     {
         $this->gateway = $gateway;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -108,7 +98,6 @@ class ContainerNetwork
     {
         return $this->iPAddress;
     }
-
     /**
      * @param string $iPAddress
      *
@@ -117,10 +106,8 @@ class ContainerNetwork
     public function setIPAddress($iPAddress = null)
     {
         $this->iPAddress = $iPAddress;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -128,7 +115,6 @@ class ContainerNetwork
     {
         return $this->iPPrefixLen;
     }
-
     /**
      * @param int $iPPrefixLen
      *
@@ -137,10 +123,8 @@ class ContainerNetwork
     public function setIPPrefixLen($iPPrefixLen = null)
     {
         $this->iPPrefixLen = $iPPrefixLen;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -148,7 +132,6 @@ class ContainerNetwork
     {
         return $this->iPv6Gateway;
     }
-
     /**
      * @param string $iPv6Gateway
      *
@@ -157,10 +140,8 @@ class ContainerNetwork
     public function setIPv6Gateway($iPv6Gateway = null)
     {
         $this->iPv6Gateway = $iPv6Gateway;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -168,7 +149,6 @@ class ContainerNetwork
     {
         return $this->globalIPv6Address;
     }
-
     /**
      * @param string $globalIPv6Address
      *
@@ -177,10 +157,8 @@ class ContainerNetwork
     public function setGlobalIPv6Address($globalIPv6Address = null)
     {
         $this->globalIPv6Address = $globalIPv6Address;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -188,7 +166,6 @@ class ContainerNetwork
     {
         return $this->globalIPv6PrefixLen;
     }
-
     /**
      * @param int $globalIPv6PrefixLen
      *
@@ -197,10 +174,8 @@ class ContainerNetwork
     public function setGlobalIPv6PrefixLen($globalIPv6PrefixLen = null)
     {
         $this->globalIPv6PrefixLen = $globalIPv6PrefixLen;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -208,7 +183,6 @@ class ContainerNetwork
     {
         return $this->macAddress;
     }
-
     /**
      * @param string $macAddress
      *
@@ -217,7 +191,6 @@ class ContainerNetwork
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
-
         return $this;
     }
 }

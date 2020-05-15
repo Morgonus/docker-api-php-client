@@ -92,7 +92,6 @@ class ContainerConfig
      * @var NetworkingConfig
      */
     protected $networkingConfig;
-
     /**
      * @return string
      */
@@ -100,7 +99,6 @@ class ContainerConfig
     {
         return $this->hostname;
     }
-
     /**
      * @param string $hostname
      *
@@ -109,10 +107,8 @@ class ContainerConfig
     public function setHostname($hostname = null)
     {
         $this->hostname = $hostname;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -120,7 +116,6 @@ class ContainerConfig
     {
         return $this->domainname;
     }
-
     /**
      * @param string $domainname
      *
@@ -129,10 +124,8 @@ class ContainerConfig
     public function setDomainname($domainname = null)
     {
         $this->domainname = $domainname;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -140,7 +133,6 @@ class ContainerConfig
     {
         return $this->user;
     }
-
     /**
      * @param string $user
      *
@@ -149,10 +141,8 @@ class ContainerConfig
     public function setUser($user = null)
     {
         $this->user = $user;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -160,7 +150,6 @@ class ContainerConfig
     {
         return $this->attachStdin;
     }
-
     /**
      * @param bool $attachStdin
      *
@@ -169,10 +158,8 @@ class ContainerConfig
     public function setAttachStdin($attachStdin = null)
     {
         $this->attachStdin = $attachStdin;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -180,7 +167,6 @@ class ContainerConfig
     {
         return $this->attachStdout;
     }
-
     /**
      * @param bool $attachStdout
      *
@@ -189,10 +175,8 @@ class ContainerConfig
     public function setAttachStdout($attachStdout = null)
     {
         $this->attachStdout = $attachStdout;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -200,7 +184,6 @@ class ContainerConfig
     {
         return $this->attachStderr;
     }
-
     /**
      * @param bool $attachStderr
      *
@@ -209,10 +192,8 @@ class ContainerConfig
     public function setAttachStderr($attachStderr = null)
     {
         $this->attachStderr = $attachStderr;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -220,7 +201,6 @@ class ContainerConfig
     {
         return $this->tty;
     }
-
     /**
      * @param bool $tty
      *
@@ -229,10 +209,8 @@ class ContainerConfig
     public function setTty($tty = null)
     {
         $this->tty = $tty;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -240,7 +218,6 @@ class ContainerConfig
     {
         return $this->openStdin;
     }
-
     /**
      * @param bool $openStdin
      *
@@ -249,10 +226,8 @@ class ContainerConfig
     public function setOpenStdin($openStdin = null)
     {
         $this->openStdin = $openStdin;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -260,7 +235,6 @@ class ContainerConfig
     {
         return $this->stdinOnce;
     }
-
     /**
      * @param bool $stdinOnce
      *
@@ -269,10 +243,8 @@ class ContainerConfig
     public function setStdinOnce($stdinOnce = null)
     {
         $this->stdinOnce = $stdinOnce;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -280,7 +252,6 @@ class ContainerConfig
     {
         return $this->env;
     }
-
     /**
      * @param string[]|null $env
      *
@@ -289,10 +260,8 @@ class ContainerConfig
     public function setEnv($env = null)
     {
         $this->env = $env;
-
         return $this;
     }
-
     /**
      * @return string[]|string
      */
@@ -300,7 +269,6 @@ class ContainerConfig
     {
         return $this->cmd;
     }
-
     /**
      * @param string[]|string $cmd
      *
@@ -309,10 +277,8 @@ class ContainerConfig
     public function setCmd($cmd = null)
     {
         $this->cmd = $cmd;
-
         return $this;
     }
-
     /**
      * @return string[]|string
      */
@@ -320,7 +286,6 @@ class ContainerConfig
     {
         return $this->entrypoint;
     }
-
     /**
      * @param string[]|string $entrypoint
      *
@@ -329,10 +294,8 @@ class ContainerConfig
     public function setEntrypoint($entrypoint = null)
     {
         $this->entrypoint = $entrypoint;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -340,7 +303,6 @@ class ContainerConfig
     {
         return $this->image;
     }
-
     /**
      * @param string $image
      *
@@ -349,10 +311,8 @@ class ContainerConfig
     public function setImage($image = null)
     {
         $this->image = $image;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -360,7 +320,6 @@ class ContainerConfig
     {
         return $this->labels;
     }
-
     /**
      * @param string[]|null $labels
      *
@@ -369,10 +328,8 @@ class ContainerConfig
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
-
         return $this;
     }
-
     /**
      * @return mixed[]|null
      */
@@ -380,7 +337,6 @@ class ContainerConfig
     {
         return $this->volumes;
     }
-
     /**
      * @param mixed[]|null $volumes
      *
@@ -389,10 +345,8 @@ class ContainerConfig
     public function setVolumes($volumes = null)
     {
         $this->volumes = $volumes;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -400,7 +354,6 @@ class ContainerConfig
     {
         return $this->workingDir;
     }
-
     /**
      * @param string $workingDir
      *
@@ -409,10 +362,8 @@ class ContainerConfig
     public function setWorkingDir($workingDir = null)
     {
         $this->workingDir = $workingDir;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -420,7 +371,6 @@ class ContainerConfig
     {
         return $this->networkDisabled;
     }
-
     /**
      * @param bool $networkDisabled
      *
@@ -429,10 +379,8 @@ class ContainerConfig
     public function setNetworkDisabled($networkDisabled = null)
     {
         $this->networkDisabled = $networkDisabled;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -440,7 +388,6 @@ class ContainerConfig
     {
         return $this->macAddress;
     }
-
     /**
      * @param string $macAddress
      *
@@ -449,10 +396,8 @@ class ContainerConfig
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
-
         return $this;
     }
-
     /**
      * @return mixed[]|null
      */
@@ -460,7 +405,6 @@ class ContainerConfig
     {
         return $this->exposedPorts;
     }
-
     /**
      * @param mixed[]|null $exposedPorts
      *
@@ -469,10 +413,8 @@ class ContainerConfig
     public function setExposedPorts($exposedPorts = null)
     {
         $this->exposedPorts = $exposedPorts;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -480,7 +422,6 @@ class ContainerConfig
     {
         return $this->stopSignal;
     }
-
     /**
      * @param string $stopSignal
      *
@@ -489,10 +430,8 @@ class ContainerConfig
     public function setStopSignal($stopSignal = null)
     {
         $this->stopSignal = $stopSignal;
-
         return $this;
     }
-
     /**
      * @return HostConfig
      */
@@ -500,7 +439,6 @@ class ContainerConfig
     {
         return $this->hostConfig;
     }
-
     /**
      * @param HostConfig $hostConfig
      *
@@ -509,10 +447,8 @@ class ContainerConfig
     public function setHostConfig(HostConfig $hostConfig = null)
     {
         $this->hostConfig = $hostConfig;
-
         return $this;
     }
-
     /**
      * @return NetworkingConfig
      */
@@ -520,7 +456,6 @@ class ContainerConfig
     {
         return $this->networkingConfig;
     }
-
     /**
      * @param NetworkingConfig $networkingConfig
      *
@@ -529,7 +464,6 @@ class ContainerConfig
     public function setNetworkingConfig(NetworkingConfig $networkingConfig = null)
     {
         $this->networkingConfig = $networkingConfig;
-
         return $this;
     }
 }

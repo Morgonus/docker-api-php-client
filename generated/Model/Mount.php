@@ -32,7 +32,6 @@ class Mount
      * @var string
      */
     protected $propagation;
-
     /**
      * @return string
      */
@@ -40,7 +39,6 @@ class Mount
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -49,10 +47,8 @@ class Mount
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -60,7 +56,6 @@ class Mount
     {
         return $this->source;
     }
-
     /**
      * @param string $source
      *
@@ -69,10 +64,8 @@ class Mount
     public function setSource($source = null)
     {
         $this->source = $source;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -80,7 +73,6 @@ class Mount
     {
         return $this->destination;
     }
-
     /**
      * @param string $destination
      *
@@ -89,10 +81,8 @@ class Mount
     public function setDestination($destination = null)
     {
         $this->destination = $destination;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -100,7 +90,6 @@ class Mount
     {
         return $this->driver;
     }
-
     /**
      * @param string $driver
      *
@@ -109,10 +98,8 @@ class Mount
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -120,7 +107,6 @@ class Mount
     {
         return $this->mode;
     }
-
     /**
      * @param string $mode
      *
@@ -129,10 +115,8 @@ class Mount
     public function setMode($mode = null)
     {
         $this->mode = $mode;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -140,7 +124,6 @@ class Mount
     {
         return $this->rW;
     }
-
     /**
      * @param bool $rW
      *
@@ -149,10 +132,8 @@ class Mount
     public function setRW($rW = null)
     {
         $this->rW = $rW;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -160,7 +141,6 @@ class Mount
     {
         return $this->propagation;
     }
-
     /**
      * @param string $propagation
      *
@@ -169,7 +149,6 @@ class Mount
     public function setPropagation($propagation = null)
     {
         $this->propagation = $propagation;
-
         return $this;
     }
 }

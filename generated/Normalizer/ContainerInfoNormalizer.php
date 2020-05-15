@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ContainerInfoNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if ($type !== 'Docker\\API\\Model\\ContainerInfo') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerInfo) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ContainerInfo();
         if (property_exists($data, 'Id')) {
@@ -35,7 +31,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Names')) {
             $value = $data->{'Names'};
             if (is_array($data->{'Names'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Names'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -67,7 +63,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Ports')) {
             $value_2 = $data->{'Ports'};
             if (is_array($data->{'Ports'})) {
-                $values_1 = [];
+                $values_1 = array();
                 foreach ($data->{'Ports'} as $value_3) {
                     $values_1[] = $this->serializer->deserialize($value_3, 'Docker\\API\\Model\\Port', 'raw', $context);
                 }
@@ -81,7 +77,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Labels')) {
             $value_4 = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_5) {
                     $values_2[$key] = $value_5;
                 }
@@ -107,7 +103,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Mounts')) {
             $value_6 = $data->{'Mounts'};
             if (is_array($data->{'Mounts'})) {
-                $values_3 = [];
+                $values_3 = array();
                 foreach ($data->{'Mounts'} as $value_7) {
                     $values_3[] = $this->serializer->deserialize($value_7, 'Docker\\API\\Model\\Mount', 'raw', $context);
                 }
@@ -121,11 +117,9 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Node')) {
             $object->setNode($this->serializer->deserialize($data->{'Node'}, 'Docker\\API\\Model\\ContainerNode', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -133,7 +127,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value = $object->getNames();
         if (is_array($object->getNames())) {
-            $values = [];
+            $values = array();
             foreach ($object->getNames() as $value_1) {
                 $values[] = $value_1;
             }
@@ -163,7 +157,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value_2 = $object->getPorts();
         if (is_array($object->getPorts())) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getPorts() as $value_3) {
                 $values_1[] = $this->serializer->serialize($value_3, 'raw', $context);
             }
@@ -173,7 +167,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
             $value_2 = $object->getPorts();
         }
         $data->{'Ports'} = $value_2;
-        $value_4         = $object->getLabels();
+        $value_4 = $object->getLabels();
         if (is_object($object->getLabels())) {
             $values_2 = new \stdClass();
             foreach ($object->getLabels() as $key => $value_5) {
@@ -199,7 +193,7 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value_6 = $object->getMounts();
         if (is_array($object->getMounts())) {
-            $values_3 = [];
+            $values_3 = array();
             foreach ($object->getMounts() as $value_7) {
                 $values_3[] = $this->serializer->serialize($value_7, 'raw', $context);
             }
@@ -212,7 +206,6 @@ class ContainerInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (null !== $object->getNode()) {
             $data->{'Node'} = $this->serializer->serialize($object->getNode(), 'raw', $context);
         }
-
         return $data;
     }
 }

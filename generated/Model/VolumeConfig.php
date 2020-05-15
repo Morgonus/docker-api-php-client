@@ -16,7 +16,6 @@ class VolumeConfig
      * @var string[]
      */
     protected $driverOpts;
-
     /**
      * @return string
      */
@@ -24,7 +23,6 @@ class VolumeConfig
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -33,10 +31,8 @@ class VolumeConfig
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -44,7 +40,6 @@ class VolumeConfig
     {
         return $this->driver;
     }
-
     /**
      * @param string $driver
      *
@@ -53,10 +48,8 @@ class VolumeConfig
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return string[]
      */
@@ -64,7 +57,6 @@ class VolumeConfig
     {
         return $this->driverOpts;
     }
-
     /**
      * @param string[] $driverOpts
      *
@@ -73,7 +65,6 @@ class VolumeConfig
     public function setDriverOpts(\ArrayObject $driverOpts = null)
     {
         $this->driverOpts = $driverOpts;
-
         return $this;
     }
 }

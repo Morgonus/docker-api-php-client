@@ -12,7 +12,6 @@ class ContainerTop
      * @var string[][]|null[]|null
      */
     protected $processes;
-
     /**
      * @return string[]|null
      */
@@ -20,7 +19,6 @@ class ContainerTop
     {
         return $this->titles;
     }
-
     /**
      * @param string[]|null $titles
      *
@@ -29,10 +27,8 @@ class ContainerTop
     public function setTitles($titles = null)
     {
         $this->titles = $titles;
-
         return $this;
     }
-
     /**
      * @return string[][]|null[]|null
      */
@@ -40,7 +36,6 @@ class ContainerTop
     {
         return $this->processes;
     }
-
     /**
      * @param string[][]|null[]|null $processes
      *
@@ -49,7 +44,6 @@ class ContainerTop
     public function setProcesses($processes = null)
     {
         $this->processes = $processes;
-
         return $this;
     }
 }

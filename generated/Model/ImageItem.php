@@ -36,7 +36,6 @@ class ImageItem
      * @var string[]|null
      */
     protected $repoDigests;
-
     /**
      * @return string[]|null
      */
@@ -44,7 +43,6 @@ class ImageItem
     {
         return $this->repoTags;
     }
-
     /**
      * @param string[]|null $repoTags
      *
@@ -53,10 +51,8 @@ class ImageItem
     public function setRepoTags($repoTags = null)
     {
         $this->repoTags = $repoTags;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -64,7 +60,6 @@ class ImageItem
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -73,10 +68,8 @@ class ImageItem
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -84,7 +77,6 @@ class ImageItem
     {
         return $this->parentId;
     }
-
     /**
      * @param string $parentId
      *
@@ -93,10 +85,8 @@ class ImageItem
     public function setParentId($parentId = null)
     {
         $this->parentId = $parentId;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -104,7 +94,6 @@ class ImageItem
     {
         return $this->created;
     }
-
     /**
      * @param int $created
      *
@@ -113,10 +102,8 @@ class ImageItem
     public function setCreated($created = null)
     {
         $this->created = $created;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -124,7 +111,6 @@ class ImageItem
     {
         return $this->size;
     }
-
     /**
      * @param int $size
      *
@@ -133,10 +119,8 @@ class ImageItem
     public function setSize($size = null)
     {
         $this->size = $size;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -144,7 +128,6 @@ class ImageItem
     {
         return $this->virtualSize;
     }
-
     /**
      * @param int $virtualSize
      *
@@ -153,10 +136,8 @@ class ImageItem
     public function setVirtualSize($virtualSize = null)
     {
         $this->virtualSize = $virtualSize;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -164,7 +145,6 @@ class ImageItem
     {
         return $this->labels;
     }
-
     /**
      * @param string[]|null $labels
      *
@@ -173,10 +153,8 @@ class ImageItem
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -184,7 +162,6 @@ class ImageItem
     {
         return $this->repoDigests;
     }
-
     /**
      * @param string[]|null $repoDigests
      *
@@ -193,7 +170,6 @@ class ImageItem
     public function setRepoDigests($repoDigests = null)
     {
         $this->repoDigests = $repoDigests;
-
         return $this;
     }
 }

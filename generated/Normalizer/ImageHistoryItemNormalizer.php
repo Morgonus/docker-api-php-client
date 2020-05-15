@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\ImageHistoryItem') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ImageHistoryItem) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ImageHistoryItem();
         if (property_exists($data, 'Id')) {
@@ -41,7 +37,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'Tags')) {
             $value = $data->{'Tags'};
             if (is_array($data->{'Tags'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Tags'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -58,11 +54,9 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'Comment')) {
             $object->setComment($data->{'Comment'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -76,7 +70,7 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         }
         $value = $object->getTags();
         if (is_array($object->getTags())) {
-            $values = [];
+            $values = array();
             foreach ($object->getTags() as $value_1) {
                 $values[] = $value_1;
             }
@@ -92,7 +86,6 @@ class ImageHistoryItemNormalizer extends SerializerAwareNormalizer implements De
         if (null !== $object->getComment()) {
             $data->{'Comment'} = $object->getComment();
         }
-
         return $data;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implem
         if ($type !== 'Docker\\API\\Model\\NetworkAttachmentConfig') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NetworkAttachmentConfig) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\NetworkAttachmentConfig();
         if (property_exists($data, 'Target')) {
@@ -35,7 +31,7 @@ class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implem
         if (property_exists($data, 'Aliases')) {
             $value = $data->{'Aliases'};
             if (is_array($data->{'Aliases'})) {
-                $values = [];
+                $values = array();
                 foreach ($data->{'Aliases'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -46,11 +42,9 @@ class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implem
             }
             $object->setAliases($value);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getTarget()) {
@@ -58,7 +52,7 @@ class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implem
         }
         $value = $object->getAliases();
         if (is_array($object->getAliases())) {
-            $values = [];
+            $values = array();
             foreach ($object->getAliases() as $value_1) {
                 $values[] = $value_1;
             }
@@ -68,7 +62,6 @@ class NetworkAttachmentConfigNormalizer extends SerializerAwareNormalizer implem
             $value = $object->getAliases();
         }
         $data->{'Aliases'} = $value;
-
         return $data;
     }
 }

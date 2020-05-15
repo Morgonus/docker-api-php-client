@@ -12,7 +12,6 @@ class NodePlatform
      * @var string
      */
     protected $oS;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class NodePlatform
     {
         return $this->architecture;
     }
-
     /**
      * @param string $architecture
      *
@@ -29,10 +27,8 @@ class NodePlatform
     public function setArchitecture($architecture = null)
     {
         $this->architecture = $architecture;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -40,7 +36,6 @@ class NodePlatform
     {
         return $this->oS;
     }
-
     /**
      * @param string $oS
      *
@@ -49,7 +44,6 @@ class NodePlatform
     public function setOS($oS = null)
     {
         $this->oS = $oS;
-
         return $this;
     }
 }

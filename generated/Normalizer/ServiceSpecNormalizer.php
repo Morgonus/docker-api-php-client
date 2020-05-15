@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ServiceSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         if ($type !== 'Docker\\API\\Model\\ServiceSpec') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ServiceSpec) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ServiceSpec();
         if (property_exists($data, 'Name')) {
@@ -35,7 +31,7 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         if (property_exists($data, 'Labels')) {
             $value = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -58,7 +54,7 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         if (property_exists($data, 'Networks')) {
             $value_2 = $data->{'Networks'};
             if (is_array($data->{'Networks'})) {
-                $values_1 = [];
+                $values_1 = array();
                 foreach ($data->{'Networks'} as $value_3) {
                     $values_1[] = $this->serializer->deserialize($value_3, 'Docker\\API\\Model\\NetworkAttachmentConfig', 'raw', $context);
                 }
@@ -72,11 +68,9 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         if (property_exists($data, 'EndpointSpec')) {
             $object->setEndpointSpec($data->{'EndpointSpec'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -105,7 +99,7 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         }
         $value_2 = $object->getNetworks();
         if (is_array($object->getNetworks())) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getNetworks() as $value_3) {
                 $values_1[] = $this->serializer->serialize($value_3, 'raw', $context);
             }
@@ -118,7 +112,6 @@ class ServiceSpecNormalizer extends SerializerAwareNormalizer implements Denorma
         if (null !== $object->getEndpointSpec()) {
             $data->{'EndpointSpec'} = $object->getEndpointSpec();
         }
-
         return $data;
     }
 }

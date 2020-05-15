@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class NodeSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class NodeSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if ($type !== 'Docker\\API\\Model\\NodeSpec') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NodeSpec) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\NodeSpec();
         if (property_exists($data, 'Name')) {
@@ -41,7 +37,7 @@ class NodeSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'Labels')) {
             $value = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -52,11 +48,9 @@ class NodeSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
             }
             $object->setLabels($value);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -80,7 +74,6 @@ class NodeSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
             $value = $object->getLabels();
         }
         $data->{'Labels'} = $value;
-
         return $data;
     }
 }

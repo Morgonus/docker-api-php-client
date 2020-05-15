@@ -36,7 +36,6 @@ class NetworkCreateConfig
      * @var string[]|null
      */
     protected $labels;
-
     /**
      * @return string
      */
@@ -44,7 +43,6 @@ class NetworkCreateConfig
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -53,10 +51,8 @@ class NetworkCreateConfig
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -64,7 +60,6 @@ class NetworkCreateConfig
     {
         return $this->checkDuplicate;
     }
-
     /**
      * @param bool $checkDuplicate
      *
@@ -73,10 +68,8 @@ class NetworkCreateConfig
     public function setCheckDuplicate($checkDuplicate = null)
     {
         $this->checkDuplicate = $checkDuplicate;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -84,7 +77,6 @@ class NetworkCreateConfig
     {
         return $this->driver;
     }
-
     /**
      * @param string $driver
      *
@@ -93,10 +85,8 @@ class NetworkCreateConfig
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -104,7 +94,6 @@ class NetworkCreateConfig
     {
         return $this->enableIPv6;
     }
-
     /**
      * @param bool $enableIPv6
      *
@@ -113,10 +102,8 @@ class NetworkCreateConfig
     public function setEnableIPv6($enableIPv6 = null)
     {
         $this->enableIPv6 = $enableIPv6;
-
         return $this;
     }
-
     /**
      * @return IPAM
      */
@@ -124,7 +111,6 @@ class NetworkCreateConfig
     {
         return $this->iPAM;
     }
-
     /**
      * @param IPAM $iPAM
      *
@@ -133,10 +119,8 @@ class NetworkCreateConfig
     public function setIPAM(IPAM $iPAM = null)
     {
         $this->iPAM = $iPAM;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -144,7 +128,6 @@ class NetworkCreateConfig
     {
         return $this->internal;
     }
-
     /**
      * @param bool $internal
      *
@@ -153,10 +136,8 @@ class NetworkCreateConfig
     public function setInternal($internal = null)
     {
         $this->internal = $internal;
-
         return $this;
     }
-
     /**
      * @return string[]
      */
@@ -164,7 +145,6 @@ class NetworkCreateConfig
     {
         return $this->options;
     }
-
     /**
      * @param string[] $options
      *
@@ -173,10 +153,8 @@ class NetworkCreateConfig
     public function setOptions(\ArrayObject $options = null)
     {
         $this->options = $options;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -184,7 +162,6 @@ class NetworkCreateConfig
     {
         return $this->labels;
     }
-
     /**
      * @param string[]|null $labels
      *
@@ -193,7 +170,6 @@ class NetworkCreateConfig
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
-
         return $this;
     }
 }

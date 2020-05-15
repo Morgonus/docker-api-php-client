@@ -68,7 +68,6 @@ class Image
      * @var ContainerConfig
      */
     protected $config;
-
     /**
      * @return string
      */
@@ -76,7 +75,6 @@ class Image
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -85,10 +83,8 @@ class Image
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -96,7 +92,6 @@ class Image
     {
         return $this->container;
     }
-
     /**
      * @param string $container
      *
@@ -105,10 +100,8 @@ class Image
     public function setContainer($container = null)
     {
         $this->container = $container;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -116,7 +109,6 @@ class Image
     {
         return $this->comment;
     }
-
     /**
      * @param string $comment
      *
@@ -125,10 +117,8 @@ class Image
     public function setComment($comment = null)
     {
         $this->comment = $comment;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -136,7 +126,6 @@ class Image
     {
         return $this->os;
     }
-
     /**
      * @param string $os
      *
@@ -145,10 +134,8 @@ class Image
     public function setOs($os = null)
     {
         $this->os = $os;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -156,7 +143,6 @@ class Image
     {
         return $this->architecture;
     }
-
     /**
      * @param string $architecture
      *
@@ -165,10 +151,8 @@ class Image
     public function setArchitecture($architecture = null)
     {
         $this->architecture = $architecture;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -176,7 +160,6 @@ class Image
     {
         return $this->parent;
     }
-
     /**
      * @param string $parent
      *
@@ -185,10 +168,8 @@ class Image
     public function setParent($parent = null)
     {
         $this->parent = $parent;
-
         return $this;
     }
-
     /**
      * @return ContainerConfig
      */
@@ -196,7 +177,6 @@ class Image
     {
         return $this->containerConfig;
     }
-
     /**
      * @param ContainerConfig $containerConfig
      *
@@ -205,10 +185,8 @@ class Image
     public function setContainerConfig(ContainerConfig $containerConfig = null)
     {
         $this->containerConfig = $containerConfig;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -216,7 +194,6 @@ class Image
     {
         return $this->dockerVersion;
     }
-
     /**
      * @param string $dockerVersion
      *
@@ -225,10 +202,8 @@ class Image
     public function setDockerVersion($dockerVersion = null)
     {
         $this->dockerVersion = $dockerVersion;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -236,7 +211,6 @@ class Image
     {
         return $this->virtualSize;
     }
-
     /**
      * @param int $virtualSize
      *
@@ -245,10 +219,8 @@ class Image
     public function setVirtualSize($virtualSize = null)
     {
         $this->virtualSize = $virtualSize;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -256,7 +228,6 @@ class Image
     {
         return $this->size;
     }
-
     /**
      * @param int $size
      *
@@ -265,10 +236,8 @@ class Image
     public function setSize($size = null)
     {
         $this->size = $size;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -276,7 +245,6 @@ class Image
     {
         return $this->author;
     }
-
     /**
      * @param string $author
      *
@@ -285,10 +253,8 @@ class Image
     public function setAuthor($author = null)
     {
         $this->author = $author;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -296,7 +262,6 @@ class Image
     {
         return $this->created;
     }
-
     /**
      * @param string $created
      *
@@ -305,10 +270,8 @@ class Image
     public function setCreated($created = null)
     {
         $this->created = $created;
-
         return $this;
     }
-
     /**
      * @return GraphDriver
      */
@@ -316,7 +279,6 @@ class Image
     {
         return $this->graphDriver;
     }
-
     /**
      * @param GraphDriver $graphDriver
      *
@@ -325,10 +287,8 @@ class Image
     public function setGraphDriver(GraphDriver $graphDriver = null)
     {
         $this->graphDriver = $graphDriver;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -336,7 +296,6 @@ class Image
     {
         return $this->repoDigests;
     }
-
     /**
      * @param string[]|null $repoDigests
      *
@@ -345,10 +304,8 @@ class Image
     public function setRepoDigests($repoDigests = null)
     {
         $this->repoDigests = $repoDigests;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -356,7 +313,6 @@ class Image
     {
         return $this->repoTags;
     }
-
     /**
      * @param string[]|null $repoTags
      *
@@ -365,10 +321,8 @@ class Image
     public function setRepoTags($repoTags = null)
     {
         $this->repoTags = $repoTags;
-
         return $this;
     }
-
     /**
      * @return ContainerConfig
      */
@@ -376,7 +330,6 @@ class Image
     {
         return $this->config;
     }
-
     /**
      * @param ContainerConfig $config
      *
@@ -385,7 +338,6 @@ class Image
     public function setConfig(ContainerConfig $config = null)
     {
         $this->config = $config;
-
         return $this;
     }
 }

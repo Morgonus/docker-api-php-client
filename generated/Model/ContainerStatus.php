@@ -16,7 +16,6 @@ class ContainerStatus
      * @var int
      */
     protected $exitCode;
-
     /**
      * @return string
      */
@@ -24,7 +23,6 @@ class ContainerStatus
     {
         return $this->containerID;
     }
-
     /**
      * @param string $containerID
      *
@@ -33,10 +31,8 @@ class ContainerStatus
     public function setContainerID($containerID = null)
     {
         $this->containerID = $containerID;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -44,7 +40,6 @@ class ContainerStatus
     {
         return $this->pID;
     }
-
     /**
      * @param int $pID
      *
@@ -53,10 +48,8 @@ class ContainerStatus
     public function setPID($pID = null)
     {
         $this->pID = $pID;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -64,7 +57,6 @@ class ContainerStatus
     {
         return $this->exitCode;
     }
-
     /**
      * @param int $exitCode
      *
@@ -73,7 +65,6 @@ class ContainerStatus
     public function setExitCode($exitCode = null)
     {
         $this->exitCode = $exitCode;
-
         return $this;
     }
 }

@@ -12,7 +12,6 @@ class ContainerDisconnect
      * @var bool
      */
     protected $force;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class ContainerDisconnect
     {
         return $this->container;
     }
-
     /**
      * @param string $container
      *
@@ -29,10 +27,8 @@ class ContainerDisconnect
     public function setContainer($container = null)
     {
         $this->container = $container;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -40,7 +36,6 @@ class ContainerDisconnect
     {
         return $this->force;
     }
-
     /**
      * @param bool $force
      *
@@ -49,7 +44,6 @@ class ContainerDisconnect
     public function setForce($force = null)
     {
         $this->force = $force;
-
         return $this;
     }
 }

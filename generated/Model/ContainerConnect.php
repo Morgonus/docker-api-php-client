@@ -12,7 +12,6 @@ class ContainerConnect
      * @var EndpointConfig[]
      */
     protected $endpointConfig;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class ContainerConnect
     {
         return $this->container;
     }
-
     /**
      * @param string $container
      *
@@ -29,10 +27,8 @@ class ContainerConnect
     public function setContainer($container = null)
     {
         $this->container = $container;
-
         return $this;
     }
-
     /**
      * @return EndpointConfig[]
      */
@@ -40,7 +36,6 @@ class ContainerConnect
     {
         return $this->endpointConfig;
     }
-
     /**
      * @param EndpointConfig[] $endpointConfig
      *
@@ -49,7 +44,6 @@ class ContainerConnect
     public function setEndpointConfig(\ArrayObject $endpointConfig = null)
     {
         $this->endpointConfig = $endpointConfig;
-
         return $this;
     }
 }

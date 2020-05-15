@@ -12,7 +12,6 @@ class ContainerChange
      * @var int
      */
     protected $kind;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class ContainerChange
     {
         return $this->path;
     }
-
     /**
      * @param string $path
      *
@@ -29,10 +27,8 @@ class ContainerChange
     public function setPath($path = null)
     {
         $this->path = $path;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -40,7 +36,6 @@ class ContainerChange
     {
         return $this->kind;
     }
-
     /**
      * @param int $kind
      *
@@ -49,7 +44,6 @@ class ContainerChange
     public function setKind($kind = null)
     {
         $this->kind = $kind;
-
         return $this;
     }
 }

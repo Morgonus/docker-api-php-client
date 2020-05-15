@@ -12,7 +12,6 @@ class TaskSpecResourceRequirements
      * @var NodeResources
      */
     protected $reservations;
-
     /**
      * @return NodeResources
      */
@@ -20,7 +19,6 @@ class TaskSpecResourceRequirements
     {
         return $this->limits;
     }
-
     /**
      * @param NodeResources $limits
      *
@@ -29,10 +27,8 @@ class TaskSpecResourceRequirements
     public function setLimits(NodeResources $limits = null)
     {
         $this->limits = $limits;
-
         return $this;
     }
-
     /**
      * @return NodeResources
      */
@@ -40,7 +36,6 @@ class TaskSpecResourceRequirements
     {
         return $this->reservations;
     }
-
     /**
      * @param NodeResources $reservations
      *
@@ -49,7 +44,6 @@ class TaskSpecResourceRequirements
     public function setReservations(NodeResources $reservations = null)
     {
         $this->reservations = $reservations;
-
         return $this;
     }
 }

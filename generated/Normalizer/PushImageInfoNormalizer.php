@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class PushImageInfoNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class PushImageInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if ($type !== 'Docker\\API\\Model\\PushImageInfo') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\PushImageInfo) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\PushImageInfo();
         if (property_exists($data, 'error')) {
@@ -41,11 +37,9 @@ class PushImageInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'progressDetail')) {
             $object->setProgressDetail($this->serializer->deserialize($data->{'progressDetail'}, 'Docker\\API\\Model\\ProgressDetail', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getError()) {
@@ -60,7 +54,6 @@ class PushImageInfoNormalizer extends SerializerAwareNormalizer implements Denor
         if (null !== $object->getProgressDetail()) {
             $data->{'progressDetail'} = $this->serializer->serialize($object->getProgressDetail(), 'raw', $context);
         }
-
         return $data;
     }
 }

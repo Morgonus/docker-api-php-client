@@ -16,7 +16,6 @@ class IPAMConfig
      * @var string
      */
     protected $gateway;
-
     /**
      * @return string
      */
@@ -24,7 +23,6 @@ class IPAMConfig
     {
         return $this->subnet;
     }
-
     /**
      * @param string $subnet
      *
@@ -33,10 +31,8 @@ class IPAMConfig
     public function setSubnet($subnet = null)
     {
         $this->subnet = $subnet;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -44,7 +40,6 @@ class IPAMConfig
     {
         return $this->iPRange;
     }
-
     /**
      * @param string $iPRange
      *
@@ -53,10 +48,8 @@ class IPAMConfig
     public function setIPRange($iPRange = null)
     {
         $this->iPRange = $iPRange;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -64,7 +57,6 @@ class IPAMConfig
     {
         return $this->gateway;
     }
-
     /**
      * @param string $gateway
      *
@@ -73,7 +65,6 @@ class IPAMConfig
     public function setGateway($gateway = null)
     {
         $this->gateway = $gateway;
-
         return $this;
     }
 }

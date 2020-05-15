@@ -12,7 +12,6 @@ class RestartPolicy
      * @var int
      */
     protected $maximumRetryCount;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class RestartPolicy
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -29,10 +27,8 @@ class RestartPolicy
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -40,7 +36,6 @@ class RestartPolicy
     {
         return $this->maximumRetryCount;
     }
-
     /**
      * @param int $maximumRetryCount
      *
@@ -49,7 +44,6 @@ class RestartPolicy
     public function setMaximumRetryCount($maximumRetryCount = null)
     {
         $this->maximumRetryCount = $maximumRetryCount;
-
         return $this;
     }
 }

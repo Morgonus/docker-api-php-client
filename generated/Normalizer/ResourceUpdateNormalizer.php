@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if ($type !== 'Docker\\API\\Model\\ResourceUpdate') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ResourceUpdate) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ResourceUpdate();
         if (property_exists($data, 'BlkioWeight')) {
@@ -62,11 +58,9 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if (property_exists($data, 'RestartPolicy')) {
             $object->setRestartPolicy($this->serializer->deserialize($data->{'RestartPolicy'}, 'Docker\\API\\Model\\RestartPolicy', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getBlkioWeight()) {
@@ -102,7 +96,6 @@ class ResourceUpdateNormalizer extends SerializerAwareNormalizer implements Deno
         if (null !== $object->getRestartPolicy()) {
             $data->{'RestartPolicy'} = $this->serializer->serialize($object->getRestartPolicy(), 'raw', $context);
         }
-
         return $data;
     }
 }

@@ -8,7 +8,6 @@ class TaskSpecPlacement
      * @var string[]|null
      */
     protected $constraints;
-
     /**
      * @return string[]|null
      */
@@ -16,7 +15,6 @@ class TaskSpecPlacement
     {
         return $this->constraints;
     }
-
     /**
      * @param string[]|null $constraints
      *
@@ -25,7 +23,6 @@ class TaskSpecPlacement
     public function setConstraints($constraints = null)
     {
         $this->constraints = $constraints;
-
         return $this;
     }
 }

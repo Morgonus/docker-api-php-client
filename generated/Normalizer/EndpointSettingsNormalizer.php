@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class EndpointSettingsNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,34 +13,30 @@ class EndpointSettingsNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\EndpointSettings') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\EndpointSettings) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\EndpointSettings();
         if (property_exists($data, 'IPAMConfig')) {
             $object->setIPAMConfig($this->serializer->deserialize($data->{'IPAMConfig'}, 'Docker\\API\\Model\\EndpointIPAMConfig', 'raw', $context));
         }
         if (property_exists($data, 'Links')) {
-            $values = [];
+            $values = array();
             foreach ($data->{'Links'} as $value) {
                 $values[] = $value;
             }
             $object->setLinks($values);
         }
         if (property_exists($data, 'Aliases')) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($data->{'Aliases'} as $value_1) {
                 $values_1[] = $value_1;
             }
@@ -73,25 +69,23 @@ class EndpointSettingsNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'MacAddress')) {
             $object->setMacAddress($data->{'MacAddress'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getIPAMConfig()) {
             $data->{'IPAMConfig'} = $this->serializer->serialize($object->getIPAMConfig(), 'raw', $context);
         }
         if (null !== $object->getLinks()) {
-            $values = [];
+            $values = array();
             foreach ($object->getLinks() as $value) {
                 $values[] = $value;
             }
             $data->{'Links'} = $values;
         }
         if (null !== $object->getAliases()) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getAliases() as $value_1) {
                 $values_1[] = $value_1;
             }
@@ -124,7 +118,6 @@ class EndpointSettingsNormalizer extends SerializerAwareNormalizer implements De
         if (null !== $object->getMacAddress()) {
             $data->{'MacAddress'} = $object->getMacAddress();
         }
-
         return $data;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ContainerSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if ($type !== 'Docker\\API\\Model\\ContainerSpec') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerSpec) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\ContainerSpec();
         if (property_exists($data, 'Image')) {
@@ -35,7 +31,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Labels')) {
             $value = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -49,7 +45,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Command')) {
             $value_2 = $data->{'Command'};
             if (is_array($data->{'Command'})) {
-                $values_1 = [];
+                $values_1 = array();
                 foreach ($data->{'Command'} as $value_3) {
                     $values_1[] = $value_3;
                 }
@@ -63,7 +59,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Args')) {
             $value_4 = $data->{'Args'};
             if (is_array($data->{'Args'})) {
-                $values_2 = [];
+                $values_2 = array();
                 foreach ($data->{'Args'} as $value_5) {
                     $values_2[] = $value_5;
                 }
@@ -77,7 +73,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Env')) {
             $value_6 = $data->{'Env'};
             if (is_array($data->{'Env'})) {
-                $values_3 = [];
+                $values_3 = array();
                 foreach ($data->{'Env'} as $value_7) {
                     $values_3[] = $value_7;
                 }
@@ -97,7 +93,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Mounts')) {
             $value_8 = $data->{'Mounts'};
             if (is_array($data->{'Mounts'})) {
-                $values_4 = [];
+                $values_4 = array();
                 foreach ($data->{'Mounts'} as $value_9) {
                     $values_4[] = $this->serializer->deserialize($value_9, 'Docker\\API\\Model\\ContainerSpecMount', 'raw', $context);
                 }
@@ -111,11 +107,9 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'StopGracePeriod')) {
             $object->setStopGracePeriod($data->{'StopGracePeriod'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getImage()) {
@@ -133,9 +127,9 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
             $value = $object->getLabels();
         }
         $data->{'Labels'} = $value;
-        $value_2          = $object->getCommand();
+        $value_2 = $object->getCommand();
         if (is_array($object->getCommand())) {
-            $values_1 = [];
+            $values_1 = array();
             foreach ($object->getCommand() as $value_3) {
                 $values_1[] = $value_3;
             }
@@ -145,9 +139,9 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
             $value_2 = $object->getCommand();
         }
         $data->{'Command'} = $value_2;
-        $value_4           = $object->getArgs();
+        $value_4 = $object->getArgs();
         if (is_array($object->getArgs())) {
-            $values_2 = [];
+            $values_2 = array();
             foreach ($object->getArgs() as $value_5) {
                 $values_2[] = $value_5;
             }
@@ -157,9 +151,9 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
             $value_4 = $object->getArgs();
         }
         $data->{'Args'} = $value_4;
-        $value_6        = $object->getEnv();
+        $value_6 = $object->getEnv();
         if (is_array($object->getEnv())) {
-            $values_3 = [];
+            $values_3 = array();
             foreach ($object->getEnv() as $value_7) {
                 $values_3[] = $value_7;
             }
@@ -177,7 +171,7 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         }
         $value_8 = $object->getMounts();
         if (is_array($object->getMounts())) {
-            $values_4 = [];
+            $values_4 = array();
             foreach ($object->getMounts() as $value_9) {
                 $values_4[] = $this->serializer->serialize($value_9, 'raw', $context);
             }
@@ -190,7 +184,6 @@ class ContainerSpecNormalizer extends SerializerAwareNormalizer implements Denor
         if (null !== $object->getStopGracePeriod()) {
             $data->{'StopGracePeriod'} = $object->getStopGracePeriod();
         }
-
         return $data;
     }
 }

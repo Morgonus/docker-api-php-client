@@ -32,7 +32,6 @@ class BuildInfo
      * @var ProgressDetail
      */
     protected $progressDetail;
-
     /**
      * @return string
      */
@@ -40,7 +39,6 @@ class BuildInfo
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -49,10 +47,8 @@ class BuildInfo
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -60,7 +56,6 @@ class BuildInfo
     {
         return $this->stream;
     }
-
     /**
      * @param string $stream
      *
@@ -69,10 +64,8 @@ class BuildInfo
     public function setStream($stream = null)
     {
         $this->stream = $stream;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -80,7 +73,6 @@ class BuildInfo
     {
         return $this->error;
     }
-
     /**
      * @param string $error
      *
@@ -89,10 +81,8 @@ class BuildInfo
     public function setError($error = null)
     {
         $this->error = $error;
-
         return $this;
     }
-
     /**
      * @return ErrorDetail
      */
@@ -100,7 +90,6 @@ class BuildInfo
     {
         return $this->errorDetail;
     }
-
     /**
      * @param ErrorDetail $errorDetail
      *
@@ -109,10 +98,8 @@ class BuildInfo
     public function setErrorDetail(ErrorDetail $errorDetail = null)
     {
         $this->errorDetail = $errorDetail;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -120,7 +107,6 @@ class BuildInfo
     {
         return $this->status;
     }
-
     /**
      * @param string $status
      *
@@ -129,10 +115,8 @@ class BuildInfo
     public function setStatus($status = null)
     {
         $this->status = $status;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -140,7 +124,6 @@ class BuildInfo
     {
         return $this->progress;
     }
-
     /**
      * @param string $progress
      *
@@ -149,10 +132,8 @@ class BuildInfo
     public function setProgress($progress = null)
     {
         $this->progress = $progress;
-
         return $this;
     }
-
     /**
      * @return ProgressDetail
      */
@@ -160,7 +141,6 @@ class BuildInfo
     {
         return $this->progressDetail;
     }
-
     /**
      * @param ProgressDetail $progressDetail
      *
@@ -169,7 +149,6 @@ class BuildInfo
     public function setProgressDetail(ProgressDetail $progressDetail = null)
     {
         $this->progressDetail = $progressDetail;
-
         return $this;
     }
 }

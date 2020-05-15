@@ -8,7 +8,6 @@ class ContainerWait
      * @var int
      */
     protected $statusCode;
-
     /**
      * @return int
      */
@@ -16,7 +15,6 @@ class ContainerWait
     {
         return $this->statusCode;
     }
-
     /**
      * @param int $statusCode
      *
@@ -25,7 +23,6 @@ class ContainerWait
     public function setStatusCode($statusCode = null)
     {
         $this->statusCode = $statusCode;
-
         return $this;
     }
 }

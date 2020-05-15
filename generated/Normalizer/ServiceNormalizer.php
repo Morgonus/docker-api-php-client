@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class ServiceNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class ServiceNormalizer extends SerializerAwareNormalizer implements Denormalize
         if ($type !== 'Docker\\API\\Model\\Service') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Service) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\Service();
         if (property_exists($data, 'ID')) {
@@ -50,11 +46,9 @@ class ServiceNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'UpdateStatus')) {
             $object->setUpdateStatus($this->serializer->deserialize($data->{'UpdateStatus'}, 'Docker\\API\\Model\\UpdateStatus', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getID()) {
@@ -78,7 +72,6 @@ class ServiceNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (null !== $object->getUpdateStatus()) {
             $data->{'UpdateStatus'} = $this->serializer->serialize($object->getUpdateStatus(), 'raw', $context);
         }
-
         return $data;
     }
 }

@@ -12,7 +12,6 @@ class DeviceRate
      * @var int|string
      */
     protected $rate;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class DeviceRate
     {
         return $this->path;
     }
-
     /**
      * @param string $path
      *
@@ -29,10 +27,8 @@ class DeviceRate
     public function setPath($path = null)
     {
         $this->path = $path;
-
         return $this;
     }
-
     /**
      * @return int|string
      */
@@ -40,7 +36,6 @@ class DeviceRate
     {
         return $this->rate;
     }
-
     /**
      * @param int|string $rate
      *
@@ -49,7 +44,6 @@ class DeviceRate
     public function setRate($rate = null)
     {
         $this->rate = $rate;
-
         return $this;
     }
 }

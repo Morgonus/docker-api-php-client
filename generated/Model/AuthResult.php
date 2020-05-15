@@ -12,7 +12,6 @@ class AuthResult
      * @var string
      */
     protected $identityToken;
-
     /**
      * @return string
      */
@@ -20,7 +19,6 @@ class AuthResult
     {
         return $this->status;
     }
-
     /**
      * @param string $status
      *
@@ -29,10 +27,8 @@ class AuthResult
     public function setStatus($status = null)
     {
         $this->status = $status;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -40,7 +36,6 @@ class AuthResult
     {
         return $this->identityToken;
     }
-
     /**
      * @param string $identityToken
      *
@@ -49,7 +44,6 @@ class AuthResult
     public function setIdentityToken($identityToken = null)
     {
         $this->identityToken = $identityToken;
-
         return $this;
     }
 }

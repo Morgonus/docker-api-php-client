@@ -60,7 +60,6 @@ class Task
      * @var Endpoint
      */
     protected $endpoint;
-
     /**
      * @return string
      */
@@ -68,7 +67,6 @@ class Task
     {
         return $this->iD;
     }
-
     /**
      * @param string $iD
      *
@@ -77,10 +75,8 @@ class Task
     public function setID($iD = null)
     {
         $this->iD = $iD;
-
         return $this;
     }
-
     /**
      * @return NodeVersion
      */
@@ -88,7 +84,6 @@ class Task
     {
         return $this->version;
     }
-
     /**
      * @param NodeVersion $version
      *
@@ -97,10 +92,8 @@ class Task
     public function setVersion(NodeVersion $version = null)
     {
         $this->version = $version;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -108,7 +101,6 @@ class Task
     {
         return $this->createdAt;
     }
-
     /**
      * @param \DateTime $createdAt
      *
@@ -117,10 +109,8 @@ class Task
     public function setCreatedAt(\DateTime $createdAt = null)
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -128,7 +118,6 @@ class Task
     {
         return $this->updatedAt;
     }
-
     /**
      * @param \DateTime $updatedAt
      *
@@ -137,10 +126,8 @@ class Task
     public function setUpdatedAt(\DateTime $updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -148,7 +135,6 @@ class Task
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -157,10 +143,8 @@ class Task
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return TaskSpec
      */
@@ -168,7 +152,6 @@ class Task
     {
         return $this->spec;
     }
-
     /**
      * @param TaskSpec $spec
      *
@@ -177,10 +160,8 @@ class Task
     public function setSpec(TaskSpec $spec = null)
     {
         $this->spec = $spec;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -188,7 +169,6 @@ class Task
     {
         return $this->serviceID;
     }
-
     /**
      * @param string $serviceID
      *
@@ -197,10 +177,8 @@ class Task
     public function setServiceID($serviceID = null)
     {
         $this->serviceID = $serviceID;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -208,7 +186,6 @@ class Task
     {
         return $this->instance;
     }
-
     /**
      * @param int $instance
      *
@@ -217,10 +194,8 @@ class Task
     public function setInstance($instance = null)
     {
         $this->instance = $instance;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -228,7 +203,6 @@ class Task
     {
         return $this->nodeID;
     }
-
     /**
      * @param string $nodeID
      *
@@ -237,10 +211,8 @@ class Task
     public function setNodeID($nodeID = null)
     {
         $this->nodeID = $nodeID;
-
         return $this;
     }
-
     /**
      * @return Annotations
      */
@@ -248,7 +220,6 @@ class Task
     {
         return $this->serviceAnnotations;
     }
-
     /**
      * @param Annotations $serviceAnnotations
      *
@@ -257,10 +228,8 @@ class Task
     public function setServiceAnnotations(Annotations $serviceAnnotations = null)
     {
         $this->serviceAnnotations = $serviceAnnotations;
-
         return $this;
     }
-
     /**
      * @return TaskStatus
      */
@@ -268,7 +237,6 @@ class Task
     {
         return $this->status;
     }
-
     /**
      * @param TaskStatus $status
      *
@@ -277,10 +245,8 @@ class Task
     public function setStatus(TaskStatus $status = null)
     {
         $this->status = $status;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -288,7 +254,6 @@ class Task
     {
         return $this->desiredState;
     }
-
     /**
      * @param string $desiredState
      *
@@ -297,10 +262,8 @@ class Task
     public function setDesiredState($desiredState = null)
     {
         $this->desiredState = $desiredState;
-
         return $this;
     }
-
     /**
      * @return NetworkAttachment[]|null
      */
@@ -308,7 +271,6 @@ class Task
     {
         return $this->networksAttachments;
     }
-
     /**
      * @param NetworkAttachment[]|null $networksAttachments
      *
@@ -317,10 +279,8 @@ class Task
     public function setNetworksAttachments($networksAttachments = null)
     {
         $this->networksAttachments = $networksAttachments;
-
         return $this;
     }
-
     /**
      * @return Endpoint
      */
@@ -328,7 +288,6 @@ class Task
     {
         return $this->endpoint;
     }
-
     /**
      * @param Endpoint $endpoint
      *
@@ -337,7 +296,6 @@ class Task
     public function setEndpoint(Endpoint $endpoint = null)
     {
         $this->endpoint = $endpoint;
-
         return $this;
     }
 }

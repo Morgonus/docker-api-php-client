@@ -32,7 +32,6 @@ class SwarmNetwork
      * @var SwarmIPAMOptions
      */
     protected $iPAM;
-
     /**
      * @return string
      */
@@ -40,7 +39,6 @@ class SwarmNetwork
     {
         return $this->iD;
     }
-
     /**
      * @param string $iD
      *
@@ -49,10 +47,8 @@ class SwarmNetwork
     public function setID($iD = null)
     {
         $this->iD = $iD;
-
         return $this;
     }
-
     /**
      * @return NodeVersion
      */
@@ -60,7 +56,6 @@ class SwarmNetwork
     {
         return $this->version;
     }
-
     /**
      * @param NodeVersion $version
      *
@@ -69,10 +64,8 @@ class SwarmNetwork
     public function setVersion(NodeVersion $version = null)
     {
         $this->version = $version;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -80,7 +73,6 @@ class SwarmNetwork
     {
         return $this->createdAt;
     }
-
     /**
      * @param \DateTime $createdAt
      *
@@ -89,10 +81,8 @@ class SwarmNetwork
     public function setCreatedAt(\DateTime $createdAt = null)
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
-
     /**
      * @return \DateTime
      */
@@ -100,7 +90,6 @@ class SwarmNetwork
     {
         return $this->updatedAt;
     }
-
     /**
      * @param \DateTime $updatedAt
      *
@@ -109,10 +98,8 @@ class SwarmNetwork
     public function setUpdatedAt(\DateTime $updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
-
     /**
      * @return SwarmNetworkSpec
      */
@@ -120,7 +107,6 @@ class SwarmNetwork
     {
         return $this->spec;
     }
-
     /**
      * @param SwarmNetworkSpec $spec
      *
@@ -129,10 +115,8 @@ class SwarmNetwork
     public function setSpec(SwarmNetworkSpec $spec = null)
     {
         $this->spec = $spec;
-
         return $this;
     }
-
     /**
      * @return Driver
      */
@@ -140,7 +124,6 @@ class SwarmNetwork
     {
         return $this->driverState;
     }
-
     /**
      * @param Driver $driverState
      *
@@ -149,10 +132,8 @@ class SwarmNetwork
     public function setDriverState(Driver $driverState = null)
     {
         $this->driverState = $driverState;
-
         return $this;
     }
-
     /**
      * @return SwarmIPAMOptions
      */
@@ -160,7 +141,6 @@ class SwarmNetwork
     {
         return $this->iPAM;
     }
-
     /**
      * @param SwarmIPAMOptions $iPAM
      *
@@ -169,7 +149,6 @@ class SwarmNetwork
     public function setIPAM(SwarmIPAMOptions $iPAM = null)
     {
         $this->iPAM = $iPAM;
-
         return $this;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class TaskSpecRestartPolicyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class TaskSpecRestartPolicyNormalizer extends SerializerAwareNormalizer implemen
         if ($type !== 'Docker\\API\\Model\\TaskSpecRestartPolicy') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\TaskSpecRestartPolicy) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\TaskSpecRestartPolicy();
         if (property_exists($data, 'Condition')) {
@@ -41,11 +37,9 @@ class TaskSpecRestartPolicyNormalizer extends SerializerAwareNormalizer implemen
         if (property_exists($data, 'Window')) {
             $object->setWindow($data->{'Window'});
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getCondition()) {
@@ -60,7 +54,6 @@ class TaskSpecRestartPolicyNormalizer extends SerializerAwareNormalizer implemen
         if (null !== $object->getWindow()) {
             $data->{'Window'} = $object->getWindow();
         }
-
         return $data;
     }
 }

@@ -40,7 +40,6 @@ class ContainerState
      * @var string
      */
     protected $startedAt;
-
     /**
      * @return string
      */
@@ -48,7 +47,6 @@ class ContainerState
     {
         return $this->error;
     }
-
     /**
      * @param string $error
      *
@@ -57,10 +55,8 @@ class ContainerState
     public function setError($error = null)
     {
         $this->error = $error;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -68,7 +64,6 @@ class ContainerState
     {
         return $this->exitCode;
     }
-
     /**
      * @param int $exitCode
      *
@@ -77,10 +72,8 @@ class ContainerState
     public function setExitCode($exitCode = null)
     {
         $this->exitCode = $exitCode;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -88,7 +81,6 @@ class ContainerState
     {
         return $this->finishedAt;
     }
-
     /**
      * @param string $finishedAt
      *
@@ -97,10 +89,8 @@ class ContainerState
     public function setFinishedAt($finishedAt = null)
     {
         $this->finishedAt = $finishedAt;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -108,7 +98,6 @@ class ContainerState
     {
         return $this->oOMKilled;
     }
-
     /**
      * @param bool $oOMKilled
      *
@@ -117,10 +106,8 @@ class ContainerState
     public function setOOMKilled($oOMKilled = null)
     {
         $this->oOMKilled = $oOMKilled;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -128,7 +115,6 @@ class ContainerState
     {
         return $this->paused;
     }
-
     /**
      * @param bool $paused
      *
@@ -137,10 +123,8 @@ class ContainerState
     public function setPaused($paused = null)
     {
         $this->paused = $paused;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -148,7 +132,6 @@ class ContainerState
     {
         return $this->pid;
     }
-
     /**
      * @param int $pid
      *
@@ -157,10 +140,8 @@ class ContainerState
     public function setPid($pid = null)
     {
         $this->pid = $pid;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -168,7 +149,6 @@ class ContainerState
     {
         return $this->restarting;
     }
-
     /**
      * @param bool $restarting
      *
@@ -177,10 +157,8 @@ class ContainerState
     public function setRestarting($restarting = null)
     {
         $this->restarting = $restarting;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -188,7 +166,6 @@ class ContainerState
     {
         return $this->running;
     }
-
     /**
      * @param bool $running
      *
@@ -197,10 +174,8 @@ class ContainerState
     public function setRunning($running = null)
     {
         $this->running = $running;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -208,7 +183,6 @@ class ContainerState
     {
         return $this->startedAt;
     }
-
     /**
      * @param string $startedAt
      *
@@ -217,7 +191,6 @@ class ContainerState
     public function setStartedAt($startedAt = null)
     {
         $this->startedAt = $startedAt;
-
         return $this;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class NetworkNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
         if ($type !== 'Docker\\API\\Model\\Network') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Network) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\Network();
         if (property_exists($data, 'Name')) {
@@ -53,7 +49,7 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'Containers')) {
             $value = $data->{'Containers'};
             if (is_object($data->{'Containers'})) {
-                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Containers'} as $key => $value_1) {
                     $values[$key] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\NetworkContainer', 'raw', $context);
                 }
@@ -65,7 +61,7 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
             $object->setContainers($value);
         }
         if (property_exists($data, 'Options')) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Options'} as $key_1 => $value_2) {
                 $values_1[$key_1] = $value_2;
             }
@@ -74,7 +70,7 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'Labels')) {
             $value_3 = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values_2 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+                $values_2 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key_2 => $value_4) {
                     $values_2[$key_2] = $value_4;
                 }
@@ -85,11 +81,9 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
             }
             $object->setLabels($value_3);
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -144,7 +138,6 @@ class NetworkNormalizer extends SerializerAwareNormalizer implements Denormalize
             $value_3 = $object->getLabels();
         }
         $data->{'Labels'} = $value_3;
-
         return $data;
     }
 }

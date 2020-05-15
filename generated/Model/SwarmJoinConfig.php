@@ -20,7 +20,6 @@ class SwarmJoinConfig
      * @var string
      */
     protected $joinToken;
-
     /**
      * @return string
      */
@@ -28,7 +27,6 @@ class SwarmJoinConfig
     {
         return $this->listenAddr;
     }
-
     /**
      * @param string $listenAddr
      *
@@ -37,10 +35,8 @@ class SwarmJoinConfig
     public function setListenAddr($listenAddr = null)
     {
         $this->listenAddr = $listenAddr;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -48,7 +44,6 @@ class SwarmJoinConfig
     {
         return $this->advertiseAddr;
     }
-
     /**
      * @param string $advertiseAddr
      *
@@ -57,10 +52,8 @@ class SwarmJoinConfig
     public function setAdvertiseAddr($advertiseAddr = null)
     {
         $this->advertiseAddr = $advertiseAddr;
-
         return $this;
     }
-
     /**
      * @return string[]|null
      */
@@ -68,7 +61,6 @@ class SwarmJoinConfig
     {
         return $this->remoteAddrs;
     }
-
     /**
      * @param string[]|null $remoteAddrs
      *
@@ -77,10 +69,8 @@ class SwarmJoinConfig
     public function setRemoteAddrs($remoteAddrs = null)
     {
         $this->remoteAddrs = $remoteAddrs;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -88,7 +78,6 @@ class SwarmJoinConfig
     {
         return $this->joinToken;
     }
-
     /**
      * @param string $joinToken
      *
@@ -97,7 +86,6 @@ class SwarmJoinConfig
     public function setJoinToken($joinToken = null)
     {
         $this->joinToken = $joinToken;
-
         return $this;
     }
 }

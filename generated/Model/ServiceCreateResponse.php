@@ -8,7 +8,6 @@ class ServiceCreateResponse
      * @var string
      */
     protected $id;
-
     /**
      * @return string
      */
@@ -16,7 +15,6 @@ class ServiceCreateResponse
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      *
@@ -25,7 +23,6 @@ class ServiceCreateResponse
     public function setId($id = null)
     {
         $this->id = $id;
-
         return $this;
     }
 }

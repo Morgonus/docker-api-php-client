@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class SwarmConfigSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class SwarmConfigSpecNormalizer extends SerializerAwareNormalizer implements Den
         if ($type !== 'Docker\\API\\Model\\SwarmConfigSpec') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmConfigSpec) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\SwarmConfigSpec();
         if (property_exists($data, 'Orchestration')) {
@@ -41,11 +37,9 @@ class SwarmConfigSpecNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'CAConfig')) {
             $object->setCAConfig($this->serializer->deserialize($data->{'CAConfig'}, 'Docker\\API\\Model\\SwarmConfigSpecCAConfig', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getOrchestration()) {
@@ -60,7 +54,6 @@ class SwarmConfigSpecNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getCAConfig()) {
             $data->{'CAConfig'} = $this->serializer->serialize($object->getCAConfig(), 'raw', $context);
         }
-
         return $data;
     }
 }

@@ -12,7 +12,6 @@ class SwarmConfigSpecCAConfig
      * @var SwarmConfigSpecCAConfigExternalCA
      */
     protected $externalCA;
-
     /**
      * @return bool
      */
@@ -20,7 +19,6 @@ class SwarmConfigSpecCAConfig
     {
         return $this->nodeCertExpiry;
     }
-
     /**
      * @param bool $nodeCertExpiry
      *
@@ -29,10 +27,8 @@ class SwarmConfigSpecCAConfig
     public function setNodeCertExpiry($nodeCertExpiry = null)
     {
         $this->nodeCertExpiry = $nodeCertExpiry;
-
         return $this;
     }
-
     /**
      * @return SwarmConfigSpecCAConfigExternalCA
      */
@@ -40,7 +36,6 @@ class SwarmConfigSpecCAConfig
     {
         return $this->externalCA;
     }
-
     /**
      * @param SwarmConfigSpecCAConfigExternalCA $externalCA
      *
@@ -49,7 +44,6 @@ class SwarmConfigSpecCAConfig
     public function setExternalCA(SwarmConfigSpecCAConfigExternalCA $externalCA = null)
     {
         $this->externalCA = $externalCA;
-
         return $this;
     }
 }

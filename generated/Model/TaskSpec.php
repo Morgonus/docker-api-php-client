@@ -20,7 +20,6 @@ class TaskSpec
      * @var TaskSpecPlacement
      */
     protected $placement;
-
     /**
      * @return ContainerSpec
      */
@@ -28,7 +27,6 @@ class TaskSpec
     {
         return $this->containerSpec;
     }
-
     /**
      * @param ContainerSpec $containerSpec
      *
@@ -37,10 +35,8 @@ class TaskSpec
     public function setContainerSpec(ContainerSpec $containerSpec = null)
     {
         $this->containerSpec = $containerSpec;
-
         return $this;
     }
-
     /**
      * @return TaskSpecResourceRequirements
      */
@@ -48,7 +44,6 @@ class TaskSpec
     {
         return $this->resources;
     }
-
     /**
      * @param TaskSpecResourceRequirements $resources
      *
@@ -57,10 +52,8 @@ class TaskSpec
     public function setResources(TaskSpecResourceRequirements $resources = null)
     {
         $this->resources = $resources;
-
         return $this;
     }
-
     /**
      * @return TaskSpecRestartPolicy
      */
@@ -68,7 +61,6 @@ class TaskSpec
     {
         return $this->restartPolicy;
     }
-
     /**
      * @param TaskSpecRestartPolicy $restartPolicy
      *
@@ -77,10 +69,8 @@ class TaskSpec
     public function setRestartPolicy(TaskSpecRestartPolicy $restartPolicy = null)
     {
         $this->restartPolicy = $restartPolicy;
-
         return $this;
     }
-
     /**
      * @return TaskSpecPlacement
      */
@@ -88,7 +78,6 @@ class TaskSpec
     {
         return $this->placement;
     }
-
     /**
      * @param TaskSpecPlacement $placement
      *
@@ -97,7 +86,6 @@ class TaskSpec
     public function setPlacement(TaskSpecPlacement $placement = null)
     {
         $this->placement = $placement;
-
         return $this;
     }
 }

@@ -40,7 +40,6 @@ class Version
      * @var string
      */
     protected $buildTime;
-
     /**
      * @return string
      */
@@ -48,7 +47,6 @@ class Version
     {
         return $this->version;
     }
-
     /**
      * @param string $version
      *
@@ -57,10 +55,8 @@ class Version
     public function setVersion($version = null)
     {
         $this->version = $version;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -68,7 +64,6 @@ class Version
     {
         return $this->os;
     }
-
     /**
      * @param string $os
      *
@@ -77,10 +72,8 @@ class Version
     public function setOs($os = null)
     {
         $this->os = $os;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -88,7 +81,6 @@ class Version
     {
         return $this->kernelVersion;
     }
-
     /**
      * @param string $kernelVersion
      *
@@ -97,10 +89,8 @@ class Version
     public function setKernelVersion($kernelVersion = null)
     {
         $this->kernelVersion = $kernelVersion;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -108,7 +98,6 @@ class Version
     {
         return $this->goVersion;
     }
-
     /**
      * @param string $goVersion
      *
@@ -117,10 +106,8 @@ class Version
     public function setGoVersion($goVersion = null)
     {
         $this->goVersion = $goVersion;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -128,7 +115,6 @@ class Version
     {
         return $this->gitCommit;
     }
-
     /**
      * @param string $gitCommit
      *
@@ -137,10 +123,8 @@ class Version
     public function setGitCommit($gitCommit = null)
     {
         $this->gitCommit = $gitCommit;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -148,7 +132,6 @@ class Version
     {
         return $this->arch;
     }
-
     /**
      * @param string $arch
      *
@@ -157,10 +140,8 @@ class Version
     public function setArch($arch = null)
     {
         $this->arch = $arch;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -168,7 +149,6 @@ class Version
     {
         return $this->apiVersion;
     }
-
     /**
      * @param string $apiVersion
      *
@@ -177,10 +157,8 @@ class Version
     public function setApiVersion($apiVersion = null)
     {
         $this->apiVersion = $apiVersion;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -188,7 +166,6 @@ class Version
     {
         return $this->experimental;
     }
-
     /**
      * @param bool $experimental
      *
@@ -197,10 +174,8 @@ class Version
     public function setExperimental($experimental = null)
     {
         $this->experimental = $experimental;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -208,7 +183,6 @@ class Version
     {
         return $this->buildTime;
     }
-
     /**
      * @param string $buildTime
      *
@@ -217,7 +191,6 @@ class Version
     public function setBuildTime($buildTime = null)
     {
         $this->buildTime = $buildTime;
-
         return $this;
     }
 }

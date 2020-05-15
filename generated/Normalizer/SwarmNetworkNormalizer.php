@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
+use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
 class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,20 +13,16 @@ class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\SwarmNetwork') {
             return false;
         }
-
         return true;
     }
-
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmNetwork) {
             return true;
         }
-
         return false;
     }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize($data, $class, $format = null, array $context = array())
     {
         $object = new \Docker\API\Model\SwarmNetwork();
         if (property_exists($data, 'ID')) {
@@ -50,11 +46,9 @@ class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'IPAM')) {
             $object->setIPAM($this->serializer->deserialize($data->{'IPAM'}, 'Docker\\API\\Model\\SwarmIPAMOptions', 'raw', $context));
         }
-
         return $object;
     }
-
-    public function normalize($object, $format = null, array $context = [])
+    public function normalize($object, $format = null, array $context = array())
     {
         $data = new \stdClass();
         if (null !== $object->getID()) {
@@ -78,7 +72,6 @@ class SwarmNetworkNormalizer extends SerializerAwareNormalizer implements Denorm
         if (null !== $object->getIPAM()) {
             $data->{'IPAM'} = $this->serializer->serialize($object->getIPAM(), 'raw', $context);
         }
-
         return $data;
     }
 }

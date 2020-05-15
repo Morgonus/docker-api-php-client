@@ -24,7 +24,6 @@ class ImageSearchResult
      * @var int
      */
     protected $starCount;
-
     /**
      * @return string
      */
@@ -32,7 +31,6 @@ class ImageSearchResult
     {
         return $this->description;
     }
-
     /**
      * @param string $description
      *
@@ -41,10 +39,8 @@ class ImageSearchResult
     public function setDescription($description = null)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -52,7 +48,6 @@ class ImageSearchResult
     {
         return $this->isOfficial;
     }
-
     /**
      * @param bool $isOfficial
      *
@@ -61,10 +56,8 @@ class ImageSearchResult
     public function setIsOfficial($isOfficial = null)
     {
         $this->isOfficial = $isOfficial;
-
         return $this;
     }
-
     /**
      * @return bool
      */
@@ -72,7 +65,6 @@ class ImageSearchResult
     {
         return $this->isAutomated;
     }
-
     /**
      * @param bool $isAutomated
      *
@@ -81,10 +73,8 @@ class ImageSearchResult
     public function setIsAutomated($isAutomated = null)
     {
         $this->isAutomated = $isAutomated;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -92,7 +82,6 @@ class ImageSearchResult
     {
         return $this->name;
     }
-
     /**
      * @param string $name
      *
@@ -101,10 +90,8 @@ class ImageSearchResult
     public function setName($name = null)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -112,7 +99,6 @@ class ImageSearchResult
     {
         return $this->starCount;
     }
-
     /**
      * @param int $starCount
      *
@@ -121,7 +107,6 @@ class ImageSearchResult
     public function setStarCount($starCount = null)
     {
         $this->starCount = $starCount;
-
         return $this;
     }
 }

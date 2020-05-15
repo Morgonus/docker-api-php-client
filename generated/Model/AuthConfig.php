@@ -24,7 +24,6 @@ class AuthConfig
      * @var string
      */
     protected $registrytoken;
-
     /**
      * @return string
      */
@@ -32,7 +31,6 @@ class AuthConfig
     {
         return $this->username;
     }
-
     /**
      * @param string $username
      *
@@ -41,10 +39,8 @@ class AuthConfig
     public function setUsername($username = null)
     {
         $this->username = $username;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -52,7 +48,6 @@ class AuthConfig
     {
         return $this->password;
     }
-
     /**
      * @param string $password
      *
@@ -61,10 +56,8 @@ class AuthConfig
     public function setPassword($password = null)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -72,7 +65,6 @@ class AuthConfig
     {
         return $this->email;
     }
-
     /**
      * @param string $email
      *
@@ -81,10 +73,8 @@ class AuthConfig
     public function setEmail($email = null)
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -92,7 +82,6 @@ class AuthConfig
     {
         return $this->serveraddress;
     }
-
     /**
      * @param string $serveraddress
      *
@@ -101,10 +90,8 @@ class AuthConfig
     public function setServeraddress($serveraddress = null)
     {
         $this->serveraddress = $serveraddress;
-
         return $this;
     }
-
     /**
      * @return string
      */
@@ -112,7 +99,6 @@ class AuthConfig
     {
         return $this->registrytoken;
     }
-
     /**
      * @param string $registrytoken
      *
@@ -121,7 +107,6 @@ class AuthConfig
     public function setRegistrytoken($registrytoken = null)
     {
         $this->registrytoken = $registrytoken;
-
         return $this;
     }
 }

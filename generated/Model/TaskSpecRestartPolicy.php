@@ -20,7 +20,6 @@ class TaskSpecRestartPolicy
      * @var int
      */
     protected $window;
-
     /**
      * @return string
      */
@@ -28,7 +27,6 @@ class TaskSpecRestartPolicy
     {
         return $this->condition;
     }
-
     /**
      * @param string $condition
      *
@@ -37,10 +35,8 @@ class TaskSpecRestartPolicy
     public function setCondition($condition = null)
     {
         $this->condition = $condition;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -48,7 +44,6 @@ class TaskSpecRestartPolicy
     {
         return $this->delay;
     }
-
     /**
      * @param int $delay
      *
@@ -57,10 +52,8 @@ class TaskSpecRestartPolicy
     public function setDelay($delay = null)
     {
         $this->delay = $delay;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -68,7 +61,6 @@ class TaskSpecRestartPolicy
     {
         return $this->maxAttempts;
     }
-
     /**
      * @param int $maxAttempts
      *
@@ -77,10 +69,8 @@ class TaskSpecRestartPolicy
     public function setMaxAttempts($maxAttempts = null)
     {
         $this->maxAttempts = $maxAttempts;
-
         return $this;
     }
-
     /**
      * @return int
      */
@@ -88,7 +78,6 @@ class TaskSpecRestartPolicy
     {
         return $this->window;
     }
-
     /**
      * @param int $window
      *
@@ -97,7 +86,6 @@ class TaskSpecRestartPolicy
     public function setWindow($window = null)
     {
         $this->window = $window;
-
         return $this;
     }
 }
