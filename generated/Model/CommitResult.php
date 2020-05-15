@@ -8,6 +8,7 @@ class CommitResult
      * @var string
      */
     protected $id;
+
     /**
      * @return string
      */
@@ -15,6 +16,7 @@ class CommitResult
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -23,6 +25,7 @@ class CommitResult
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
 }

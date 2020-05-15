@@ -8,6 +8,7 @@ class NodeStatus
      * @var string
      */
     protected $state;
+
     /**
      * @return string
      */
@@ -15,6 +16,7 @@ class NodeStatus
     {
         return $this->state;
     }
+
     /**
      * @param string $state
      *
@@ -23,6 +25,7 @@ class NodeStatus
     public function setState($state = null)
     {
         $this->state = $state;
+
         return $this;
     }
 }

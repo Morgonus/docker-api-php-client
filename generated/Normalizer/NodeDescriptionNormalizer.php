@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class NodeDescriptionNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class NodeDescriptionNormalizer extends SerializerAwareNormalizer implements Den
         if ($type !== 'Docker\\API\\Model\\NodeDescription') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NodeDescription) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\NodeDescription();
         if (property_exists($data, 'Hostname')) {
@@ -37,9 +41,11 @@ class NodeDescriptionNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Engine')) {
             $object->setEngine($this->serializer->deserialize($data->{'Engine'}, 'Docker\\API\\Model\\NodeEngine', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getHostname()) {
@@ -54,6 +60,7 @@ class NodeDescriptionNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getEngine()) {
             $data->{'Engine'} = $this->serializer->serialize($object->getEngine(), 'raw', $context);
         }
+
         return $data;
     }
 }

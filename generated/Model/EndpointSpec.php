@@ -12,6 +12,7 @@ class EndpointSpec
      * @var PortConfig[]|null
      */
     protected $ports;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class EndpointSpec
     {
         return $this->mode;
     }
+
     /**
      * @param string $mode
      *
@@ -27,8 +29,10 @@ class EndpointSpec
     public function setMode($mode = null)
     {
         $this->mode = $mode;
+
         return $this;
     }
+
     /**
      * @return PortConfig[]|null
      */
@@ -36,6 +40,7 @@ class EndpointSpec
     {
         return $this->ports;
     }
+
     /**
      * @param PortConfig[]|null $ports
      *
@@ -44,6 +49,7 @@ class EndpointSpec
     public function setPorts($ports = null)
     {
         $this->ports = $ports;
+
         return $this;
     }
 }

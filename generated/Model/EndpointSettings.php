@@ -52,6 +52,7 @@ class EndpointSettings
      * @var string
      */
     protected $macAddress;
+
     /**
      * @return EndpointIPAMConfig
      */
@@ -59,6 +60,7 @@ class EndpointSettings
     {
         return $this->iPAMConfig;
     }
+
     /**
      * @param EndpointIPAMConfig $iPAMConfig
      *
@@ -67,8 +69,10 @@ class EndpointSettings
     public function setIPAMConfig(EndpointIPAMConfig $iPAMConfig = null)
     {
         $this->iPAMConfig = $iPAMConfig;
+
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -76,6 +80,7 @@ class EndpointSettings
     {
         return $this->links;
     }
+
     /**
      * @param string[] $links
      *
@@ -84,8 +89,10 @@ class EndpointSettings
     public function setLinks(array $links = null)
     {
         $this->links = $links;
+
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -93,6 +100,7 @@ class EndpointSettings
     {
         return $this->aliases;
     }
+
     /**
      * @param string[] $aliases
      *
@@ -101,8 +109,10 @@ class EndpointSettings
     public function setAliases(array $aliases = null)
     {
         $this->aliases = $aliases;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -110,6 +120,7 @@ class EndpointSettings
     {
         return $this->networkID;
     }
+
     /**
      * @param string $networkID
      *
@@ -118,8 +129,10 @@ class EndpointSettings
     public function setNetworkID($networkID = null)
     {
         $this->networkID = $networkID;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -127,6 +140,7 @@ class EndpointSettings
     {
         return $this->endpointID;
     }
+
     /**
      * @param string $endpointID
      *
@@ -135,8 +149,10 @@ class EndpointSettings
     public function setEndpointID($endpointID = null)
     {
         $this->endpointID = $endpointID;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -144,6 +160,7 @@ class EndpointSettings
     {
         return $this->gateway;
     }
+
     /**
      * @param string $gateway
      *
@@ -152,8 +169,10 @@ class EndpointSettings
     public function setGateway($gateway = null)
     {
         $this->gateway = $gateway;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -161,6 +180,7 @@ class EndpointSettings
     {
         return $this->iPAddress;
     }
+
     /**
      * @param string $iPAddress
      *
@@ -169,8 +189,10 @@ class EndpointSettings
     public function setIPAddress($iPAddress = null)
     {
         $this->iPAddress = $iPAddress;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -178,6 +200,7 @@ class EndpointSettings
     {
         return $this->iPPrefixLen;
     }
+
     /**
      * @param int $iPPrefixLen
      *
@@ -186,8 +209,10 @@ class EndpointSettings
     public function setIPPrefixLen($iPPrefixLen = null)
     {
         $this->iPPrefixLen = $iPPrefixLen;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -195,6 +220,7 @@ class EndpointSettings
     {
         return $this->iPv6Gateway;
     }
+
     /**
      * @param string $iPv6Gateway
      *
@@ -203,8 +229,10 @@ class EndpointSettings
     public function setIPv6Gateway($iPv6Gateway = null)
     {
         $this->iPv6Gateway = $iPv6Gateway;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -212,6 +240,7 @@ class EndpointSettings
     {
         return $this->globalIPv6Address;
     }
+
     /**
      * @param string $globalIPv6Address
      *
@@ -220,8 +249,10 @@ class EndpointSettings
     public function setGlobalIPv6Address($globalIPv6Address = null)
     {
         $this->globalIPv6Address = $globalIPv6Address;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -229,6 +260,7 @@ class EndpointSettings
     {
         return $this->globalIPv6PrefixLen;
     }
+
     /**
      * @param int $globalIPv6PrefixLen
      *
@@ -237,8 +269,10 @@ class EndpointSettings
     public function setGlobalIPv6PrefixLen($globalIPv6PrefixLen = null)
     {
         $this->globalIPv6PrefixLen = $globalIPv6PrefixLen;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -246,6 +280,7 @@ class EndpointSettings
     {
         return $this->macAddress;
     }
+
     /**
      * @param string $macAddress
      *
@@ -254,6 +289,7 @@ class EndpointSettings
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
+
         return $this;
     }
 }

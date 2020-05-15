@@ -16,6 +16,7 @@ class SwarmConfigSpecCAConfigExternalCA
      * @var string[]|null
      */
     protected $options;
+
     /**
      * @return string
      */
@@ -23,6 +24,7 @@ class SwarmConfigSpecCAConfigExternalCA
     {
         return $this->protocol;
     }
+
     /**
      * @param string $protocol
      *
@@ -31,8 +33,10 @@ class SwarmConfigSpecCAConfigExternalCA
     public function setProtocol($protocol = null)
     {
         $this->protocol = $protocol;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -40,6 +44,7 @@ class SwarmConfigSpecCAConfigExternalCA
     {
         return $this->uRL;
     }
+
     /**
      * @param string $uRL
      *
@@ -48,8 +53,10 @@ class SwarmConfigSpecCAConfigExternalCA
     public function setURL($uRL = null)
     {
         $this->uRL = $uRL;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -57,6 +64,7 @@ class SwarmConfigSpecCAConfigExternalCA
     {
         return $this->options;
     }
+
     /**
      * @param string[]|null $options
      *
@@ -65,6 +73,7 @@ class SwarmConfigSpecCAConfigExternalCA
     public function setOptions($options = null)
     {
         $this->options = $options;
+
         return $this;
     }
 }

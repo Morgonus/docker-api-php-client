@@ -20,6 +20,7 @@ class NodeDescription
      * @var NodeEngine
      */
     protected $engine;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class NodeDescription
     {
         return $this->hostname;
     }
+
     /**
      * @param string $hostname
      *
@@ -35,8 +37,10 @@ class NodeDescription
     public function setHostname($hostname = null)
     {
         $this->hostname = $hostname;
+
         return $this;
     }
+
     /**
      * @return NodePlatform
      */
@@ -44,6 +48,7 @@ class NodeDescription
     {
         return $this->platform;
     }
+
     /**
      * @param NodePlatform $platform
      *
@@ -52,8 +57,10 @@ class NodeDescription
     public function setPlatform(NodePlatform $platform = null)
     {
         $this->platform = $platform;
+
         return $this;
     }
+
     /**
      * @return NodeResources
      */
@@ -61,6 +68,7 @@ class NodeDescription
     {
         return $this->resources;
     }
+
     /**
      * @param NodeResources $resources
      *
@@ -69,8 +77,10 @@ class NodeDescription
     public function setResources(NodeResources $resources = null)
     {
         $this->resources = $resources;
+
         return $this;
     }
+
     /**
      * @return NodeEngine
      */
@@ -78,6 +88,7 @@ class NodeDescription
     {
         return $this->engine;
     }
+
     /**
      * @param NodeEngine $engine
      *
@@ -86,6 +97,7 @@ class NodeDescription
     public function setEngine(NodeEngine $engine = null)
     {
         $this->engine = $engine;
+
         return $this;
     }
 }

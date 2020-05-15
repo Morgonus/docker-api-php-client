@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class EndpointNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if ($type !== 'Docker\\API\\Model\\Endpoint') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Endpoint) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Endpoint();
         if (property_exists($data, 'Spec')) {
@@ -31,7 +35,7 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'ExposedPorts')) {
             $value = $data->{'ExposedPorts'};
             if (is_array($data->{'ExposedPorts'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'ExposedPorts'} as $value_1) {
                     $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\PortConfig', 'raw', $context);
                 }
@@ -45,7 +49,7 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'VirtualIPs')) {
             $value_2 = $data->{'VirtualIPs'};
             if (is_array($data->{'VirtualIPs'})) {
-                $values_1 = array();
+                $values_1 = [];
                 foreach ($data->{'VirtualIPs'} as $value_3) {
                     $values_1[] = $this->serializer->deserialize($value_3, 'Docker\\API\\Model\\EndpointVirtualIP', 'raw', $context);
                 }
@@ -56,9 +60,11 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
             }
             $object->setVirtualIPs($value_2);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getSpec()) {
@@ -66,7 +72,7 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
         }
         $value = $object->getExposedPorts();
         if (is_array($object->getExposedPorts())) {
-            $values = array();
+            $values = [];
             foreach ($object->getExposedPorts() as $value_1) {
                 $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
@@ -76,9 +82,9 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
             $value = $object->getExposedPorts();
         }
         $data->{'ExposedPorts'} = $value;
-        $value_2 = $object->getVirtualIPs();
+        $value_2                = $object->getVirtualIPs();
         if (is_array($object->getVirtualIPs())) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($object->getVirtualIPs() as $value_3) {
                 $values_1[] = $this->serializer->serialize($value_3, 'raw', $context);
             }
@@ -88,6 +94,7 @@ class EndpointNormalizer extends SerializerAwareNormalizer implements Denormaliz
             $value_2 = $object->getVirtualIPs();
         }
         $data->{'VirtualIPs'} = $value_2;
+
         return $data;
     }
 }

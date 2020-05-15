@@ -44,6 +44,7 @@ class Network
      * @var string[]|null
      */
     protected $labels;
+
     /**
      * @return string
      */
@@ -51,6 +52,7 @@ class Network
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -59,8 +61,10 @@ class Network
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -68,6 +72,7 @@ class Network
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -76,8 +81,10 @@ class Network
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -85,6 +92,7 @@ class Network
     {
         return $this->scope;
     }
+
     /**
      * @param string $scope
      *
@@ -93,8 +101,10 @@ class Network
     public function setScope($scope = null)
     {
         $this->scope = $scope;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -102,6 +112,7 @@ class Network
     {
         return $this->driver;
     }
+
     /**
      * @param string $driver
      *
@@ -110,8 +121,10 @@ class Network
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -119,6 +132,7 @@ class Network
     {
         return $this->enableIPv6;
     }
+
     /**
      * @param bool $enableIPv6
      *
@@ -127,8 +141,10 @@ class Network
     public function setEnableIPv6($enableIPv6 = null)
     {
         $this->enableIPv6 = $enableIPv6;
+
         return $this;
     }
+
     /**
      * @return IPAM
      */
@@ -136,6 +152,7 @@ class Network
     {
         return $this->iPAM;
     }
+
     /**
      * @param IPAM $iPAM
      *
@@ -144,8 +161,10 @@ class Network
     public function setIPAM(IPAM $iPAM = null)
     {
         $this->iPAM = $iPAM;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -153,6 +172,7 @@ class Network
     {
         return $this->internal;
     }
+
     /**
      * @param bool $internal
      *
@@ -161,8 +181,10 @@ class Network
     public function setInternal($internal = null)
     {
         $this->internal = $internal;
+
         return $this;
     }
+
     /**
      * @return NetworkContainer[]|null
      */
@@ -170,6 +192,7 @@ class Network
     {
         return $this->containers;
     }
+
     /**
      * @param NetworkContainer[]|null $containers
      *
@@ -178,8 +201,10 @@ class Network
     public function setContainers($containers = null)
     {
         $this->containers = $containers;
+
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -187,6 +212,7 @@ class Network
     {
         return $this->options;
     }
+
     /**
      * @param string[] $options
      *
@@ -195,8 +221,10 @@ class Network
     public function setOptions(\ArrayObject $options = null)
     {
         $this->options = $options;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -204,6 +232,7 @@ class Network
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -212,6 +241,7 @@ class Network
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

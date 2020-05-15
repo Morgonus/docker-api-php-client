@@ -12,6 +12,7 @@ class NetworkCreateResult
      * @var string
      */
     protected $warning;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class NetworkCreateResult
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -27,8 +29,10 @@ class NetworkCreateResult
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class NetworkCreateResult
     {
         return $this->warning;
     }
+
     /**
      * @param string $warning
      *
@@ -44,6 +49,7 @@ class NetworkCreateResult
     public function setWarning($warning = null)
     {
         $this->warning = $warning;
+
         return $this;
     }
 }

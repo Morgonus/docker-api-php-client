@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements D
         if ($type !== 'Docker\\API\\Model\\NetworkAttachment') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NetworkAttachment) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\NetworkAttachment();
         if (property_exists($data, 'Network')) {
@@ -31,7 +35,7 @@ class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'Addresses')) {
             $value = $data->{'Addresses'};
             if (is_array($data->{'Addresses'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Addresses'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -42,9 +46,11 @@ class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements D
             }
             $object->setAddresses($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getNetwork()) {
@@ -52,7 +58,7 @@ class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements D
         }
         $value = $object->getAddresses();
         if (is_array($object->getAddresses())) {
-            $values = array();
+            $values = [];
             foreach ($object->getAddresses() as $value_1) {
                 $values[] = $value_1;
             }
@@ -62,6 +68,7 @@ class NetworkAttachmentNormalizer extends SerializerAwareNormalizer implements D
             $value = $object->getAddresses();
         }
         $data->{'Addresses'} = $value;
+
         return $data;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements Den
         if ($type !== 'Docker\\API\\Model\\SwarmJoinConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmJoinConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SwarmJoinConfig();
         if (property_exists($data, 'ListenAddr')) {
@@ -34,7 +38,7 @@ class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'RemoteAddrs')) {
             $value = $data->{'RemoteAddrs'};
             if (is_array($data->{'RemoteAddrs'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'RemoteAddrs'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -48,9 +52,11 @@ class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'JoinToken')) {
             $object->setJoinToken($data->{'JoinToken'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getListenAddr()) {
@@ -61,7 +67,7 @@ class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements Den
         }
         $value = $object->getRemoteAddrs();
         if (is_array($object->getRemoteAddrs())) {
-            $values = array();
+            $values = [];
             foreach ($object->getRemoteAddrs() as $value_1) {
                 $values[] = $value_1;
             }
@@ -74,6 +80,7 @@ class SwarmJoinConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getJoinToken()) {
             $data->{'JoinToken'} = $object->getJoinToken();
         }
+
         return $data;
     }
 }

@@ -24,6 +24,7 @@ class NetworkContainer
      * @var string
      */
     protected $iPv6Address;
+
     /**
      * @return string
      */
@@ -31,6 +32,7 @@ class NetworkContainer
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -39,8 +41,10 @@ class NetworkContainer
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -48,6 +52,7 @@ class NetworkContainer
     {
         return $this->endpointID;
     }
+
     /**
      * @param string $endpointID
      *
@@ -56,8 +61,10 @@ class NetworkContainer
     public function setEndpointID($endpointID = null)
     {
         $this->endpointID = $endpointID;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -65,6 +72,7 @@ class NetworkContainer
     {
         return $this->macAddress;
     }
+
     /**
      * @param string $macAddress
      *
@@ -73,8 +81,10 @@ class NetworkContainer
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -82,6 +92,7 @@ class NetworkContainer
     {
         return $this->iPv4Address;
     }
+
     /**
      * @param string $iPv4Address
      *
@@ -90,8 +101,10 @@ class NetworkContainer
     public function setIPv4Address($iPv4Address = null)
     {
         $this->iPv4Address = $iPv4Address;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -99,6 +112,7 @@ class NetworkContainer
     {
         return $this->iPv6Address;
     }
+
     /**
      * @param string $iPv6Address
      *
@@ -107,6 +121,7 @@ class NetworkContainer
     public function setIPv6Address($iPv6Address = null)
     {
         $this->iPv6Address = $iPv6Address;
+
         return $this;
     }
 }

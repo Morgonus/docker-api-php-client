@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ExecConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\ExecConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ExecConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ExecConfig();
         if (property_exists($data, 'AttachStdin')) {
@@ -40,7 +44,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'Cmd')) {
             $value = $data->{'Cmd'};
             if (is_array($data->{'Cmd'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Cmd'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -54,9 +58,11 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'DetachKeys')) {
             $object->setDetachKeys($data->{'DetachKeys'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getAttachStdin()) {
@@ -73,7 +79,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         }
         $value = $object->getCmd();
         if (is_array($object->getCmd())) {
-            $values = array();
+            $values = [];
             foreach ($object->getCmd() as $value_1) {
                 $values[] = $value_1;
             }
@@ -86,6 +92,7 @@ class ExecConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (null !== $object->getDetachKeys()) {
             $data->{'DetachKeys'} = $object->getDetachKeys();
         }
+
         return $data;
     }
 }

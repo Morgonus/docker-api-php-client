@@ -20,6 +20,7 @@ class PortConfig
      * @var int
      */
     protected $publishedPort;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class PortConfig
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -35,8 +37,10 @@ class PortConfig
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class PortConfig
     {
         return $this->protocol;
     }
+
     /**
      * @param string $protocol
      *
@@ -52,8 +57,10 @@ class PortConfig
     public function setProtocol($protocol = null)
     {
         $this->protocol = $protocol;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -61,6 +68,7 @@ class PortConfig
     {
         return $this->targetPort;
     }
+
     /**
      * @param int $targetPort
      *
@@ -69,8 +77,10 @@ class PortConfig
     public function setTargetPort($targetPort = null)
     {
         $this->targetPort = $targetPort;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -78,6 +88,7 @@ class PortConfig
     {
         return $this->publishedPort;
     }
+
     /**
      * @param int $publishedPort
      *
@@ -86,6 +97,7 @@ class PortConfig
     public function setPublishedPort($publishedPort = null)
     {
         $this->publishedPort = $publishedPort;
+
         return $this;
     }
 }

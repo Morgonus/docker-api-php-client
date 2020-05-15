@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class NetworkConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if ($type !== 'Docker\\API\\Model\\NetworkConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NetworkConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\NetworkConfig();
         if (property_exists($data, 'Bridge')) {
@@ -44,7 +48,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             $object->setPortMapping($data->{'PortMapping'});
         }
         if (property_exists($data, 'Networks')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Networks'} as $key => $value) {
                 $values[$key] = $this->serializer->deserialize($value, 'Docker\\API\\Model\\ContainerNetwork', 'raw', $context);
             }
@@ -53,11 +57,11 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
         if (property_exists($data, 'Ports')) {
             $value_1 = $data->{'Ports'};
             if (is_object($data->{'Ports'})) {
-                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Ports'} as $key_1 => $value_2) {
                     $value_3 = $value_2;
                     if (is_array($value_2)) {
-                        $values_2 = array();
+                        $values_2 = [];
                         foreach ($value_2 as $value_4) {
                             $values_2[] = $this->serializer->deserialize($value_4, 'Docker\\API\\Model\\PortBinding', 'raw', $context);
                         }
@@ -75,9 +79,11 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             }
             $object->setPorts($value_1);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getBridge()) {
@@ -111,7 +117,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             foreach ($object->getPorts() as $key_1 => $value_2) {
                 $value_3 = $value_2;
                 if (is_array($value_2)) {
-                    $values_2 = array();
+                    $values_2 = [];
                     foreach ($value_2 as $value_4) {
                         $values_2[] = $this->serializer->serialize($value_4, 'raw', $context);
                     }
@@ -128,6 +134,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             $value_1 = $object->getPorts();
         }
         $data->{'Ports'} = $value_1;
+
         return $data;
     }
 }

@@ -24,6 +24,7 @@ class SwarmConfigSpecRaft
      * @var int
      */
     protected $electionTick;
+
     /**
      * @return int
      */
@@ -31,6 +32,7 @@ class SwarmConfigSpecRaft
     {
         return $this->snapshotInterval;
     }
+
     /**
      * @param int $snapshotInterval
      *
@@ -39,8 +41,10 @@ class SwarmConfigSpecRaft
     public function setSnapshotInterval($snapshotInterval = null)
     {
         $this->snapshotInterval = $snapshotInterval;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -48,6 +52,7 @@ class SwarmConfigSpecRaft
     {
         return $this->keepOldSnapshots;
     }
+
     /**
      * @param int $keepOldSnapshots
      *
@@ -56,8 +61,10 @@ class SwarmConfigSpecRaft
     public function setKeepOldSnapshots($keepOldSnapshots = null)
     {
         $this->keepOldSnapshots = $keepOldSnapshots;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -65,6 +72,7 @@ class SwarmConfigSpecRaft
     {
         return $this->logEntriesForSlowFollowers;
     }
+
     /**
      * @param int $logEntriesForSlowFollowers
      *
@@ -73,8 +81,10 @@ class SwarmConfigSpecRaft
     public function setLogEntriesForSlowFollowers($logEntriesForSlowFollowers = null)
     {
         $this->logEntriesForSlowFollowers = $logEntriesForSlowFollowers;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -82,6 +92,7 @@ class SwarmConfigSpecRaft
     {
         return $this->heartbeatTick;
     }
+
     /**
      * @param int $heartbeatTick
      *
@@ -90,8 +101,10 @@ class SwarmConfigSpecRaft
     public function setHeartbeatTick($heartbeatTick = null)
     {
         $this->heartbeatTick = $heartbeatTick;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -99,6 +112,7 @@ class SwarmConfigSpecRaft
     {
         return $this->electionTick;
     }
+
     /**
      * @param int $electionTick
      *
@@ -107,6 +121,7 @@ class SwarmConfigSpecRaft
     public function setElectionTick($electionTick = null)
     {
         $this->electionTick = $electionTick;
+
         return $this;
     }
 }

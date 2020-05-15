@@ -12,6 +12,7 @@ class ServiceSpecMode
      * @var GlobalService
      */
     protected $global;
+
     /**
      * @return ReplicatedService
      */
@@ -19,6 +20,7 @@ class ServiceSpecMode
     {
         return $this->replicated;
     }
+
     /**
      * @param ReplicatedService $replicated
      *
@@ -27,8 +29,10 @@ class ServiceSpecMode
     public function setReplicated(ReplicatedService $replicated = null)
     {
         $this->replicated = $replicated;
+
         return $this;
     }
+
     /**
      * @return GlobalService
      */
@@ -36,6 +40,7 @@ class ServiceSpecMode
     {
         return $this->global;
     }
+
     /**
      * @param GlobalService $global
      *
@@ -44,6 +49,7 @@ class ServiceSpecMode
     public function setGlobal(GlobalService $global = null)
     {
         $this->global = $global;
+
         return $this;
     }
 }

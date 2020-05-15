@@ -28,6 +28,7 @@ class ExecConfig
      * @var string
      */
     protected $detachKeys;
+
     /**
      * @return bool
      */
@@ -35,6 +36,7 @@ class ExecConfig
     {
         return $this->attachStdin;
     }
+
     /**
      * @param bool $attachStdin
      *
@@ -43,8 +45,10 @@ class ExecConfig
     public function setAttachStdin($attachStdin = null)
     {
         $this->attachStdin = $attachStdin;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -52,6 +56,7 @@ class ExecConfig
     {
         return $this->attachStdout;
     }
+
     /**
      * @param bool $attachStdout
      *
@@ -60,8 +65,10 @@ class ExecConfig
     public function setAttachStdout($attachStdout = null)
     {
         $this->attachStdout = $attachStdout;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -69,6 +76,7 @@ class ExecConfig
     {
         return $this->attachStderr;
     }
+
     /**
      * @param bool $attachStderr
      *
@@ -77,8 +85,10 @@ class ExecConfig
     public function setAttachStderr($attachStderr = null)
     {
         $this->attachStderr = $attachStderr;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -86,6 +96,7 @@ class ExecConfig
     {
         return $this->tty;
     }
+
     /**
      * @param bool $tty
      *
@@ -94,8 +105,10 @@ class ExecConfig
     public function setTty($tty = null)
     {
         $this->tty = $tty;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -103,6 +116,7 @@ class ExecConfig
     {
         return $this->cmd;
     }
+
     /**
      * @param string[]|null $cmd
      *
@@ -111,8 +125,10 @@ class ExecConfig
     public function setCmd($cmd = null)
     {
         $this->cmd = $cmd;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -120,6 +136,7 @@ class ExecConfig
     {
         return $this->detachKeys;
     }
+
     /**
      * @param string $detachKeys
      *
@@ -128,6 +145,7 @@ class ExecConfig
     public function setDetachKeys($detachKeys = null)
     {
         $this->detachKeys = $detachKeys;
+
         return $this;
     }
 }

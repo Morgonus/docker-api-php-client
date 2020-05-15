@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class DriverNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class DriverNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if ($type !== 'Docker\\API\\Model\\Driver') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Driver) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Driver();
         if (property_exists($data, 'Name')) {
@@ -31,7 +35,7 @@ class DriverNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if (property_exists($data, 'Options')) {
             $value = $data->{'Options'};
             if (is_object($data->{'Options'})) {
-                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Options'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -42,9 +46,11 @@ class DriverNormalizer extends SerializerAwareNormalizer implements Denormalizer
             }
             $object->setOptions($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -62,6 +68,7 @@ class DriverNormalizer extends SerializerAwareNormalizer implements Denormalizer
             $value = $object->getOptions();
         }
         $data->{'Options'} = $value;
+
         return $data;
     }
 }

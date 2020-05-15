@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class BuildInfoNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class BuildInfoNormalizer extends SerializerAwareNormalizer implements Denormali
         if ($type !== 'Docker\\API\\Model\\BuildInfo') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\BuildInfo) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\BuildInfo();
         if (property_exists($data, 'id')) {
@@ -46,9 +50,11 @@ class BuildInfoNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'progressDetail')) {
             $object->setProgressDetail($this->serializer->deserialize($data->{'progressDetail'}, 'Docker\\API\\Model\\ProgressDetail', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getId()) {
@@ -72,6 +78,7 @@ class BuildInfoNormalizer extends SerializerAwareNormalizer implements Denormali
         if (null !== $object->getProgressDetail()) {
             $data->{'progressDetail'} = $this->serializer->serialize($object->getProgressDetail(), 'raw', $context);
         }
+
         return $data;
     }
 }

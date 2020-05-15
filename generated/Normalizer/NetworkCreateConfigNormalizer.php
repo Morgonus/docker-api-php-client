@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
         if ($type !== 'Docker\\API\\Model\\NetworkCreateConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\NetworkCreateConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\NetworkCreateConfig();
         if (property_exists($data, 'Name')) {
@@ -44,7 +48,7 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
             $object->setInternal($data->{'Internal'});
         }
         if (property_exists($data, 'Options')) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Options'} as $key => $value) {
                 $values[$key] = $value;
             }
@@ -53,7 +57,7 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
         if (property_exists($data, 'Labels')) {
             $value_1 = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key_1 => $value_2) {
                     $values_1[$key_1] = $value_2;
                 }
@@ -64,9 +68,11 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
             }
             $object->setLabels($value_1);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -106,6 +112,7 @@ class NetworkCreateConfigNormalizer extends SerializerAwareNormalizer implements
             $value_1 = $object->getLabels();
         }
         $data->{'Labels'} = $value_1;
+
         return $data;
     }
 }

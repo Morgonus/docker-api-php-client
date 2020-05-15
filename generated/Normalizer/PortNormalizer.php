@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class PortNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class PortNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if ($type !== 'Docker\\API\\Model\\Port') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Port) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Port();
         if (property_exists($data, 'PrivatePort')) {
@@ -34,9 +38,11 @@ class PortNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'Type')) {
             $object->setType($data->{'Type'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getPrivatePort()) {
@@ -48,6 +54,7 @@ class PortNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getType()) {
             $data->{'Type'} = $object->getType();
         }
+
         return $data;
     }
 }

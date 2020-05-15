@@ -8,6 +8,7 @@ class SwarmConfigSpecOrchestration
      * @var int
      */
     protected $taskHistoryRetentionLimit;
+
     /**
      * @return int
      */
@@ -15,6 +16,7 @@ class SwarmConfigSpecOrchestration
     {
         return $this->taskHistoryRetentionLimit;
     }
+
     /**
      * @param int $taskHistoryRetentionLimit
      *
@@ -23,6 +25,7 @@ class SwarmConfigSpecOrchestration
     public function setTaskHistoryRetentionLimit($taskHistoryRetentionLimit = null)
     {
         $this->taskHistoryRetentionLimit = $taskHistoryRetentionLimit;
+
         return $this;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class EndpointSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class EndpointSpecNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\EndpointSpec') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\EndpointSpec) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\EndpointSpec();
         if (property_exists($data, 'Mode')) {
@@ -31,7 +35,7 @@ class EndpointSpecNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'Ports')) {
             $value = $data->{'Ports'};
             if (is_array($data->{'Ports'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Ports'} as $value_1) {
                     $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\PortConfig', 'raw', $context);
                 }
@@ -42,9 +46,11 @@ class EndpointSpecNormalizer extends SerializerAwareNormalizer implements Denorm
             }
             $object->setPorts($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getMode()) {
@@ -52,7 +58,7 @@ class EndpointSpecNormalizer extends SerializerAwareNormalizer implements Denorm
         }
         $value = $object->getPorts();
         if (is_array($object->getPorts())) {
-            $values = array();
+            $values = [];
             foreach ($object->getPorts() as $value_1) {
                 $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
@@ -62,6 +68,7 @@ class EndpointSpecNormalizer extends SerializerAwareNormalizer implements Denorm
             $value = $object->getPorts();
         }
         $data->{'Ports'} = $value;
+
         return $data;
     }
 }

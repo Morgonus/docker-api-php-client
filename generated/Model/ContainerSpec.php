@@ -40,6 +40,7 @@ class ContainerSpec
      * @var int
      */
     protected $stopGracePeriod;
+
     /**
      * @return string
      */
@@ -47,6 +48,7 @@ class ContainerSpec
     {
         return $this->image;
     }
+
     /**
      * @param string $image
      *
@@ -55,8 +57,10 @@ class ContainerSpec
     public function setImage($image = null)
     {
         $this->image = $image;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -64,6 +68,7 @@ class ContainerSpec
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -72,8 +77,10 @@ class ContainerSpec
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -81,6 +88,7 @@ class ContainerSpec
     {
         return $this->command;
     }
+
     /**
      * @param string[]|null $command
      *
@@ -89,8 +97,10 @@ class ContainerSpec
     public function setCommand($command = null)
     {
         $this->command = $command;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -98,6 +108,7 @@ class ContainerSpec
     {
         return $this->args;
     }
+
     /**
      * @param string[]|null $args
      *
@@ -106,8 +117,10 @@ class ContainerSpec
     public function setArgs($args = null)
     {
         $this->args = $args;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -115,6 +128,7 @@ class ContainerSpec
     {
         return $this->env;
     }
+
     /**
      * @param string[]|null $env
      *
@@ -123,8 +137,10 @@ class ContainerSpec
     public function setEnv($env = null)
     {
         $this->env = $env;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -132,6 +148,7 @@ class ContainerSpec
     {
         return $this->dir;
     }
+
     /**
      * @param string $dir
      *
@@ -140,8 +157,10 @@ class ContainerSpec
     public function setDir($dir = null)
     {
         $this->dir = $dir;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -149,6 +168,7 @@ class ContainerSpec
     {
         return $this->user;
     }
+
     /**
      * @param string $user
      *
@@ -157,8 +177,10 @@ class ContainerSpec
     public function setUser($user = null)
     {
         $this->user = $user;
+
         return $this;
     }
+
     /**
      * @return ContainerSpecMount[]|null
      */
@@ -166,6 +188,7 @@ class ContainerSpec
     {
         return $this->mounts;
     }
+
     /**
      * @param ContainerSpecMount[]|null $mounts
      *
@@ -174,8 +197,10 @@ class ContainerSpec
     public function setMounts($mounts = null)
     {
         $this->mounts = $mounts;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -183,6 +208,7 @@ class ContainerSpec
     {
         return $this->stopGracePeriod;
     }
+
     /**
      * @param int $stopGracePeriod
      *
@@ -191,6 +217,7 @@ class ContainerSpec
     public function setStopGracePeriod($stopGracePeriod = null)
     {
         $this->stopGracePeriod = $stopGracePeriod;
+
         return $this;
     }
 }

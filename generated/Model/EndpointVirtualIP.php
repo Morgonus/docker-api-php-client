@@ -12,6 +12,7 @@ class EndpointVirtualIP
      * @var string
      */
     protected $addr;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class EndpointVirtualIP
     {
         return $this->networkID;
     }
+
     /**
      * @param string $networkID
      *
@@ -27,8 +29,10 @@ class EndpointVirtualIP
     public function setNetworkID($networkID = null)
     {
         $this->networkID = $networkID;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class EndpointVirtualIP
     {
         return $this->addr;
     }
+
     /**
      * @param string $addr
      *
@@ -44,6 +49,7 @@ class EndpointVirtualIP
     public function setAddr($addr = null)
     {
         $this->addr = $addr;
+
         return $this;
     }
 }

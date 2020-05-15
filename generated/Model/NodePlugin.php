@@ -12,6 +12,7 @@ class NodePlugin
      * @var string
      */
     protected $name;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class NodePlugin
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -27,8 +29,10 @@ class NodePlugin
     public function setType($type = null)
     {
         $this->type = $type;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class NodePlugin
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -44,6 +49,7 @@ class NodePlugin
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
 }

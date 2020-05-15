@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if ($type !== 'Docker\\API\\Model\\Task') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Task) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Task();
         if (property_exists($data, 'ID')) {
@@ -64,7 +68,7 @@ class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'NetworksAttachments')) {
             $value = $data->{'NetworksAttachments'};
             if (is_array($data->{'NetworksAttachments'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'NetworksAttachments'} as $value_1) {
                     $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\NetworkAttachment', 'raw', $context);
                 }
@@ -78,9 +82,11 @@ class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'Endpoint')) {
             $object->setEndpoint($this->serializer->deserialize($data->{'Endpoint'}, 'Docker\\API\\Model\\Endpoint', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getID()) {
@@ -121,7 +127,7 @@ class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         $value = $object->getNetworksAttachments();
         if (is_array($object->getNetworksAttachments())) {
-            $values = array();
+            $values = [];
             foreach ($object->getNetworksAttachments() as $value_1) {
                 $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
@@ -134,6 +140,7 @@ class TaskNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getEndpoint()) {
             $data->{'Endpoint'} = $this->serializer->serialize($object->getEndpoint(), 'raw', $context);
         }
+
         return $data;
     }
 }

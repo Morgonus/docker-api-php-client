@@ -20,6 +20,7 @@ class NodeSpec
      * @var string[]|null
      */
     protected $labels;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class NodeSpec
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -35,8 +37,10 @@ class NodeSpec
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class NodeSpec
     {
         return $this->role;
     }
+
     /**
      * @param string $role
      *
@@ -52,8 +57,10 @@ class NodeSpec
     public function setRole($role = null)
     {
         $this->role = $role;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -61,6 +68,7 @@ class NodeSpec
     {
         return $this->availability;
     }
+
     /**
      * @param string $availability
      *
@@ -69,8 +77,10 @@ class NodeSpec
     public function setAvailability($availability = null)
     {
         $this->availability = $availability;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -78,6 +88,7 @@ class NodeSpec
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -86,6 +97,7 @@ class NodeSpec
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

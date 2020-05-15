@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class IPAMConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\IPAMConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\IPAMConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\IPAMConfig();
         if (property_exists($data, 'Subnet')) {
@@ -34,9 +38,11 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'Gateway')) {
             $object->setGateway($data->{'Gateway'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getSubnet()) {
@@ -48,6 +54,7 @@ class IPAMConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (null !== $object->getGateway()) {
             $data->{'Gateway'} = $object->getGateway();
         }
+
         return $data;
     }
 }

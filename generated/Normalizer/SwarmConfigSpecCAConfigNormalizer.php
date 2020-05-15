@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SwarmConfigSpecCAConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SwarmConfigSpecCAConfigNormalizer extends SerializerAwareNormalizer implem
         if ($type !== 'Docker\\API\\Model\\SwarmConfigSpecCAConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmConfigSpecCAConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SwarmConfigSpecCAConfig();
         if (property_exists($data, 'NodeCertExpiry')) {
@@ -31,9 +35,11 @@ class SwarmConfigSpecCAConfigNormalizer extends SerializerAwareNormalizer implem
         if (property_exists($data, 'ExternalCA')) {
             $object->setExternalCA($this->serializer->deserialize($data->{'ExternalCA'}, 'Docker\\API\\Model\\SwarmConfigSpecCAConfigExternalCA', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getNodeCertExpiry()) {
@@ -42,6 +48,7 @@ class SwarmConfigSpecCAConfigNormalizer extends SerializerAwareNormalizer implem
         if (null !== $object->getExternalCA()) {
             $data->{'ExternalCA'} = $this->serializer->serialize($object->getExternalCA(), 'raw', $context);
         }
+
         return $data;
     }
 }

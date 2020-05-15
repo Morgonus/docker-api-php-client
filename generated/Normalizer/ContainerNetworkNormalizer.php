@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\ContainerNetwork') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerNetwork) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ContainerNetwork();
         if (property_exists($data, 'NetworkID')) {
@@ -52,9 +56,11 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'MacAddress')) {
             $object->setMacAddress($data->{'MacAddress'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getNetworkID()) {
@@ -84,6 +90,7 @@ class ContainerNetworkNormalizer extends SerializerAwareNormalizer implements De
         if (null !== $object->getMacAddress()) {
             $data->{'MacAddress'} = $object->getMacAddress();
         }
+
         return $data;
     }
 }

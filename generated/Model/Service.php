@@ -32,6 +32,7 @@ class Service
      * @var UpdateStatus
      */
     protected $updateStatus;
+
     /**
      * @return string
      */
@@ -39,6 +40,7 @@ class Service
     {
         return $this->iD;
     }
+
     /**
      * @param string $iD
      *
@@ -47,8 +49,10 @@ class Service
     public function setID($iD = null)
     {
         $this->iD = $iD;
+
         return $this;
     }
+
     /**
      * @return NodeVersion
      */
@@ -56,6 +60,7 @@ class Service
     {
         return $this->version;
     }
+
     /**
      * @param NodeVersion $version
      *
@@ -64,8 +69,10 @@ class Service
     public function setVersion(NodeVersion $version = null)
     {
         $this->version = $version;
+
         return $this;
     }
+
     /**
      * @return \DateTime
      */
@@ -73,6 +80,7 @@ class Service
     {
         return $this->createdAt;
     }
+
     /**
      * @param \DateTime $createdAt
      *
@@ -81,8 +89,10 @@ class Service
     public function setCreatedAt(\DateTime $createdAt = null)
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
+
     /**
      * @return \DateTime
      */
@@ -90,6 +100,7 @@ class Service
     {
         return $this->updatedAt;
     }
+
     /**
      * @param \DateTime $updatedAt
      *
@@ -98,8 +109,10 @@ class Service
     public function setUpdatedAt(\DateTime $updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
+
     /**
      * @return ServiceSpec
      */
@@ -107,6 +120,7 @@ class Service
     {
         return $this->spec;
     }
+
     /**
      * @param ServiceSpec $spec
      *
@@ -115,8 +129,10 @@ class Service
     public function setSpec(ServiceSpec $spec = null)
     {
         $this->spec = $spec;
+
         return $this;
     }
+
     /**
      * @return Endpoint
      */
@@ -124,6 +140,7 @@ class Service
     {
         return $this->endpoint;
     }
+
     /**
      * @param Endpoint $endpoint
      *
@@ -132,8 +149,10 @@ class Service
     public function setEndpoint(Endpoint $endpoint = null)
     {
         $this->endpoint = $endpoint;
+
         return $this;
     }
+
     /**
      * @return UpdateStatus
      */
@@ -141,6 +160,7 @@ class Service
     {
         return $this->updateStatus;
     }
+
     /**
      * @param UpdateStatus $updateStatus
      *
@@ -149,6 +169,7 @@ class Service
     public function setUpdateStatus(UpdateStatus $updateStatus = null)
     {
         $this->updateStatus = $updateStatus;
+
         return $this;
     }
 }

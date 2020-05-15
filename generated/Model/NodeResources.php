@@ -12,6 +12,7 @@ class NodeResources
      * @var int
      */
     protected $memoryBytes;
+
     /**
      * @return int
      */
@@ -19,6 +20,7 @@ class NodeResources
     {
         return $this->nanoCPUs;
     }
+
     /**
      * @param int $nanoCPUs
      *
@@ -27,8 +29,10 @@ class NodeResources
     public function setNanoCPUs($nanoCPUs = null)
     {
         $this->nanoCPUs = $nanoCPUs;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -36,6 +40,7 @@ class NodeResources
     {
         return $this->memoryBytes;
     }
+
     /**
      * @param int $memoryBytes
      *
@@ -44,6 +49,7 @@ class NodeResources
     public function setMemoryBytes($memoryBytes = null)
     {
         $this->memoryBytes = $memoryBytes;
+
         return $this;
     }
 }

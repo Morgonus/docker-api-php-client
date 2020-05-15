@@ -8,6 +8,7 @@ class NetworkingConfig
      * @var EndpointSettings[]
      */
     protected $endpointsConfig;
+
     /**
      * @return EndpointSettings[]
      */
@@ -15,6 +16,7 @@ class NetworkingConfig
     {
         return $this->endpointsConfig;
     }
+
     /**
      * @param EndpointSettings[] $endpointsConfig
      *
@@ -23,6 +25,7 @@ class NetworkingConfig
     public function setEndpointsConfig(\ArrayObject $endpointsConfig = null)
     {
         $this->endpointsConfig = $endpointsConfig;
+
         return $this;
     }
 }

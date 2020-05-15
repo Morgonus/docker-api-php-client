@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class EventNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class EventNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if ($type !== 'Docker\\API\\Model\\Event') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Event) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Event();
         if (property_exists($data, 'status')) {
@@ -40,9 +44,11 @@ class EventNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'timeNano')) {
             $object->setTimeNano($data->{'timeNano'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getStatus()) {
@@ -60,6 +66,7 @@ class EventNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (null !== $object->getTimeNano()) {
             $data->{'timeNano'} = $object->getTimeNano();
         }
+
         return $data;
     }
 }

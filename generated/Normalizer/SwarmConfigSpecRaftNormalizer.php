@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SwarmConfigSpecRaftNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SwarmConfigSpecRaftNormalizer extends SerializerAwareNormalizer implements
         if ($type !== 'Docker\\API\\Model\\SwarmConfigSpecRaft') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmConfigSpecRaft) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SwarmConfigSpecRaft();
         if (property_exists($data, 'SnapshotInterval')) {
@@ -40,9 +44,11 @@ class SwarmConfigSpecRaftNormalizer extends SerializerAwareNormalizer implements
         if (property_exists($data, 'ElectionTick')) {
             $object->setElectionTick($data->{'ElectionTick'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getSnapshotInterval()) {
@@ -60,6 +66,7 @@ class SwarmConfigSpecRaftNormalizer extends SerializerAwareNormalizer implements
         if (null !== $object->getElectionTick()) {
             $data->{'ElectionTick'} = $object->getElectionTick();
         }
+
         return $data;
     }
 }

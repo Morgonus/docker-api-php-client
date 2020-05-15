@@ -12,6 +12,7 @@ class Annotations
      * @var string[]|null
      */
     protected $labels;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class Annotations
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -27,8 +29,10 @@ class Annotations
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -36,6 +40,7 @@ class Annotations
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -44,6 +49,7 @@ class Annotations
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
 }

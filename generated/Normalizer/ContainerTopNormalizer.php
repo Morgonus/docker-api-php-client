@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ContainerTopNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,22 +13,26 @@ class ContainerTopNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\ContainerTop') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerTop) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ContainerTop();
         if (property_exists($data, 'Titles')) {
             $value = $data->{'Titles'};
             if (is_array($data->{'Titles'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Titles'} as $value_1) {
                     $values[] = $value_1;
                 }
@@ -42,11 +46,11 @@ class ContainerTopNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'Processes')) {
             $value_2 = $data->{'Processes'};
             if (is_array($data->{'Processes'})) {
-                $values_1 = array();
+                $values_1 = [];
                 foreach ($data->{'Processes'} as $value_3) {
                     $value_4 = $value_3;
                     if (is_array($value_3)) {
-                        $values_2 = array();
+                        $values_2 = [];
                         foreach ($value_3 as $value_5) {
                             $values_2[] = $value_5;
                         }
@@ -64,14 +68,16 @@ class ContainerTopNormalizer extends SerializerAwareNormalizer implements Denorm
             }
             $object->setProcesses($value_2);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data  = new \stdClass();
         $value = $object->getTitles();
         if (is_array($object->getTitles())) {
-            $values = array();
+            $values = [];
             foreach ($object->getTitles() as $value_1) {
                 $values[] = $value_1;
             }
@@ -81,13 +87,13 @@ class ContainerTopNormalizer extends SerializerAwareNormalizer implements Denorm
             $value = $object->getTitles();
         }
         $data->{'Titles'} = $value;
-        $value_2 = $object->getProcesses();
+        $value_2          = $object->getProcesses();
         if (is_array($object->getProcesses())) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($object->getProcesses() as $value_3) {
                 $value_4 = $value_3;
                 if (is_array($value_3)) {
-                    $values_2 = array();
+                    $values_2 = [];
                     foreach ($value_3 as $value_5) {
                         $values_2[] = $value_5;
                     }
@@ -104,6 +110,7 @@ class ContainerTopNormalizer extends SerializerAwareNormalizer implements Denorm
             $value_2 = $object->getProcesses();
         }
         $data->{'Processes'} = $value_2;
+
         return $data;
     }
 }

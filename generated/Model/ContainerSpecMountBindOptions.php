@@ -8,6 +8,7 @@ class ContainerSpecMountBindOptions
      * @var string
      */
     protected $propagation;
+
     /**
      * @return string
      */
@@ -15,6 +16,7 @@ class ContainerSpecMountBindOptions
     {
         return $this->propagation;
     }
+
     /**
      * @param string $propagation
      *
@@ -23,6 +25,7 @@ class ContainerSpecMountBindOptions
     public function setPropagation($propagation = null)
     {
         $this->propagation = $propagation;
+
         return $this;
     }
 }

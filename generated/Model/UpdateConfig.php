@@ -16,6 +16,7 @@ class UpdateConfig
      * @var string
      */
     protected $failureAction;
+
     /**
      * @return int
      */
@@ -23,6 +24,7 @@ class UpdateConfig
     {
         return $this->parallelism;
     }
+
     /**
      * @param int $parallelism
      *
@@ -31,8 +33,10 @@ class UpdateConfig
     public function setParallelism($parallelism = null)
     {
         $this->parallelism = $parallelism;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -40,6 +44,7 @@ class UpdateConfig
     {
         return $this->delay;
     }
+
     /**
      * @param int $delay
      *
@@ -48,8 +53,10 @@ class UpdateConfig
     public function setDelay($delay = null)
     {
         $this->delay = $delay;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -57,6 +64,7 @@ class UpdateConfig
     {
         return $this->failureAction;
     }
+
     /**
      * @param string $failureAction
      *
@@ -65,6 +73,7 @@ class UpdateConfig
     public function setFailureAction($failureAction = null)
     {
         $this->failureAction = $failureAction;
+
         return $this;
     }
 }

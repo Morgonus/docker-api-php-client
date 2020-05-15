@@ -20,6 +20,7 @@ class UpdateStatus
      * @var string
      */
     protected $message;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class UpdateStatus
     {
         return $this->state;
     }
+
     /**
      * @param string $state
      *
@@ -35,8 +37,10 @@ class UpdateStatus
     public function setState($state = null)
     {
         $this->state = $state;
+
         return $this;
     }
+
     /**
      * @return \DateTime
      */
@@ -44,6 +48,7 @@ class UpdateStatus
     {
         return $this->startedAt;
     }
+
     /**
      * @param \DateTime $startedAt
      *
@@ -52,8 +57,10 @@ class UpdateStatus
     public function setStartedAt(\DateTime $startedAt = null)
     {
         $this->startedAt = $startedAt;
+
         return $this;
     }
+
     /**
      * @return \DateTime
      */
@@ -61,6 +68,7 @@ class UpdateStatus
     {
         return $this->completedAt;
     }
+
     /**
      * @param \DateTime $completedAt
      *
@@ -69,8 +77,10 @@ class UpdateStatus
     public function setCompletedAt(\DateTime $completedAt = null)
     {
         $this->completedAt = $completedAt;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -78,6 +88,7 @@ class UpdateStatus
     {
         return $this->message;
     }
+
     /**
      * @param string $message
      *
@@ -86,6 +97,7 @@ class UpdateStatus
     public function setMessage($message = null)
     {
         $this->message = $message;
+
         return $this;
     }
 }

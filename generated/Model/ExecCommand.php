@@ -40,6 +40,7 @@ class ExecCommand
      * @var string
      */
     protected $detachKeys;
+
     /**
      * @return string
      */
@@ -47,6 +48,7 @@ class ExecCommand
     {
         return $this->iD;
     }
+
     /**
      * @param string $iD
      *
@@ -55,8 +57,10 @@ class ExecCommand
     public function setID($iD = null)
     {
         $this->iD = $iD;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -64,6 +68,7 @@ class ExecCommand
     {
         return $this->running;
     }
+
     /**
      * @param bool $running
      *
@@ -72,8 +77,10 @@ class ExecCommand
     public function setRunning($running = null)
     {
         $this->running = $running;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -81,6 +88,7 @@ class ExecCommand
     {
         return $this->exitCode;
     }
+
     /**
      * @param int $exitCode
      *
@@ -89,8 +97,10 @@ class ExecCommand
     public function setExitCode($exitCode = null)
     {
         $this->exitCode = $exitCode;
+
         return $this;
     }
+
     /**
      * @return ProcessConfig
      */
@@ -98,6 +108,7 @@ class ExecCommand
     {
         return $this->processConfig;
     }
+
     /**
      * @param ProcessConfig $processConfig
      *
@@ -106,8 +117,10 @@ class ExecCommand
     public function setProcessConfig(ProcessConfig $processConfig = null)
     {
         $this->processConfig = $processConfig;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -115,6 +128,7 @@ class ExecCommand
     {
         return $this->openStdin;
     }
+
     /**
      * @param bool $openStdin
      *
@@ -123,8 +137,10 @@ class ExecCommand
     public function setOpenStdin($openStdin = null)
     {
         $this->openStdin = $openStdin;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -132,6 +148,7 @@ class ExecCommand
     {
         return $this->openStderr;
     }
+
     /**
      * @param bool $openStderr
      *
@@ -140,8 +157,10 @@ class ExecCommand
     public function setOpenStderr($openStderr = null)
     {
         $this->openStderr = $openStderr;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -149,6 +168,7 @@ class ExecCommand
     {
         return $this->openStdout;
     }
+
     /**
      * @param bool $openStdout
      *
@@ -157,8 +177,10 @@ class ExecCommand
     public function setOpenStdout($openStdout = null)
     {
         $this->openStdout = $openStdout;
+
         return $this;
     }
+
     /**
      * @return Container
      */
@@ -166,6 +188,7 @@ class ExecCommand
     {
         return $this->container;
     }
+
     /**
      * @param Container $container
      *
@@ -174,8 +197,10 @@ class ExecCommand
     public function setContainer(Container $container = null)
     {
         $this->container = $container;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -183,6 +208,7 @@ class ExecCommand
     {
         return $this->detachKeys;
     }
+
     /**
      * @param string $detachKeys
      *
@@ -191,6 +217,7 @@ class ExecCommand
     public function setDetachKeys($detachKeys = null)
     {
         $this->detachKeys = $detachKeys;
+
         return $this;
     }
 }

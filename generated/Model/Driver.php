@@ -12,6 +12,7 @@ class Driver
      * @var string[]|null
      */
     protected $options;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class Driver
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -27,8 +29,10 @@ class Driver
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -36,6 +40,7 @@ class Driver
     {
         return $this->options;
     }
+
     /**
      * @param string[]|null $options
      *
@@ -44,6 +49,7 @@ class Driver
     public function setOptions($options = null)
     {
         $this->options = $options;
+
         return $this;
     }
 }

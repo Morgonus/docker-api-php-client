@@ -28,6 +28,7 @@ class ContainerSpecMount
      * @var ContainerSpecMountVolumeOptions
      */
     protected $volumeOptions;
+
     /**
      * @return string
      */
@@ -35,6 +36,7 @@ class ContainerSpecMount
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -43,8 +45,10 @@ class ContainerSpecMount
     public function setType($type = null)
     {
         $this->type = $type;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -52,6 +56,7 @@ class ContainerSpecMount
     {
         return $this->source;
     }
+
     /**
      * @param string $source
      *
@@ -60,8 +65,10 @@ class ContainerSpecMount
     public function setSource($source = null)
     {
         $this->source = $source;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -69,6 +76,7 @@ class ContainerSpecMount
     {
         return $this->target;
     }
+
     /**
      * @param string $target
      *
@@ -77,8 +85,10 @@ class ContainerSpecMount
     public function setTarget($target = null)
     {
         $this->target = $target;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -86,6 +96,7 @@ class ContainerSpecMount
     {
         return $this->readOnly;
     }
+
     /**
      * @param bool $readOnly
      *
@@ -94,8 +105,10 @@ class ContainerSpecMount
     public function setReadOnly($readOnly = null)
     {
         $this->readOnly = $readOnly;
+
         return $this;
     }
+
     /**
      * @return ContainerSpecMountBindOptions
      */
@@ -103,6 +116,7 @@ class ContainerSpecMount
     {
         return $this->bindOptions;
     }
+
     /**
      * @param ContainerSpecMountBindOptions $bindOptions
      *
@@ -111,8 +125,10 @@ class ContainerSpecMount
     public function setBindOptions(ContainerSpecMountBindOptions $bindOptions = null)
     {
         $this->bindOptions = $bindOptions;
+
         return $this;
     }
+
     /**
      * @return ContainerSpecMountVolumeOptions
      */
@@ -120,6 +136,7 @@ class ContainerSpecMount
     {
         return $this->volumeOptions;
     }
+
     /**
      * @param ContainerSpecMountVolumeOptions $volumeOptions
      *
@@ -128,6 +145,7 @@ class ContainerSpecMount
     public function setVolumeOptions(ContainerSpecMountVolumeOptions $volumeOptions = null)
     {
         $this->volumeOptions = $volumeOptions;
+
         return $this;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ContainerStatusNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class ContainerStatusNormalizer extends SerializerAwareNormalizer implements Den
         if ($type !== 'Docker\\API\\Model\\ContainerStatus') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ContainerStatus) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ContainerStatus();
         if (property_exists($data, 'ContainerID')) {
@@ -34,9 +38,11 @@ class ContainerStatusNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'ExitCode')) {
             $object->setExitCode($data->{'ExitCode'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getContainerID()) {
@@ -48,6 +54,7 @@ class ContainerStatusNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getExitCode()) {
             $data->{'ExitCode'} = $object->getExitCode();
         }
+
         return $data;
     }
 }

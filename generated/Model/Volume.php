@@ -16,6 +16,7 @@ class Volume
      * @var string
      */
     protected $mountpoint;
+
     /**
      * @return string
      */
@@ -23,6 +24,7 @@ class Volume
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -31,8 +33,10 @@ class Volume
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -40,6 +44,7 @@ class Volume
     {
         return $this->driver;
     }
+
     /**
      * @param string $driver
      *
@@ -48,8 +53,10 @@ class Volume
     public function setDriver($driver = null)
     {
         $this->driver = $driver;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -57,6 +64,7 @@ class Volume
     {
         return $this->mountpoint;
     }
+
     /**
      * @param string $mountpoint
      *
@@ -65,6 +73,7 @@ class Volume
     public function setMountpoint($mountpoint = null)
     {
         $this->mountpoint = $mountpoint;
+
         return $this;
     }
 }

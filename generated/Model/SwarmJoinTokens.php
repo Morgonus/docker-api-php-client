@@ -12,6 +12,7 @@ class SwarmJoinTokens
      * @var string
      */
     protected $manager;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class SwarmJoinTokens
     {
         return $this->worker;
     }
+
     /**
      * @param string $worker
      *
@@ -27,8 +29,10 @@ class SwarmJoinTokens
     public function setWorker($worker = null)
     {
         $this->worker = $worker;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class SwarmJoinTokens
     {
         return $this->manager;
     }
+
     /**
      * @param string $manager
      *
@@ -44,6 +49,7 @@ class SwarmJoinTokens
     public function setManager($manager = null)
     {
         $this->manager = $manager;
+
         return $this;
     }
 }

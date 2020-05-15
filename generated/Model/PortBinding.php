@@ -12,6 +12,7 @@ class PortBinding
      * @var string
      */
     protected $hostIp;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class PortBinding
     {
         return $this->hostPort;
     }
+
     /**
      * @param string $hostPort
      *
@@ -27,8 +29,10 @@ class PortBinding
     public function setHostPort($hostPort = null)
     {
         $this->hostPort = $hostPort;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class PortBinding
     {
         return $this->hostIp;
     }
+
     /**
      * @param string $hostIp
      *
@@ -44,6 +49,7 @@ class PortBinding
     public function setHostIp($hostIp = null)
     {
         $this->hostIp = $hostIp;
+
         return $this;
     }
 }

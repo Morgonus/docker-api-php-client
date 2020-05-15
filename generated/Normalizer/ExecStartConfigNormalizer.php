@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ExecStartConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class ExecStartConfigNormalizer extends SerializerAwareNormalizer implements Den
         if ($type !== 'Docker\\API\\Model\\ExecStartConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ExecStartConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ExecStartConfig();
         if (property_exists($data, 'Detach')) {
@@ -31,9 +35,11 @@ class ExecStartConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (property_exists($data, 'Tty')) {
             $object->setTty($data->{'Tty'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getDetach()) {
@@ -42,6 +48,7 @@ class ExecStartConfigNormalizer extends SerializerAwareNormalizer implements Den
         if (null !== $object->getTty()) {
             $data->{'Tty'} = $object->getTty();
         }
+
         return $data;
     }
 }

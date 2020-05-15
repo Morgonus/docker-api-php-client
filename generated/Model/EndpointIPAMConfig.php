@@ -16,6 +16,7 @@ class EndpointIPAMConfig
      * @var string[]
      */
     protected $linkLocalIPs;
+
     /**
      * @return string
      */
@@ -23,6 +24,7 @@ class EndpointIPAMConfig
     {
         return $this->iPv4Address;
     }
+
     /**
      * @param string $iPv4Address
      *
@@ -31,8 +33,10 @@ class EndpointIPAMConfig
     public function setIPv4Address($iPv4Address = null)
     {
         $this->iPv4Address = $iPv4Address;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -40,6 +44,7 @@ class EndpointIPAMConfig
     {
         return $this->iPv6Address;
     }
+
     /**
      * @param string $iPv6Address
      *
@@ -48,8 +53,10 @@ class EndpointIPAMConfig
     public function setIPv6Address($iPv6Address = null)
     {
         $this->iPv6Address = $iPv6Address;
+
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -57,6 +64,7 @@ class EndpointIPAMConfig
     {
         return $this->linkLocalIPs;
     }
+
     /**
      * @param string[] $linkLocalIPs
      *
@@ -65,6 +73,7 @@ class EndpointIPAMConfig
     public function setLinkLocalIPs(array $linkLocalIPs = null)
     {
         $this->linkLocalIPs = $linkLocalIPs;
+
         return $this;
     }
 }

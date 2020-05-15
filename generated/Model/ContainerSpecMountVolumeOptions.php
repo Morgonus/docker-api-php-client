@@ -16,6 +16,7 @@ class ContainerSpecMountVolumeOptions
      * @var Driver
      */
     protected $driverConfig;
+
     /**
      * @return bool
      */
@@ -23,6 +24,7 @@ class ContainerSpecMountVolumeOptions
     {
         return $this->noCopy;
     }
+
     /**
      * @param bool $noCopy
      *
@@ -31,8 +33,10 @@ class ContainerSpecMountVolumeOptions
     public function setNoCopy($noCopy = null)
     {
         $this->noCopy = $noCopy;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -40,6 +44,7 @@ class ContainerSpecMountVolumeOptions
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -48,8 +53,10 @@ class ContainerSpecMountVolumeOptions
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
+
     /**
      * @return Driver
      */
@@ -57,6 +64,7 @@ class ContainerSpecMountVolumeOptions
     {
         return $this->driverConfig;
     }
+
     /**
      * @param Driver $driverConfig
      *
@@ -65,6 +73,7 @@ class ContainerSpecMountVolumeOptions
     public function setDriverConfig(Driver $driverConfig = null)
     {
         $this->driverConfig = $driverConfig;
+
         return $this;
     }
 }

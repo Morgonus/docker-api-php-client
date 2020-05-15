@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class ErrorDetailNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class ErrorDetailNormalizer extends SerializerAwareNormalizer implements Denorma
         if ($type !== 'Docker\\API\\Model\\ErrorDetail') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\ErrorDetail) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\ErrorDetail();
         if (property_exists($data, 'code')) {
@@ -31,9 +35,11 @@ class ErrorDetailNormalizer extends SerializerAwareNormalizer implements Denorma
         if (property_exists($data, 'message')) {
             $object->setMessage($data->{'message'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getCode()) {
@@ -42,6 +48,7 @@ class ErrorDetailNormalizer extends SerializerAwareNormalizer implements Denorma
         if (null !== $object->getMessage()) {
             $data->{'message'} = $object->getMessage();
         }
+
         return $data;
     }
 }

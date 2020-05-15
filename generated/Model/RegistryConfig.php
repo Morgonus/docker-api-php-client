@@ -12,6 +12,7 @@ class RegistryConfig
      * @var string[]|null
      */
     protected $insecureRegistryCIDRs;
+
     /**
      * @return Registry[]
      */
@@ -19,6 +20,7 @@ class RegistryConfig
     {
         return $this->indexConfigs;
     }
+
     /**
      * @param Registry[] $indexConfigs
      *
@@ -27,8 +29,10 @@ class RegistryConfig
     public function setIndexConfigs(\ArrayObject $indexConfigs = null)
     {
         $this->indexConfigs = $indexConfigs;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -36,6 +40,7 @@ class RegistryConfig
     {
         return $this->insecureRegistryCIDRs;
     }
+
     /**
      * @param string[]|null $insecureRegistryCIDRs
      *
@@ -44,6 +49,7 @@ class RegistryConfig
     public function setInsecureRegistryCIDRs($insecureRegistryCIDRs = null)
     {
         $this->insecureRegistryCIDRs = $insecureRegistryCIDRs;
+
         return $this;
     }
 }

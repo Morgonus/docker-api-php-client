@@ -36,6 +36,7 @@ class NetworkConfig
      * @var PortBinding[][]|null[]|null
      */
     protected $ports;
+
     /**
      * @return string
      */
@@ -43,6 +44,7 @@ class NetworkConfig
     {
         return $this->bridge;
     }
+
     /**
      * @param string $bridge
      *
@@ -51,8 +53,10 @@ class NetworkConfig
     public function setBridge($bridge = null)
     {
         $this->bridge = $bridge;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -60,6 +64,7 @@ class NetworkConfig
     {
         return $this->gateway;
     }
+
     /**
      * @param string $gateway
      *
@@ -68,8 +73,10 @@ class NetworkConfig
     public function setGateway($gateway = null)
     {
         $this->gateway = $gateway;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -77,6 +84,7 @@ class NetworkConfig
     {
         return $this->iPAddress;
     }
+
     /**
      * @param string $iPAddress
      *
@@ -85,8 +93,10 @@ class NetworkConfig
     public function setIPAddress($iPAddress = null)
     {
         $this->iPAddress = $iPAddress;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -94,6 +104,7 @@ class NetworkConfig
     {
         return $this->iPPrefixLen;
     }
+
     /**
      * @param int $iPPrefixLen
      *
@@ -102,8 +113,10 @@ class NetworkConfig
     public function setIPPrefixLen($iPPrefixLen = null)
     {
         $this->iPPrefixLen = $iPPrefixLen;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -111,6 +124,7 @@ class NetworkConfig
     {
         return $this->macAddress;
     }
+
     /**
      * @param string $macAddress
      *
@@ -119,8 +133,10 @@ class NetworkConfig
     public function setMacAddress($macAddress = null)
     {
         $this->macAddress = $macAddress;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -128,6 +144,7 @@ class NetworkConfig
     {
         return $this->portMapping;
     }
+
     /**
      * @param string $portMapping
      *
@@ -136,8 +153,10 @@ class NetworkConfig
     public function setPortMapping($portMapping = null)
     {
         $this->portMapping = $portMapping;
+
         return $this;
     }
+
     /**
      * @return ContainerNetwork[]
      */
@@ -145,6 +164,7 @@ class NetworkConfig
     {
         return $this->networks;
     }
+
     /**
      * @param ContainerNetwork[] $networks
      *
@@ -153,8 +173,10 @@ class NetworkConfig
     public function setNetworks(\ArrayObject $networks = null)
     {
         $this->networks = $networks;
+
         return $this;
     }
+
     /**
      * @return PortBinding[][]|null[]|null
      */
@@ -162,6 +184,7 @@ class NetworkConfig
     {
         return $this->ports;
     }
+
     /**
      * @param PortBinding[][]|null[]|null $ports
      *
@@ -170,6 +193,7 @@ class NetworkConfig
     public function setPorts($ports = null)
     {
         $this->ports = $ports;
+
         return $this;
     }
 }

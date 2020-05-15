@@ -12,6 +12,7 @@ class DeviceWeight
      * @var int
      */
     protected $weight;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class DeviceWeight
     {
         return $this->path;
     }
+
     /**
      * @param string $path
      *
@@ -27,8 +29,10 @@ class DeviceWeight
     public function setPath($path = null)
     {
         $this->path = $path;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -36,6 +40,7 @@ class DeviceWeight
     {
         return $this->weight;
     }
+
     /**
      * @param int $weight
      *
@@ -44,6 +49,7 @@ class DeviceWeight
     public function setWeight($weight = null)
     {
         $this->weight = $weight;
+
         return $this;
     }
 }

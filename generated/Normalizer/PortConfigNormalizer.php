@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class PortConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class PortConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if ($type !== 'Docker\\API\\Model\\PortConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\PortConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\PortConfig();
         if (property_exists($data, 'Name')) {
@@ -37,9 +41,11 @@ class PortConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (property_exists($data, 'PublishedPort')) {
             $object->setPublishedPort($data->{'PublishedPort'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -54,6 +60,7 @@ class PortConfigNormalizer extends SerializerAwareNormalizer implements Denormal
         if (null !== $object->getPublishedPort()) {
             $data->{'PublishedPort'} = $object->getPublishedPort();
         }
+
         return $data;
     }
 }

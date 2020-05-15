@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\SwarmIPAMOptions') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmIPAMOptions) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SwarmIPAMOptions();
         if (property_exists($data, 'Driver')) {
@@ -31,7 +35,7 @@ class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'Configs')) {
             $value = $data->{'Configs'};
             if (is_array($data->{'Configs'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'Configs'} as $value_1) {
                     $values[] = $this->serializer->deserialize($value_1, 'Docker\\API\\Model\\IPAMConfig', 'raw', $context);
                 }
@@ -42,9 +46,11 @@ class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements De
             }
             $object->setConfigs($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getDriver()) {
@@ -52,7 +58,7 @@ class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements De
         }
         $value = $object->getConfigs();
         if (is_array($object->getConfigs())) {
-            $values = array();
+            $values = [];
             foreach ($object->getConfigs() as $value_1) {
                 $values[] = $this->serializer->serialize($value_1, 'raw', $context);
             }
@@ -62,6 +68,7 @@ class SwarmIPAMOptionsNormalizer extends SerializerAwareNormalizer implements De
             $value = $object->getConfigs();
         }
         $data->{'Configs'} = $value;
+
         return $data;
     }
 }

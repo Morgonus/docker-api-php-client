@@ -20,6 +20,7 @@ class ContainerNode
      * @var string
      */
     protected $name;
+
     /**
      * @return string
      */
@@ -27,6 +28,7 @@ class ContainerNode
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -35,8 +37,10 @@ class ContainerNode
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class ContainerNode
     {
         return $this->ip;
     }
+
     /**
      * @param string $ip
      *
@@ -52,8 +57,10 @@ class ContainerNode
     public function setIp($ip = null)
     {
         $this->ip = $ip;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -61,6 +68,7 @@ class ContainerNode
     {
         return $this->addr;
     }
+
     /**
      * @param string $addr
      *
@@ -69,8 +77,10 @@ class ContainerNode
     public function setAddr($addr = null)
     {
         $this->addr = $addr;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -78,6 +88,7 @@ class ContainerNode
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -86,6 +97,7 @@ class ContainerNode
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
 }

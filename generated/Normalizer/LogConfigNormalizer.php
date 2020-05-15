@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class LogConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
         if ($type !== 'Docker\\API\\Model\\LogConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\LogConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\LogConfig();
         if (property_exists($data, 'Type')) {
@@ -31,7 +35,7 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
         if (property_exists($data, 'Config')) {
             $value = $data->{'Config'};
             if (is_object($data->{'Config'})) {
-                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Config'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -42,9 +46,11 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
             }
             $object->setConfig($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getType()) {
@@ -62,6 +68,7 @@ class LogConfigNormalizer extends SerializerAwareNormalizer implements Denormali
             $value = $object->getConfig();
         }
         $data->{'Config'} = $value;
+
         return $data;
     }
 }

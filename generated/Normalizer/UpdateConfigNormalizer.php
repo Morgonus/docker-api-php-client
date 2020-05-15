@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class UpdateConfigNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class UpdateConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         if ($type !== 'Docker\\API\\Model\\UpdateConfig') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\UpdateConfig) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\UpdateConfig();
         if (property_exists($data, 'Parallelism')) {
@@ -34,9 +38,11 @@ class UpdateConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         if (property_exists($data, 'FailureAction')) {
             $object->setFailureAction($data->{'FailureAction'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getParallelism()) {
@@ -48,6 +54,7 @@ class UpdateConfigNormalizer extends SerializerAwareNormalizer implements Denorm
         if (null !== $object->getFailureAction()) {
             $data->{'FailureAction'} = $object->getFailureAction();
         }
+
         return $data;
     }
 }

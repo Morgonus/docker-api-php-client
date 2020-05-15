@@ -12,6 +12,7 @@ class ErrorDetail
      * @var string
      */
     protected $message;
+
     /**
      * @return int
      */
@@ -19,6 +20,7 @@ class ErrorDetail
     {
         return $this->code;
     }
+
     /**
      * @param int $code
      *
@@ -27,8 +29,10 @@ class ErrorDetail
     public function setCode($code = null)
     {
         $this->code = $code;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class ErrorDetail
     {
         return $this->message;
     }
+
     /**
      * @param string $message
      *
@@ -44,6 +49,7 @@ class ErrorDetail
     public function setMessage($message = null)
     {
         $this->message = $message;
+
         return $this;
     }
 }

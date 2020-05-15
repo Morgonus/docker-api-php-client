@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class TaskSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class TaskSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if ($type !== 'Docker\\API\\Model\\TaskSpec') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\TaskSpec) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\TaskSpec();
         if (property_exists($data, 'ContainerSpec')) {
@@ -37,9 +41,11 @@ class TaskSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'Placement')) {
             $object->setPlacement($this->serializer->deserialize($data->{'Placement'}, 'Docker\\API\\Model\\TaskSpecPlacement', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getContainerSpec()) {
@@ -54,6 +60,7 @@ class TaskSpecNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (null !== $object->getPlacement()) {
             $data->{'Placement'} = $this->serializer->serialize($object->getPlacement(), 'raw', $context);
         }
+
         return $data;
     }
 }

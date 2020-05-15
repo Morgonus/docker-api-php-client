@@ -28,6 +28,7 @@ class SwarmNetworkSpec
      * @var SwarmIPAMOptions
      */
     protected $iPAM;
+
     /**
      * @return string
      */
@@ -35,6 +36,7 @@ class SwarmNetworkSpec
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -43,8 +45,10 @@ class SwarmNetworkSpec
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -52,6 +56,7 @@ class SwarmNetworkSpec
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -60,8 +65,10 @@ class SwarmNetworkSpec
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
+
     /**
      * @return Driver
      */
@@ -69,6 +76,7 @@ class SwarmNetworkSpec
     {
         return $this->driverConfiguration;
     }
+
     /**
      * @param Driver $driverConfiguration
      *
@@ -77,8 +85,10 @@ class SwarmNetworkSpec
     public function setDriverConfiguration(Driver $driverConfiguration = null)
     {
         $this->driverConfiguration = $driverConfiguration;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -86,6 +96,7 @@ class SwarmNetworkSpec
     {
         return $this->iPv6Enabled;
     }
+
     /**
      * @param bool $iPv6Enabled
      *
@@ -94,8 +105,10 @@ class SwarmNetworkSpec
     public function setIPv6Enabled($iPv6Enabled = null)
     {
         $this->iPv6Enabled = $iPv6Enabled;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -103,6 +116,7 @@ class SwarmNetworkSpec
     {
         return $this->internal;
     }
+
     /**
      * @param bool $internal
      *
@@ -111,8 +125,10 @@ class SwarmNetworkSpec
     public function setInternal($internal = null)
     {
         $this->internal = $internal;
+
         return $this;
     }
+
     /**
      * @return SwarmIPAMOptions
      */
@@ -120,6 +136,7 @@ class SwarmNetworkSpec
     {
         return $this->iPAM;
     }
+
     /**
      * @param SwarmIPAMOptions $iPAM
      *
@@ -128,6 +145,7 @@ class SwarmNetworkSpec
     public function setIPAM(SwarmIPAMOptions $iPAM = null)
     {
         $this->iPAM = $iPAM;
+
         return $this;
     }
 }

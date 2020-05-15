@@ -8,6 +8,7 @@ class SwarmConfigSpecDispatcher
      * @var int
      */
     protected $heartbeatPeriod;
+
     /**
      * @return int
      */
@@ -15,6 +16,7 @@ class SwarmConfigSpecDispatcher
     {
         return $this->heartbeatPeriod;
     }
+
     /**
      * @param int $heartbeatPeriod
      *
@@ -23,6 +25,7 @@ class SwarmConfigSpecDispatcher
     public function setHeartbeatPeriod($heartbeatPeriod = null)
     {
         $this->heartbeatPeriod = $heartbeatPeriod;
+
         return $this;
     }
 }

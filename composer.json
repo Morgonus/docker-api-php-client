@@ -5,7 +5,8 @@
     "description": "A Docker PHP client",
     "autoload": {
         "psr-4": {
-            "Docker\\": "src/"
+            "Docker\\": "src/",
+            "Docker\\API\\": "generated/"
         }
     },
     "autoload-dev": {
@@ -14,38 +15,26 @@
         }
     },
     "require": {
-        "php": ">=7.1",
-        "docker-php/docker-php-api": "4.1.*",
-        "guzzlehttp/psr7": "^1.2",
-        "php-http/client-common": "^1.6",
-        "php-http/socket-client": "^1.3",
+        "php": ">=5.4",
+        "symfony/filesystem": "^2.3 || ^3.0",
+        "symfony/process": "^2.3 || ^3.0",
+        "jane/open-api": "^1.3",
+        "php-http/socket-client": "^1.0",
+        "php-http/client-common": "^1.1",
         "php-http/message": "^1.0",
-        "symfony/filesystem": "^2.3 || ^3.0 || ^4.0",
-        "symfony/process": "^2.3 || ^3.0 || ^4.0"
-    },
-    "suggest": {
-        "php-http/httplug-bundle": "For integration with Symfony",
-        "amphp/artax": "To use the async api"
+        "guzzlehttp/psr7": "^1.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0",
-        "friendsofphp/php-cs-fixer": "2.8.1",
-        "amphp/artax": "^3.0",
-        "amphp/socket": "^0.10.5"
-    },
-    "conflict": {
-        "amphp/socket": "<0.10.5",
-        "amphp/artax": "<3.0"
+        "phpunit/phpunit": "^4.7",
+        "friendsofphp/php-cs-fixer": "^2.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-ci": "vendor/bin/phpunit --coverage-clover build/coverage.xml",
-        "lint": "vendor/bin/php-cs-fixer fix --dry-run --verbose --diff",
-        "lint-fix": "vendor/bin/php-cs-fixer fix --verbose"
+        "test-ci": "vendor/bin/phpunit --coverage-clover build/coverage.xml"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.25-dev"
+            "dev-master": "1.24-dev"
         }
     },
     "prefer-stable": true,

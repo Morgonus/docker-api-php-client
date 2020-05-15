@@ -12,6 +12,7 @@ class ExecCreateResult
      * @var string[]|null
      */
     protected $warnings;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class ExecCreateResult
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -27,8 +29,10 @@ class ExecCreateResult
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -36,6 +40,7 @@ class ExecCreateResult
     {
         return $this->warnings;
     }
+
     /**
      * @param string[]|null $warnings
      *
@@ -44,6 +49,7 @@ class ExecCreateResult
     public function setWarnings($warnings = null)
     {
         $this->warnings = $warnings;
+
         return $this;
     }
 }

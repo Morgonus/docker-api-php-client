@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class AnnotationsNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class AnnotationsNormalizer extends SerializerAwareNormalizer implements Denorma
         if ($type !== 'Docker\\API\\Model\\Annotations') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\Annotations) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\Annotations();
         if (property_exists($data, 'Name')) {
@@ -31,7 +35,7 @@ class AnnotationsNormalizer extends SerializerAwareNormalizer implements Denorma
         if (property_exists($data, 'Labels')) {
             $value = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -42,9 +46,11 @@ class AnnotationsNormalizer extends SerializerAwareNormalizer implements Denorma
             }
             $object->setLabels($value);
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -62,6 +68,7 @@ class AnnotationsNormalizer extends SerializerAwareNormalizer implements Denorma
             $value = $object->getLabels();
         }
         $data->{'Labels'} = $value;
+
         return $data;
     }
 }

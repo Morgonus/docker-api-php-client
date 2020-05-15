@@ -20,6 +20,7 @@ class Registry
      * @var bool
      */
     protected $secure;
+
     /**
      * @return string[]|null
      */
@@ -27,6 +28,7 @@ class Registry
     {
         return $this->mirrors;
     }
+
     /**
      * @param string[]|null $mirrors
      *
@@ -35,8 +37,10 @@ class Registry
     public function setMirrors($mirrors = null)
     {
         $this->mirrors = $mirrors;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -44,6 +48,7 @@ class Registry
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -52,8 +57,10 @@ class Registry
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -61,6 +68,7 @@ class Registry
     {
         return $this->official;
     }
+
     /**
      * @param bool $official
      *
@@ -69,8 +77,10 @@ class Registry
     public function setOfficial($official = null)
     {
         $this->official = $official;
+
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -78,6 +88,7 @@ class Registry
     {
         return $this->secure;
     }
+
     /**
      * @param bool $secure
      *
@@ -86,6 +97,7 @@ class Registry
     public function setSecure($secure = null)
     {
         $this->secure = $secure;
+
         return $this;
     }
 }

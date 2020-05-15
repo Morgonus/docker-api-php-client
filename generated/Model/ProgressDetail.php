@@ -12,6 +12,7 @@ class ProgressDetail
      * @var int
      */
     protected $message;
+
     /**
      * @return int
      */
@@ -19,6 +20,7 @@ class ProgressDetail
     {
         return $this->code;
     }
+
     /**
      * @param int $code
      *
@@ -27,8 +29,10 @@ class ProgressDetail
     public function setCode($code = null)
     {
         $this->code = $code;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -36,6 +40,7 @@ class ProgressDetail
     {
         return $this->message;
     }
+
     /**
      * @param int $message
      *
@@ -44,6 +49,7 @@ class ProgressDetail
     public function setMessage($message = null)
     {
         $this->message = $message;
+
         return $this;
     }
 }

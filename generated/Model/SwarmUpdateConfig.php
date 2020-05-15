@@ -28,6 +28,7 @@ class SwarmUpdateConfig
      * @var SwarmJoinTokens
      */
     protected $joinTokens;
+
     /**
      * @return string
      */
@@ -35,6 +36,7 @@ class SwarmUpdateConfig
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -43,8 +45,10 @@ class SwarmUpdateConfig
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return SwarmConfigSpecOrchestration
      */
@@ -52,6 +56,7 @@ class SwarmUpdateConfig
     {
         return $this->orchestration;
     }
+
     /**
      * @param SwarmConfigSpecOrchestration $orchestration
      *
@@ -60,8 +65,10 @@ class SwarmUpdateConfig
     public function setOrchestration(SwarmConfigSpecOrchestration $orchestration = null)
     {
         $this->orchestration = $orchestration;
+
         return $this;
     }
+
     /**
      * @return SwarmConfigSpecRaft
      */
@@ -69,6 +76,7 @@ class SwarmUpdateConfig
     {
         return $this->raft;
     }
+
     /**
      * @param SwarmConfigSpecRaft $raft
      *
@@ -77,8 +85,10 @@ class SwarmUpdateConfig
     public function setRaft(SwarmConfigSpecRaft $raft = null)
     {
         $this->raft = $raft;
+
         return $this;
     }
+
     /**
      * @return SwarmConfigSpecDispatcher
      */
@@ -86,6 +96,7 @@ class SwarmUpdateConfig
     {
         return $this->dispatcher;
     }
+
     /**
      * @param SwarmConfigSpecDispatcher $dispatcher
      *
@@ -94,8 +105,10 @@ class SwarmUpdateConfig
     public function setDispatcher(SwarmConfigSpecDispatcher $dispatcher = null)
     {
         $this->dispatcher = $dispatcher;
+
         return $this;
     }
+
     /**
      * @return SwarmConfigSpecCAConfig
      */
@@ -103,6 +116,7 @@ class SwarmUpdateConfig
     {
         return $this->cAConfig;
     }
+
     /**
      * @param SwarmConfigSpecCAConfig $cAConfig
      *
@@ -111,8 +125,10 @@ class SwarmUpdateConfig
     public function setCAConfig(SwarmConfigSpecCAConfig $cAConfig = null)
     {
         $this->cAConfig = $cAConfig;
+
         return $this;
     }
+
     /**
      * @return SwarmJoinTokens
      */
@@ -120,6 +136,7 @@ class SwarmUpdateConfig
     {
         return $this->joinTokens;
     }
+
     /**
      * @param SwarmJoinTokens $joinTokens
      *
@@ -128,6 +145,7 @@ class SwarmUpdateConfig
     public function setJoinTokens(SwarmJoinTokens $joinTokens = null)
     {
         $this->joinTokens = $joinTokens;
+
         return $this;
     }
 }

@@ -16,6 +16,7 @@ class Device
      * @var string
      */
     protected $cgroupPermissions;
+
     /**
      * @return string
      */
@@ -23,6 +24,7 @@ class Device
     {
         return $this->pathOnHost;
     }
+
     /**
      * @param string $pathOnHost
      *
@@ -31,8 +33,10 @@ class Device
     public function setPathOnHost($pathOnHost = null)
     {
         $this->pathOnHost = $pathOnHost;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -40,6 +44,7 @@ class Device
     {
         return $this->pathInContainer;
     }
+
     /**
      * @param string $pathInContainer
      *
@@ -48,8 +53,10 @@ class Device
     public function setPathInContainer($pathInContainer = null)
     {
         $this->pathInContainer = $pathInContainer;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -57,6 +64,7 @@ class Device
     {
         return $this->cgroupPermissions;
     }
+
     /**
      * @param string $cgroupPermissions
      *
@@ -65,6 +73,7 @@ class Device
     public function setCgroupPermissions($cgroupPermissions = null)
     {
         $this->cgroupPermissions = $cgroupPermissions;
+
         return $this;
     }
 }

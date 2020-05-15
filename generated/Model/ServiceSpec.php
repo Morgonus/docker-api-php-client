@@ -32,6 +32,7 @@ class ServiceSpec
      * @var string
      */
     protected $endpointSpec;
+
     /**
      * @return string
      */
@@ -39,6 +40,7 @@ class ServiceSpec
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -47,8 +49,10 @@ class ServiceSpec
     public function setName($name = null)
     {
         $this->name = $name;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -56,6 +60,7 @@ class ServiceSpec
     {
         return $this->labels;
     }
+
     /**
      * @param string[]|null $labels
      *
@@ -64,8 +69,10 @@ class ServiceSpec
     public function setLabels($labels = null)
     {
         $this->labels = $labels;
+
         return $this;
     }
+
     /**
      * @return TaskSpec
      */
@@ -73,6 +80,7 @@ class ServiceSpec
     {
         return $this->taskTemplate;
     }
+
     /**
      * @param TaskSpec $taskTemplate
      *
@@ -81,8 +89,10 @@ class ServiceSpec
     public function setTaskTemplate(TaskSpec $taskTemplate = null)
     {
         $this->taskTemplate = $taskTemplate;
+
         return $this;
     }
+
     /**
      * @return ServiceSpecMode
      */
@@ -90,6 +100,7 @@ class ServiceSpec
     {
         return $this->mode;
     }
+
     /**
      * @param ServiceSpecMode $mode
      *
@@ -98,8 +109,10 @@ class ServiceSpec
     public function setMode(ServiceSpecMode $mode = null)
     {
         $this->mode = $mode;
+
         return $this;
     }
+
     /**
      * @return UpdateConfig
      */
@@ -107,6 +120,7 @@ class ServiceSpec
     {
         return $this->updateConfig;
     }
+
     /**
      * @param UpdateConfig $updateConfig
      *
@@ -115,8 +129,10 @@ class ServiceSpec
     public function setUpdateConfig(UpdateConfig $updateConfig = null)
     {
         $this->updateConfig = $updateConfig;
+
         return $this;
     }
+
     /**
      * @return NetworkAttachmentConfig[]|null
      */
@@ -124,6 +140,7 @@ class ServiceSpec
     {
         return $this->networks;
     }
+
     /**
      * @param NetworkAttachmentConfig[]|null $networks
      *
@@ -132,8 +149,10 @@ class ServiceSpec
     public function setNetworks($networks = null)
     {
         $this->networks = $networks;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -141,6 +160,7 @@ class ServiceSpec
     {
         return $this->endpointSpec;
     }
+
     /**
      * @param string $endpointSpec
      *
@@ -149,6 +169,7 @@ class ServiceSpec
     public function setEndpointSpec($endpointSpec = null)
     {
         $this->endpointSpec = $endpointSpec;
+
         return $this;
     }
 }

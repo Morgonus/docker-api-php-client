@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SystemInformationNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if ($type !== 'Docker\\API\\Model\\SystemInformation') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SystemInformation) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SystemInformation();
         if (property_exists($data, 'Architecture')) {
@@ -67,11 +71,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'DriverStatus')) {
             $value = $data->{'DriverStatus'};
             if (is_array($data->{'DriverStatus'})) {
-                $values = array();
+                $values = [];
                 foreach ($data->{'DriverStatus'} as $value_1) {
                     $value_2 = $value_1;
                     if (is_array($value_1)) {
-                        $values_1 = array();
+                        $values_1 = [];
                         foreach ($value_1 as $value_3) {
                             $values_1[] = $value_3;
                         }
@@ -92,11 +96,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'SystemStatus')) {
             $value_4 = $data->{'SystemStatus'};
             if (is_array($data->{'SystemStatus'})) {
-                $values_2 = array();
+                $values_2 = [];
                 foreach ($data->{'SystemStatus'} as $value_5) {
                     $value_6 = $value_5;
                     if (is_array($value_5)) {
-                        $values_3 = array();
+                        $values_3 = [];
                         foreach ($value_5 as $value_7) {
                             $values_3[] = $value_7;
                         }
@@ -150,7 +154,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'Labels')) {
             $value_8 = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values_4 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values_4 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_9) {
                     $values_4[$key] = $value_9;
                 }
@@ -200,7 +204,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'SecurityOptions')) {
             $value_10 = $data->{'SecurityOptions'};
             if (is_array($data->{'SecurityOptions'})) {
-                $values_5 = array();
+                $values_5 = [];
                 foreach ($data->{'SecurityOptions'} as $value_11) {
                     $values_5[] = $value_11;
                 }
@@ -220,9 +224,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'ServerVersion')) {
             $object->setServerVersion($data->{'ServerVersion'});
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getArchitecture()) {
@@ -266,11 +272,11 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         $value = $object->getDriverStatus();
         if (is_array($object->getDriverStatus())) {
-            $values = array();
+            $values = [];
             foreach ($object->getDriverStatus() as $value_1) {
                 $value_2 = $value_1;
                 if (is_array($value_1)) {
-                    $values_1 = array();
+                    $values_1 = [];
                     foreach ($value_1 as $value_3) {
                         $values_1[] = $value_3;
                     }
@@ -287,13 +293,13 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
             $value = $object->getDriverStatus();
         }
         $data->{'DriverStatus'} = $value;
-        $value_4 = $object->getSystemStatus();
+        $value_4                = $object->getSystemStatus();
         if (is_array($object->getSystemStatus())) {
-            $values_2 = array();
+            $values_2 = [];
             foreach ($object->getSystemStatus() as $value_5) {
                 $value_6 = $value_5;
                 if (is_array($value_5)) {
-                    $values_3 = array();
+                    $values_3 = [];
                     foreach ($value_5 as $value_7) {
                         $values_3[] = $value_7;
                     }
@@ -393,7 +399,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         }
         $value_10 = $object->getSecurityOptions();
         if (is_array($object->getSecurityOptions())) {
-            $values_5 = array();
+            $values_5 = [];
             foreach ($object->getSecurityOptions() as $value_11) {
                 $values_5[] = $value_11;
             }
@@ -412,6 +418,7 @@ class SystemInformationNormalizer extends SerializerAwareNormalizer implements D
         if (null !== $object->getServerVersion()) {
             $data->{'ServerVersion'} = $object->getServerVersion();
         }
+
         return $data;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Docker\API\Normalizer;
 
-use Joli\Jane\Runtime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+
 class SwarmNetworkSpecNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -13,16 +13,20 @@ class SwarmNetworkSpecNormalizer extends SerializerAwareNormalizer implements De
         if ($type !== 'Docker\\API\\Model\\SwarmNetworkSpec') {
             return false;
         }
+
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Docker\API\Model\SwarmNetworkSpec) {
             return true;
         }
+
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = array())
+
+    public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Docker\API\Model\SwarmNetworkSpec();
         if (property_exists($data, 'Name')) {
@@ -31,7 +35,7 @@ class SwarmNetworkSpecNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'Labels')) {
             $value = $data->{'Labels'};
             if (is_object($data->{'Labels'})) {
-                $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+                $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
                 foreach ($data->{'Labels'} as $key => $value_1) {
                     $values[$key] = $value_1;
                 }
@@ -54,9 +58,11 @@ class SwarmNetworkSpecNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'IPAM')) {
             $object->setIPAM($this->serializer->deserialize($data->{'IPAM'}, 'Docker\\API\\Model\\SwarmIPAMOptions', 'raw', $context));
         }
+
         return $object;
     }
-    public function normalize($object, $format = null, array $context = array())
+
+    public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getName()) {
@@ -86,6 +92,7 @@ class SwarmNetworkSpecNormalizer extends SerializerAwareNormalizer implements De
         if (null !== $object->getIPAM()) {
             $data->{'IPAM'} = $this->serializer->serialize($object->getIPAM(), 'raw', $context);
         }
+
         return $data;
     }
 }

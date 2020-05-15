@@ -12,6 +12,7 @@ class NetworkAttachmentConfig
      * @var string[]|null
      */
     protected $aliases;
+
     /**
      * @return string
      */
@@ -19,6 +20,7 @@ class NetworkAttachmentConfig
     {
         return $this->target;
     }
+
     /**
      * @param string $target
      *
@@ -27,8 +29,10 @@ class NetworkAttachmentConfig
     public function setTarget($target = null)
     {
         $this->target = $target;
+
         return $this;
     }
+
     /**
      * @return string[]|null
      */
@@ -36,6 +40,7 @@ class NetworkAttachmentConfig
     {
         return $this->aliases;
     }
+
     /**
      * @param string[]|null $aliases
      *
@@ -44,6 +49,7 @@ class NetworkAttachmentConfig
     public function setAliases($aliases = null)
     {
         $this->aliases = $aliases;
+
         return $this;
     }
 }

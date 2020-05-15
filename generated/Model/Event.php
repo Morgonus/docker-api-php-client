@@ -24,6 +24,7 @@ class Event
      * @var int
      */
     protected $timeNano;
+
     /**
      * @return string
      */
@@ -31,6 +32,7 @@ class Event
     {
         return $this->status;
     }
+
     /**
      * @param string $status
      *
@@ -39,8 +41,10 @@ class Event
     public function setStatus($status = null)
     {
         $this->status = $status;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -48,6 +52,7 @@ class Event
     {
         return $this->id;
     }
+
     /**
      * @param string $id
      *
@@ -56,8 +61,10 @@ class Event
     public function setId($id = null)
     {
         $this->id = $id;
+
         return $this;
     }
+
     /**
      * @return string
      */
@@ -65,6 +72,7 @@ class Event
     {
         return $this->from;
     }
+
     /**
      * @param string $from
      *
@@ -73,8 +81,10 @@ class Event
     public function setFrom($from = null)
     {
         $this->from = $from;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -82,6 +92,7 @@ class Event
     {
         return $this->time;
     }
+
     /**
      * @param int $time
      *
@@ -90,8 +101,10 @@ class Event
     public function setTime($time = null)
     {
         $this->time = $time;
+
         return $this;
     }
+
     /**
      * @return int
      */
@@ -99,6 +112,7 @@ class Event
     {
         return $this->timeNano;
     }
+
     /**
      * @param int $timeNano
      *
@@ -107,6 +121,7 @@ class Event
     public function setTimeNano($timeNano = null)
     {
         $this->timeNano = $timeNano;
+
         return $this;
     }
 }
