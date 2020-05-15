@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Docker\Tests;
 
 use Docker\Docker;
-use PHPUnit_Framework_TestCase;
 
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     private static $docker;
 
-    public static function getDocker()
+    public static function getDocker(): Docker
     {
         if (null === self::$docker) {
-            self::$docker = new Docker();
+            self::$docker = Docker::create();
         }
 
         return self::$docker;
