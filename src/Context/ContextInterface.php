@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Docker\Context;
 
 /**
- * Docker\Context\ContextInterface.
+ * Docker\Context\ContextInterface
  */
 interface ContextInterface
 {
     /**
      * Whether the Context should be streamed or not.
      *
-     * @return bool
+     * @return boolean
      */
     public function isStreamed();
 

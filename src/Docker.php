@@ -1,99 +1,243 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Docker;
 
-use Docker\API\Client;
-use Docker\API\Model\AuthConfig;
-use Docker\Endpoint\ContainerAttach;
-use Docker\Endpoint\ContainerAttachWebsocket;
-use Docker\Endpoint\ContainerLogs;
-use Docker\Endpoint\ExecStart;
-use Docker\Endpoint\ImageBuild;
-use Docker\Endpoint\ImageCreate;
-use Docker\Endpoint\ImagePush;
-use Docker\Endpoint\SystemEvents;
+use Docker\API\Normalizer\NormalizerFactory;
+use Docker\Manager\ContainerManager;
+use Docker\Manager\ExecManager;
+use Docker\Manager\ImageManager;
+use Docker\Manager\MiscManager;
+use Docker\Manager\NetworkManager;
+use Docker\Manager\NodeManager;
+use Docker\Manager\ServiceManager;
+use Docker\Manager\SwarmManager;
+use Docker\Manager\TaskManager;
+use Docker\Manager\VolumeManager;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
+use Joli\Jane\Encoder\RawEncoder;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Serializer;
 
 /**
- * Docker\Docker.
+ * Docker\Docker
  */
-class Docker extends Client
+class Docker
 {
     /**
-     * {@inheritdoc}
+     * @var HttpClient
      */
-    public function containerAttach(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ContainerAttach($id, $queryParameters), $fetch);
-    }
+    private $httpClient;
 
     /**
-     * {@inheritdoc}
+     * @var Serializer
      */
-    public function containerAttachWebsocket(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ContainerAttachWebsocket($id, $queryParameters), $fetch);
-    }
+    private $serializer;
 
     /**
-     * {@inheritdoc}
+     * @var MessageFactory
      */
-    public function containerLogs(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ContainerLogs($id, $queryParameters), $fetch);
-    }
+    private $messageFactory;
 
     /**
-     * {@inheritdoc}
+     * @var ContainerManager
      */
-    public function execStart(string $id, \Docker\API\Model\ExecIdStartPostBody $execStartConfig, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ExecStart($id, $execStartConfig), $fetch);
-    }
+    private $containerManager;
 
     /**
-     * {@inheritdoc}
+     * @var ImageManager
      */
-    public function imageBuild($inputStream, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ImageBuild($inputStream, $queryParameters, $headerParameters), $fetch);
-    }
+    private $imageManager;
 
     /**
-     * {@inheritdoc}
+     * @var MiscManager
      */
-    public function imageCreate(string $inputImage, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new ImageCreate($inputImage, $queryParameters, $headerParameters), $fetch);
-    }
+    private $miscManager;
 
     /**
-     * {@inheritdoc}
+     * @var VolumeManager
      */
-    public function imagePush(string $name, array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    private $volumeManager;
+
+    /**
+     * @var NetworkManager
+     */
+    private $networkManager;
+
+    /**
+     * @var NodeManager
+     */
+    private $nodeManager;
+
+    /**
+     * @var ServiceManager
+     */
+    private $serviceManager;
+
+    /**
+     * @var SwarmManager
+     */
+    private $swarmManager;
+
+    /**
+     * @var TaskManager
+     */
+    private $taskManager;
+
+    /**
+     * @var ExecManager
+     */
+    private $execManager;
+
+    /**
+     * @param HttpClient|null     $httpClient     Http client to use with Docker
+     * @param Serializer|null     $serializer     Deserialize docker response into php objects
+     * @param MessageFactory|null $messageFactory How to create docker request (in PSR7)
+     */
+    public function __construct(HttpClient $httpClient = null, Serializer $serializer = null, MessageFactory $messageFactory = null)
     {
-        if (isset($headerParameters['X-Registry-Auth']) && $headerParameters['X-Registry-Auth'] instanceof AuthConfig) {
-            $headerParameters['X-Registry-Auth'] = \base64_encode($this->serializer->serialize($headerParameters['X-Registry-Auth'], 'json'));
+        $this->httpClient = $httpClient ?: DockerClient::createFromEnv();
+
+        if ($serializer === null) {
+            $serializer = new Serializer(
+                NormalizerFactory::create(),
+                [
+                    new JsonEncoder(
+                        new JsonEncode(),
+                        new JsonDecode()
+                    ),
+                    new RawEncoder()
+                ]
+            );
         }
 
-        return $this->executePsr7Endpoint(new ImagePush($name, $queryParameters, $headerParameters), $fetch);
+        if ($messageFactory === null) {
+            $messageFactory = new MessageFactory\GuzzleMessageFactory();
+        }
+
+        $this->serializer = $serializer;
+        $this->messageFactory = $messageFactory;
     }
 
     /**
-     * {@inheritdoc}
+     * @return ContainerManager
      */
-    public function systemEvents(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function getContainerManager()
     {
-        return $this->executePsr7Endpoint(new SystemEvents($queryParameters), $fetch);
-    }
-
-    public static function create($httpClient = null)
-    {
-        if (null === $httpClient) {
-            $httpClient = DockerClientFactory::createFromEnv();
+        if (null === $this->containerManager) {
+            $this->containerManager = new ContainerManager($this->httpClient, $this->messageFactory, $this->serializer);
         }
 
-        return parent::create($httpClient);
+        return $this->containerManager;
+    }
+
+    /**
+     * @return ImageManager
+     */
+    public function getImageManager()
+    {
+        if (null === $this->imageManager) {
+            $this->imageManager = new ImageManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->imageManager;
+    }
+
+    /**
+     * @return MiscManager
+     */
+    public function getMiscManager()
+    {
+        if (null === $this->miscManager) {
+            $this->miscManager = new MiscManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->miscManager;
+    }
+
+    /**
+     * @return ExecManager
+     */
+    public function getExecManager()
+    {
+        if (null === $this->execManager) {
+            $this->execManager = new ExecManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->execManager;
+    }
+
+    /**
+     * @return VolumeManager
+     */
+    public function getVolumeManager()
+    {
+        if (null === $this->volumeManager) {
+            $this->volumeManager = new VolumeManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->volumeManager;
+    }
+
+    /**
+     * @return NetworkManager
+     */
+    public function getNetworkManager()
+    {
+        if (null === $this->networkManager) {
+            $this->networkManager = new NetworkManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->networkManager;
+    }
+
+    /**
+     * @return NodeManager
+     */
+    public function getNodeManager()
+    {
+        if (null === $this->nodeManager) {
+            $this->nodeManager = new NodeManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->nodeManager;
+    }
+
+    /**
+     * @return ServiceManager
+     */
+    public function getServiceManager()
+    {
+        if (null === $this->serviceManager) {
+            $this->serviceManager = new ServiceManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->serviceManager;
+    }
+
+    /**
+     * @return SwarmManager
+     */
+    public function getSwarmManager()
+    {
+        if (null === $this->swarmManager) {
+            $this->swarmManager = new SwarmManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->swarmManager;
+    }
+
+    /**
+     * @return TaskManager
+     */
+    public function getTaskManager()
+    {
+        if (null === $this->taskManager) {
+            $this->taskManager = new TaskManager($this->httpClient, $this->messageFactory, $this->serializer);
+        }
+
+        return $this->taskManager;
     }
 }
