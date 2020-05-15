@@ -89,18 +89,18 @@ class ImageManagerTest extends TestCase
     public function testPushStream()
     {
         $contextBuilder = new ContextBuilder();
-        $contextBuilder->from('ubuntu:precise');
+        $contextBuilder->from('ubuntu:latest');
         $contextBuilder->add('/test', 'test file content');
 
         $context = $contextBuilder->getContext();
         $this->getManager()->build($context->read(), ['t' => 'localhost:5000/test-image'], ImageManager::FETCH_OBJECT);
 
         $registryConfig = new AuthConfig();
-        $registryConfig->setServeraddress('localhost:5000');
+        $registryConfig->setServeraddress('127.0.0.1:5000');
+
         $pushImageStream = $this->getManager()->push('localhost:5000/test-image', [
             'X-Registry-Auth' => $registryConfig
         ], ImageManager::FETCH_STREAM);
-
         $this->assertInstanceOf('Docker\Stream\PushStream', $pushImageStream);
 
         $firstMessage = null;
@@ -111,8 +111,7 @@ class ImageManagerTest extends TestCase
             }
         });
         $pushImageStream->wait();
-
-        $this->assertContains("The push refers to a repository [localhost:5000/test-image]", $firstMessage);
+        $this->assertContains("The push refers to repository [localhost:5000/test-image]", $firstMessage);
     }
 
     public function testPushObject()
@@ -131,6 +130,6 @@ class ImageManagerTest extends TestCase
         ], ImageManager::FETCH_OBJECT);
 
         $this->assertInternalType('array', $pushImageInfos);
-        $this->assertContains("The push refers to a repository [localhost:5000/test-image]", $pushImageInfos[0]->getStatus());
+        $this->assertContains("The push refers to repository [localhost:5000/test-image]", $pushImageInfos[0]->getStatus());
     }
 }

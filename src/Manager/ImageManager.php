@@ -117,6 +117,7 @@ class ImageManager extends ImageResource
         $response = $this->httpClient->sendRequest($request);
 
         if (200 === $response->getStatusCode()) {
+
             if (self::FETCH_STREAM === $fetch) {
                 return new PushStream($response->getBody(), $this->serializer);
             }
@@ -133,7 +134,6 @@ class ImageManager extends ImageResource
                 return $pushImageInfoList;
             }
         }
-
         return $response;
     }
 }
