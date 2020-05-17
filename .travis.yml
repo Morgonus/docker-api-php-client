@@ -31,7 +31,7 @@ matrix:
       sudo: required
       services:
         - docker
-      env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true TEST_COMMAND="composer test-ci"
+      env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true TEST_COMMAND="composer test-ci SONAR=true"
 
 before_install:
   - sudo apt-cache madison docker-engine
@@ -59,6 +59,7 @@ script:
 after_success:
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
   - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.xml; fi
+  - if [[ "$SONAR" = true ]]; then /opt/sonar-scanner; fi
 
 after_script:
   - sudo cat /var/log/upstart/docker.log
