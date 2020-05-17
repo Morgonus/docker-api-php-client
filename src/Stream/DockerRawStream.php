@@ -29,6 +29,7 @@ class DockerRawStream
      * Add a callable to read stdin
      *
      * @param callable $callback
+     * @return void
      */
     public function onStdin(callable $callback)
     {
@@ -39,6 +40,7 @@ class DockerRawStream
      * Add a callable to read stdout
      *
      * @param callable $callback
+     * @return void
      */
     public function onStdout(callable $callback)
     {
@@ -49,6 +51,7 @@ class DockerRawStream
      * Add a callable to read stderr
      *
      * @param callable $callback
+     * @return void
      */
     public function onStderr(callable $callback)
     {
@@ -57,6 +60,7 @@ class DockerRawStream
 
     /**
      * Read a frame in the stream
+     * @return void
      */
     protected function readFrame()
     {
@@ -90,7 +94,7 @@ class DockerRawStream
     /**
      * Force to have something of the expected size (block)
      *
-     * @param $length
+     * @param int $length
      *
      * @return string
      */
@@ -107,6 +111,7 @@ class DockerRawStream
 
     /**
      * Wait for stream to finish and call callables if defined
+     * @return void
      */
     public function wait()
     {

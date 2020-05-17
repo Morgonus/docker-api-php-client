@@ -17,13 +17,16 @@ class AttachWebsocketStream
 
     public function __construct(StreamInterface $stream)
     {
-        $this->socket = $stream->detach();
+        /** @var resource $r */
+        $r =  $stream->detach();
+        $this->socket = $r;
     }
 
     /**
      * Send input to the container
      *
      * @param string $data Data to send
+     * @return void
      */
     public function write($data)
     {
@@ -42,8 +45,9 @@ class AttachWebsocketStream
 
         if ($frame['mask'] == 1) {
             for ($i = 0; $i < $frame['len']; $i++) {
+                $var = ($i % 4);
                 $frame['data'][$i]
-                    = chr(ord($frame['data']{$i}) ^ ord($frame['mask_key']{$i % 4}));
+                    = chr(ord($frame['data'][$i]) ^ ord($frame['mask_key'][$var]));
             }
         }
 
@@ -84,7 +88,7 @@ class AttachWebsocketStream
      * @param int     $waitMicroTime Time to wait in microseconds before return false
      * @param boolean $getFrame      Whether to return the frame of websocket or only the data
      *
-     * @return null|false|string|array Null for socket not available, false for no message, string for the last message and the frame array if $getFrame is set to true
+     * @return mixed
      */
     public function read($waitTime = 0, $waitMicroTime = 200000, $getFrame = false)
     {
@@ -134,7 +138,8 @@ class AttachWebsocketStream
         // Decode data if needed
         if ($frame['mask'] == 1) {
             for ($i = 0; $i < $frame['len']; $i++) {
-                $frame['data']{$i} = chr(ord($frame['data']{$i}) ^ ord($frame['mask_key']{$i % 4}));
+                $var = ($i % 4);
+                $frame['data'][$i]= chr(ord($frame['data'][$i]) ^ ord($frame['mask_key'][$var]));
             }
         }
 
@@ -148,7 +153,7 @@ class AttachWebsocketStream
     /**
      * Force to have something of the expected size (block)
      *
-     * @param $length
+     * @param int $length
      *
      * @return string
      */
@@ -166,12 +171,14 @@ class AttachWebsocketStream
     /**
      * Write to the socket
      *
-     * @param $data
+     * @param string $data
      *
      * @return int
      */
     private function socketWrite($data)
     {
-        return fwrite($this->socket, $data);
+        /** @var int $var */
+        $var =  fwrite($this->socket, $data);
+        return $var;
     }
 }

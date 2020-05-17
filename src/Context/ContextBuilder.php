@@ -27,7 +27,7 @@ class ContextBuilder
     private $files = [];
 
     /**
-     * @var \Symfony\Component\Filesystem\Filesystem
+     * @var Filesystem
      */
     private $fs;
 
@@ -47,7 +47,7 @@ class ContextBuilder
     private $entrypoint;
 
     /**
-     * @param \Symfony\Component\Filesystem\Filesystem
+     * @param Filesystem|null $fs
      */
     public function __construct(Filesystem $fs = null)
     {
@@ -60,7 +60,7 @@ class ContextBuilder
      *
      * @param string $format
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function setFormat($format)
     {
@@ -74,7 +74,7 @@ class ContextBuilder
      *
      * @param string $from From which image we start
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function from($from)
     {
@@ -88,7 +88,7 @@ class ContextBuilder
      *
      * @param string $command Command to execute
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function command($command)
     {
@@ -102,7 +102,7 @@ class ContextBuilder
      *
      * @param string $entrypoint The entrypoint
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function entrypoint($entrypoint)
     {
@@ -117,7 +117,7 @@ class ContextBuilder
      * @param string $path    Path wanted on the image
      * @param string $content Content of file
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function add($path, $content)
     {
@@ -131,7 +131,7 @@ class ContextBuilder
      *
      * @param string $command Command to run
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function run($command)
     {
@@ -146,7 +146,7 @@ class ContextBuilder
      * @param string $name Name of the environment variable
      * @param string $value Value of the environment variable
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function env($name, $value)
     {
@@ -161,7 +161,7 @@ class ContextBuilder
      * @param string $from Path of folder or file to copy
      * @param string $to Path of destination
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function copy($from, $to)
     {
@@ -175,7 +175,7 @@ class ContextBuilder
      *
      * @param string $workdir Working directory
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function workdir($workdir)
     {
@@ -189,7 +189,7 @@ class ContextBuilder
      *
      * @param int $port Port to expose
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function expose($port)
     {
@@ -203,7 +203,7 @@ class ContextBuilder
      *
      * @param string $user User to switch to
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function user($user)
     {
@@ -217,7 +217,7 @@ class ContextBuilder
      *
      * @param string $volume Volume path to add
      *
-     * @return \Docker\Context\ContextBuilder
+     * @return ContextBuilder
      */
     public function volume($volume)
     {
@@ -256,7 +256,7 @@ class ContextBuilder
      * Write docker file and associated files in a directory
      *
      * @param string $directory Target directory
-     *
+     * @return void
      * @void
      */
     private function write($directory)
@@ -318,8 +318,8 @@ class ContextBuilder
 
         if (!array_key_exists($hash, $this->files)) {
             $file = tempnam($directory, '');
-            $this->fs->dumpFile($file, $content);
-            $this->files[$hash] = basename($file);
+            $this->fs->dumpFile((string)$file, $content);
+            $this->files[$hash] = basename((string)$file);
         }
 
         return $this->files[$hash];
@@ -327,6 +327,7 @@ class ContextBuilder
 
     /**
      * Clean directory generated
+     * @return void
      */
     private function cleanDirectory()
     {

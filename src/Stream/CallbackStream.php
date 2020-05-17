@@ -6,8 +6,14 @@ use Psr\Http\Message\StreamInterface;
 
 abstract class CallbackStream
 {
+    /**
+     * @var StreamInterface
+     */
     protected $stream;
 
+    /**
+     * @var callable[]
+     */
     private $onNewFrameCallables = [];
 
     public function __construct(StreamInterface $stream)
@@ -19,6 +25,7 @@ abstract class CallbackStream
      * Called when there is a new frame from the stream
      *
      * @param callable $onNewFrame
+     * @return void
      */
     public function onFrame(callable $onNewFrame)
     {
@@ -34,6 +41,7 @@ abstract class CallbackStream
 
     /**
      * Wait for stream to finish and call callables if defined
+     * @return void
      */
     public function wait()
     {
@@ -52,6 +60,9 @@ abstract class CallbackStream
         }
     }
 
+    /**
+     * @return void
+     */
     public function closeAndRead()
     {
         $this->stream->close();

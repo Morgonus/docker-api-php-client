@@ -11,6 +11,7 @@ use Docker\Stream\BuildStream;
 use Docker\Stream\CreateImageStream;
 use Docker\Stream\PushStream;
 use Docker\Stream\TarStream;
+use Http\Client\HttpClient;
 use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
 use Psr\Http\Message\StreamInterface;
 
@@ -66,7 +67,7 @@ class ImageManager extends ImageResource
             $parameters['X-Registry-Auth'] = base64_encode($this->serializer->serialize($parameters['X-Registry-Auth'], 'json'));
         }
 
-        $response = parent::create($inputStream, $parameters, self::FETCH_RESPONSE);
+        $response = parent::create((string)$inputStream, $parameters, self::FETCH_RESPONSE);
 
         if (200 === $response->getStatusCode()) {
             if (self::FETCH_STREAM === $fetch) {
@@ -92,7 +93,7 @@ class ImageManager extends ImageResource
     /**
      * {@inheritdoc}
      *
-     * @return \Psr\Http\Message\ResponseInterface|PushImageInfo[]|CreateImageStream
+     * @return PushImageInfo[]|CreateImageStream|PushStream|\Psr\Http\Message\ResponseInterface
      */
     public function push($name, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
@@ -110,11 +111,11 @@ class ImageManager extends ImageResource
         $url      = $url . ('?' . $queryParam->buildQueryString($parameters));
 
         $headers  = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-
+        /** @var HttpClient $httpClient */
+        $httpClient = $this->httpClient;
         $body     = $queryParam->buildFormDataString($parameters);
-
         $request  = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $response = $this->httpClient->sendRequest($request);
+        $response = $httpClient->sendRequest($request);
 
         if (200 === $response->getStatusCode()) {
 

@@ -7,6 +7,9 @@ use Docker\Tests\TestCase;
 
 class ContextBuilderTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testRemovesFilesOnDestruct()
     {
         $contextBuilder = new ContextBuilder();
@@ -19,6 +22,9 @@ class ContextBuilderTest extends TestCase
         $this->assertFileNotExists($context->getDirectory().'/Dockerfile');
     }
 
+    /**
+     * @return void
+     */
     public function testWritesContextToDisk()
     {
         $contextBuilder = new ContextBuilder();
@@ -27,6 +33,9 @@ class ContextBuilderTest extends TestCase
         $this->assertFileExists($context->getDirectory().'/Dockerfile');
     }
 
+    /**
+     * @return void
+     */
     public function testHasDefaultFrom()
     {
         $contextBuilder = new ContextBuilder();
@@ -35,6 +44,9 @@ class ContextBuilderTest extends TestCase
         $this->assertStringEqualsFile($context->getDirectory().'/Dockerfile', 'FROM base');
     }
 
+    /**
+     * @return void
+     */
     public function testUsesCustomFrom()
     {
         $contextBuilder = new ContextBuilder();
@@ -45,6 +57,9 @@ class ContextBuilderTest extends TestCase
         $this->assertStringEqualsFile($context->getDirectory().'/Dockerfile', 'FROM ubuntu:precise');
     }
 
+    /**
+     * @return void
+     */
     public function testCreatesTmpDirectory()
     {
         $contextBuilder = new ContextBuilder();
@@ -53,6 +68,9 @@ class ContextBuilderTest extends TestCase
         $this->assertFileExists($context->getDirectory());
     }
 
+    /**
+     * @return void
+     */
     public function testWriteTmpFiles()
     {
         $contextBuilder = new ContextBuilder();
@@ -68,6 +86,9 @@ DOCKERFILE
         $this->assertStringEqualsFile($context->getDirectory().'/'.$filename, 'random content');
     }
 
+    /**
+     * @return void
+     */
     public function testWritesAddCommands()
     {
         $contextBuilder = new ContextBuilder();
@@ -83,6 +104,9 @@ DOCKERFILE
         );
     }
 
+    /**
+     * @return void
+     */
     public function testWritesRunCommands()
     {
         $contextBuilder = new ContextBuilder();
@@ -97,6 +121,9 @@ DOCKERFILE
         );
     }
 
+    /**
+     * @return void
+     */
     public function testWritesEnvCommands()
     {
         $contextBuilder = new ContextBuilder();
@@ -111,6 +138,9 @@ DOCKERFILE
         );
     }
 
+    /**
+     * @return void
+     */
     public function testWritesCopyCommands()
     {
         $contextBuilder = new ContextBuilder();
@@ -125,6 +155,9 @@ DOCKERFILE
         );
     }
 
+    /**
+     * @return void
+     */
     public function testWritesWorkdirCommands()
     {
         $contextBuilder = new ContextBuilder();
@@ -139,10 +172,13 @@ DOCKERFILE
         );
     }
 
+    /**
+     * @return void
+     */
     public function testWritesExposeCommands()
     {
         $contextBuilder = new ContextBuilder();
-        $contextBuilder->expose('80');
+        $contextBuilder->expose(80);
 
         $context  = $contextBuilder->getContext();
 

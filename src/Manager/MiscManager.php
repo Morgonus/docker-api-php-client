@@ -10,8 +10,11 @@ class MiscManager extends MiscResource
 {
     const FETCH_STREAM = 'stream';
 
+
     /**
-     * {@inheritdoc}
+     * @param array $parameters
+     * @param string $fetch
+     * @return array|EventStream|\Psr\Http\Message\ResponseInterface
      */
     public function getEvents($parameters = [], $fetch = self::FETCH_OBJECT)
     {

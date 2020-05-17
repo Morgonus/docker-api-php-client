@@ -18,6 +18,7 @@ php:
 
 env:
   global:
+    - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
 
@@ -48,6 +49,7 @@ install:
 
 script:
   - $TEST_COMMAND
+  - $LINT_COMMAND
 
 after_success:
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi

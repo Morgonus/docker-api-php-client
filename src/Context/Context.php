@@ -20,7 +20,7 @@ class Context implements ContextInterface
     private $directory;
 
     /**
-     * @var process Tar process
+     * @var resource|false Tar process
      */
     private $process;
 
@@ -58,6 +58,7 @@ class Context implements ContextInterface
      * Set directory of Context
      *
      * @param string $directory Targeted directory
+     * @return void
      */
     public function setDirectory($directory)
     {
@@ -71,7 +72,7 @@ class Context implements ContextInterface
      */
     public function getDockerfileContent()
     {
-        return file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
+        return (string)file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
     }
 
     /**
@@ -116,10 +117,8 @@ class Context implements ContextInterface
      */
     public function toStream()
     {
-        if (!is_resource($this->process)) {
-            $this->process = proc_open("/usr/bin/env tar c .", [["pipe", "r"], ["pipe", "w"], ["pipe", "w"]], $pipes, $this->directory);
-            $this->stream  = $pipes[1];
-        }
+        $this->process = proc_open("/usr/bin/env tar c .", [["pipe", "r"], ["pipe", "w"], ["pipe", "w"]], $pipes, $this->directory);
+        $this->stream  = $pipes[1];
 
         return $this->stream;
     }

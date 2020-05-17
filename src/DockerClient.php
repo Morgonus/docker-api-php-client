@@ -20,7 +20,7 @@ class DockerClient implements HttpClient
      */
     private $httpClient;
 
-    public function __construct($socketClientOptions = [])
+    public function __construct(array $socketClientOptions = [])
     {
         $messageFactory = new GuzzleMessageFactory();
         $socketClient = new SocketHttpClient($messageFactory, $socketClientOptions);

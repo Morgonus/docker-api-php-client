@@ -8,6 +8,9 @@ use Symfony\Component\Process\Process;
 
 class ContextTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testReturnsValidTarContent()
     {
         $directory = __DIR__.DIRECTORY_SEPARATOR."context-test";
@@ -19,6 +22,9 @@ class ContextTest extends TestCase
         $this->assertEquals(strlen($process->getOutput()), strlen($context->toTar()));
     }
 
+    /**
+     * @return void
+     */
     public function testReturnsValidTarStream()
     {
         $directory = __DIR__.DIRECTORY_SEPARATOR."context-test";

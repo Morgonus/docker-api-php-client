@@ -3,7 +3,10 @@
 namespace Docker\Tests\Manager;
 
 use Docker\API\Model\ContainerConfig;
+use Docker\API\Model\ContainerCreateResult;
 use Docker\Manager\ContainerManager;
+use Docker\Stream\AttachWebsocketStream;
+use Docker\Stream\DockerRawStream;
 use Docker\Tests\TestCase;
 use Http\Client\Plugin\Exception\ClientErrorException;
 
@@ -21,6 +24,7 @@ class ContainerManagerTest extends TestCase
 
     /**
      * Be sure to have image before doing test
+     * @return void
      */
     public static function setUpBeforeClass()
     {
@@ -29,15 +33,22 @@ class ContainerManagerTest extends TestCase
         ]);
     }
 
+    /**
+     * @return void
+     */
     public function testAttach()
     {
         $containerConfig = new ContainerConfig();
         $containerConfig->setImage('busybox:latest');
         $containerConfig->setCmd(['echo', '-n', 'output']);
         $containerConfig->setAttachStdout(true);
-        $containerConfig->setLabels(new \ArrayObject(['docker-php-test' => 'true']));
+        /** @var string[] $r */
+        $r = new \ArrayObject(['docker-php-test' => 'true']);
+        $containerConfig->setLabels($r);
 
+        /** @var ContainerCreateResult $containerCreateResult */
         $containerCreateResult = $this->getManager()->create($containerConfig);
+        /** @var DockerRawStream $dockerRawStream */
         $dockerRawStream = $this->getManager()->attach($containerCreateResult->getId(), [
             'stream' => true,
             'stdout' => true,
@@ -56,6 +67,9 @@ class ContainerManagerTest extends TestCase
         $this->assertEquals("output", $stdoutFull);
     }
 
+    /**
+     * @return void
+     */
     public function testAttachWebsocket()
     {
         $containerConfig = new ContainerConfig();
@@ -66,9 +80,13 @@ class ContainerManagerTest extends TestCase
         $containerConfig->setAttachStdin(false);
         $containerConfig->setOpenStdin(true);
         $containerConfig->setTty(true);
-        $containerConfig->setLabels(new \ArrayObject(['docker-php-test' => 'true']));
+        /** @var string[] $r */
+        $r = new \ArrayObject(['docker-php-test' => 'true']);
+        $containerConfig->setLabels($r);
 
+        /** @var ContainerCreateResult $containerCreateResult */
         $containerCreateResult = $this->getManager()->create($containerConfig);
+        /** @var AttachWebsocketStream $webSocketStream */
         $webSocketStream = $this->getManager()->attachWebsocket($containerCreateResult->getId(), [
             'stream' => true,
             'stdout' => true,
@@ -80,9 +98,10 @@ class ContainerManagerTest extends TestCase
 
         // Read the bash first line
         $webSocketStream->read();
-
+        /** @var bool $read */
+        $read = $webSocketStream->read();
         // No output after that so it should be false
-        $this->assertFalse($webSocketStream->read());
+        $this->assertFalse($read);
 
         // Write something to the container
         $webSocketStream->write("echo test\n");
@@ -100,19 +119,26 @@ class ContainerManagerTest extends TestCase
         $webSocketStream->write("exit\n");
     }
 
+    /**
+     * @return  void
+     */
     public function testLogs()
     {
         $containerConfig = new ContainerConfig();
         $containerConfig->setImage('busybox:latest');
         $containerConfig->setCmd(['echo', '-n', 'output']);
         $containerConfig->setAttachStdout(true);
-        $containerConfig->setLabels(new \ArrayObject(['docker-php-test' => 'true']));
+        /** @var string[] $r */
+        $r = new \ArrayObject(['docker-php-test' => 'true']);
+        $containerConfig->setLabels($r);
 
+        /** @var ContainerCreateResult $containerCreateResult */
         $containerCreateResult = $this->getManager()->create($containerConfig);
 
         $this->getManager()->start($containerCreateResult->getId());
         $this->getManager()->wait($containerCreateResult->getId());
 
+        /** @var string[][] $logs */
         $logs = $this->getManager()->logs($containerCreateResult->getId(), [
             'stdout' => true,
             'stderr' => true,

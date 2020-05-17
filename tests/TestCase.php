@@ -7,8 +7,12 @@ use PHPUnit_Framework_TestCase;
 
 class TestCase extends PHPUnit_Framework_TestCase
 {
+    /** @var Docker $docker */
     private static $docker;
 
+    /**
+     * @return Docker
+     */
     public static function getDocker()
     {
         if (null === self::$docker) {
