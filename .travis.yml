@@ -31,7 +31,7 @@ matrix:
       sudo: required
       services:
         - docker
-      env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true TEST_COMMAND="composer test-ci SONAR=true"
+      env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true SONAR=true TEST_COMMAND="composer test-ci"
 
 before_install:
   - sudo apt-cache madison docker-engine
