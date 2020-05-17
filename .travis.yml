@@ -17,6 +17,7 @@ php:
 
 env:
   global:
+    - SONAR-COMMAND="/opt/sonar-scanner -Dsonar.projectKey=docker-php -Dsonar.sources=. -Dsonar.host.url=http://37.187.137.82:9050 -Dsonar.login=6e3f4e9a835c2b8e084dc3378167a446f1209372"
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
@@ -39,6 +40,10 @@ before_install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
   - sudo apt-get update
   - sudo apt-get install docker-ce
+  - sudo apt-get install unzip wget nodejs
+  - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+  - unzip sonar-scanner-cli-4.2.0.1873-linux.zip
+  - mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
   - travis_retry composer self-update
 
 install:
