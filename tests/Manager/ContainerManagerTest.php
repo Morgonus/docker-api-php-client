@@ -69,7 +69,7 @@ class ContainerManagerTest extends TestCase
         $containerConfig->setLabels(new \ArrayObject(['docker-php-test' => 'true']));
 
         $containerCreateResult = $this->getManager()->create($containerConfig);
-        $webSocketStream       = $this->getManager()->attachWebsocket($containerCreateResult->getId(), [
+        $webSocketStream = $this->getManager()->attachWebsocket($containerCreateResult->getId(), [
             'stream' => true,
             'stdout' => true,
             'stderr' => true,

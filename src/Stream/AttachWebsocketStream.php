@@ -42,7 +42,7 @@ class AttachWebsocketStream
 
         if ($frame['mask'] == 1) {
             for ($i = 0; $i < $frame['len']; $i++) {
-                $frame['data']{$i}
+                $frame['data'][$i]
                     = chr(ord($frame['data']{$i}) ^ ord($frame['mask_key']{$i % 4}));
             }
         }
