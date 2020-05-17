@@ -17,7 +17,7 @@ php:
 
 env:
   global:
-    - SONAR-COMMAND="/opt/sonar-scanner -Dsonar.projectKey=docker-php -Dsonar.sources=. -Dsonar.host.url=http://37.187.137.82:9050 -Dsonar.login=6e3f4e9a835c2b8e084dc3378167a446f1209372"
+    - SONAR-COMMAND="/opt/sonar-scanner"
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
