@@ -1,0 +1,6 @@
+projectKey=docker-php
+serverUrl=http://37.187.137.82:9050
+serverVersion=8.3.1.34397
+dashboardUrl=http://37.187.137.82:9050/dashboard?id=docker-php
+ceTaskId=AXIh8wZ_jyJJTVpwo-7k
+ceTaskUrl=http://37.187.137.82:9050/api/ce/task?id=AXIh8wZ_jyJJTVpwo-7k

@@ -49,6 +49,7 @@ install:
 script:
   - $TEST_COMMAND
   - $LINT_COMMAND
+  - $SONAR_COMMAND
 
 after_success:
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
