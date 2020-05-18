@@ -115,17 +115,23 @@ class HostConfig
      */
     protected $deviceCgroupRules;
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @var int
+     * @var DeviceRequest[]
      */
-    protected $diskQuota;
+    protected $deviceRequests;
     /**
      * Kernel memory limit in bytes.
      *
      * @var int
      */
     protected $kernelMemory;
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @var int
+     */
+    protected $kernelMemoryTCP;
     /**
      * Memory soft limit in bytes.
      *
@@ -163,7 +169,7 @@ class HostConfig
      */
     protected $init;
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @var int
      */
@@ -199,7 +205,7 @@ class HostConfig
      */
     protected $iOMaximumBandwidth;
     /**
-     * A list of volume bindings for this container. Each volume binding is a string in one of these forms:.
+     * A list of volume bindings for this container. Each volume binding.
      *
      * @var string[]
      */
@@ -259,13 +265,19 @@ class HostConfig
      */
     protected $mounts;
     /**
-     * A list of kernel capabilities to add to the container.
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @var string[]
+     */
+    protected $capabilities;
+    /**
+     * A list of kernel capabilities to add to the container. Conflicts with option 'Capabilities'.
      *
      * @var string[]
      */
     protected $capAdd;
     /**
-     * A list of kernel capabilities to drop from the container.
+     * A list of kernel capabilities to drop from the container. Conflicts with option 'Capabilities'.
      *
      * @var string[]
      */
@@ -796,23 +808,23 @@ class HostConfig
     }
 
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @return int
+     * @return DeviceRequest[]
      */
-    public function getDiskQuota(): ?int
+    public function getDeviceRequests(): ?array
     {
-        return $this->diskQuota;
+        return $this->deviceRequests;
     }
 
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @param int $diskQuota
+     * @param DeviceRequest[] $deviceRequests
      */
-    public function setDiskQuota(?int $diskQuota): self
+    public function setDeviceRequests(?array $deviceRequests): self
     {
-        $this->diskQuota = $diskQuota;
+        $this->deviceRequests = $deviceRequests;
 
         return $this;
     }
@@ -835,6 +847,28 @@ class HostConfig
     public function setKernelMemory(?int $kernelMemory): self
     {
         $this->kernelMemory = $kernelMemory;
+
+        return $this;
+    }
+
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @return int
+     */
+    public function getKernelMemoryTCP(): ?int
+    {
+        return $this->kernelMemoryTCP;
+    }
+
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @param int $kernelMemoryTCP
+     */
+    public function setKernelMemoryTCP(?int $kernelMemoryTCP): self
+    {
+        $this->kernelMemoryTCP = $kernelMemoryTCP;
 
         return $this;
     }
@@ -972,7 +1006,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @return int
      */
@@ -982,7 +1016,7 @@ class HostConfig
     }
 
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @param int $pidsLimit
      */
@@ -1104,7 +1138,7 @@ class HostConfig
     }
 
     /**
-     * A list of volume bindings for this container. Each volume binding is a string in one of these forms:.
+     * A list of volume bindings for this container. Each volume binding.
      *
      * @return string[]
      */
@@ -1114,7 +1148,7 @@ class HostConfig
     }
 
     /**
-     * A list of volume bindings for this container. Each volume binding is a string in one of these forms:.
+     * A list of volume bindings for this container. Each volume binding.
      *
      * @param string[] $binds
      */
@@ -1324,7 +1358,29 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to add to the container.
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @return string[]
+     */
+    public function getCapabilities(): ?array
+    {
+        return $this->capabilities;
+    }
+
+    /**
+     * A list of kernel capabilities to be available for container (this overrides the default set).
+     *
+     * @param string[] $capabilities
+     */
+    public function setCapabilities(?array $capabilities): self
+    {
+        $this->capabilities = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * A list of kernel capabilities to add to the container. Conflicts with option 'Capabilities'.
      *
      * @return string[]
      */
@@ -1334,7 +1390,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to add to the container.
+     * A list of kernel capabilities to add to the container. Conflicts with option 'Capabilities'.
      *
      * @param string[] $capAdd
      */
@@ -1346,7 +1402,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to drop from the container.
+     * A list of kernel capabilities to drop from the container. Conflicts with option 'Capabilities'.
      *
      * @return string[]
      */
@@ -1356,7 +1412,7 @@ class HostConfig
     }
 
     /**
-     * A list of kernel capabilities to drop from the container.
+     * A list of kernel capabilities to drop from the container. Conflicts with option 'Capabilities'.
      *
      * @param string[] $capDrop
      */

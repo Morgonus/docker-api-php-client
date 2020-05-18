@@ -108,6 +108,9 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'CPUSet') && $data->{'CPUSet'} !== null) {
             $object->setCPUSet($data->{'CPUSet'});
         }
+        if (property_exists($data, 'PidsLimit') && $data->{'PidsLimit'} !== null) {
+            $object->setPidsLimit($data->{'PidsLimit'});
+        }
         if (property_exists($data, 'OomKillDisable') && $data->{'OomKillDisable'} !== null) {
             $object->setOomKillDisable($data->{'OomKillDisable'});
         }
@@ -327,6 +330,9 @@ class SystemInfoNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getCPUSet()) {
             $data->{'CPUSet'} = $object->getCPUSet();
+        }
+        if (null !== $object->getPidsLimit()) {
+            $data->{'PidsLimit'} = $object->getPidsLimit();
         }
         if (null !== $object->getOomKillDisable()) {
             $data->{'OomKillDisable'} = $object->getOomKillDisable();

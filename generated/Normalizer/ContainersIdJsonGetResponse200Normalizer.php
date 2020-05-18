@@ -55,7 +55,7 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
             $object->setArgs($values);
         }
         if (property_exists($data, 'State') && $data->{'State'} !== null) {
-            $object->setState($this->denormalizer->denormalize($data->{'State'}, 'Docker\\API\\Model\\ContainersIdJsonGetResponse200State', 'json', $context));
+            $object->setState($this->denormalizer->denormalize($data->{'State'}, 'Docker\\API\\Model\\ContainerState', 'json', $context));
         }
         if (property_exists($data, 'Image') && $data->{'Image'} !== null) {
             $object->setImage($data->{'Image'});
@@ -83,6 +83,9 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         }
         if (property_exists($data, 'Driver') && $data->{'Driver'} !== null) {
             $object->setDriver($data->{'Driver'});
+        }
+        if (property_exists($data, 'Platform') && $data->{'Platform'} !== null) {
+            $object->setPlatform($data->{'Platform'});
         }
         if (property_exists($data, 'MountLabel') && $data->{'MountLabel'} !== null) {
             $object->setMountLabel($data->{'MountLabel'});
@@ -177,6 +180,9 @@ class ContainersIdJsonGetResponse200Normalizer implements DenormalizerInterface,
         }
         if (null !== $object->getDriver()) {
             $data->{'Driver'} = $object->getDriver();
+        }
+        if (null !== $object->getPlatform()) {
+            $data->{'Platform'} = $object->getPlatform();
         }
         if (null !== $object->getMountLabel()) {
             $data->{'MountLabel'} = $object->getMountLabel();

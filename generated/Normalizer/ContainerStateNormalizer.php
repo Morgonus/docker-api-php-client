@@ -17,19 +17,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ContainerStateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Docker\\API\\Model\\ContainersIdJsonGetResponse200State';
+        return $type === 'Docker\\API\\Model\\ContainerState';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Docker\API\Model\ContainersIdJsonGetResponse200State;
+        return $data instanceof \Docker\API\Model\ContainerState;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,7 +37,7 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         if (!is_object($data)) {
             return null;
         }
-        $object = new \Docker\API\Model\ContainersIdJsonGetResponse200State();
+        $object = new \Docker\API\Model\ContainerState();
         if (property_exists($data, 'Status') && $data->{'Status'} !== null) {
             $object->setStatus($data->{'Status'});
         }
@@ -70,6 +70,9 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         }
         if (property_exists($data, 'FinishedAt') && $data->{'FinishedAt'} !== null) {
             $object->setFinishedAt($data->{'FinishedAt'});
+        }
+        if (property_exists($data, 'Health') && $data->{'Health'} !== null) {
+            $object->setHealth($this->denormalizer->denormalize($data->{'Health'}, 'Docker\\API\\Model\\Health', 'json', $context));
         }
 
         return $object;
@@ -110,6 +113,9 @@ class ContainersIdJsonGetResponse200StateNormalizer implements DenormalizerInter
         }
         if (null !== $object->getFinishedAt()) {
             $data->{'FinishedAt'} = $object->getFinishedAt();
+        }
+        if (null !== $object->getHealth()) {
+            $data->{'Health'} = $this->normalizer->normalize($object->getHealth(), 'json', $context);
         }
 
         return $data;

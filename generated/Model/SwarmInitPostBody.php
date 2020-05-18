@@ -31,6 +31,12 @@ class SwarmInitPostBody
      */
     protected $dataPathAddr;
     /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @var int
+     */
+    protected $dataPathPort;
+    /**
      * Default Address Pool specifies default subnet pools for global scope networks.
      *
      * @var string[]
@@ -117,6 +123,28 @@ class SwarmInitPostBody
     public function setDataPathAddr(?string $dataPathAddr): self
     {
         $this->dataPathAddr = $dataPathAddr;
+
+        return $this;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @return int
+     */
+    public function getDataPathPort(): ?int
+    {
+        return $this->dataPathPort;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @param int $dataPathPort
+     */
+    public function setDataPathPort(?int $dataPathPort): self
+    {
+        $this->dataPathPort = $dataPathPort;
 
         return $this;
     }

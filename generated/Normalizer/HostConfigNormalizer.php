@@ -117,11 +117,18 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $object->setDeviceCgroupRules($values_6);
         }
-        if (property_exists($data, 'DiskQuota') && $data->{'DiskQuota'} !== null) {
-            $object->setDiskQuota($data->{'DiskQuota'});
+        if (property_exists($data, 'DeviceRequests') && $data->{'DeviceRequests'} !== null) {
+            $values_7 = [];
+            foreach ($data->{'DeviceRequests'} as $value_7) {
+                $values_7[] = $this->denormalizer->denormalize($value_7, 'Docker\\API\\Model\\DeviceRequest', 'json', $context);
+            }
+            $object->setDeviceRequests($values_7);
         }
         if (property_exists($data, 'KernelMemory') && $data->{'KernelMemory'} !== null) {
             $object->setKernelMemory($data->{'KernelMemory'});
+        }
+        if (property_exists($data, 'KernelMemoryTCP') && $data->{'KernelMemoryTCP'} !== null) {
+            $object->setKernelMemoryTCP($data->{'KernelMemoryTCP'});
         }
         if (property_exists($data, 'MemoryReservation') && $data->{'MemoryReservation'} !== null) {
             $object->setMemoryReservation($data->{'MemoryReservation'});
@@ -145,11 +152,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setPidsLimit($data->{'PidsLimit'});
         }
         if (property_exists($data, 'Ulimits') && $data->{'Ulimits'} !== null) {
-            $values_7 = [];
-            foreach ($data->{'Ulimits'} as $value_7) {
-                $values_7[] = $this->denormalizer->denormalize($value_7, 'Docker\\API\\Model\\ResourcesUlimitsItem', 'json', $context);
+            $values_8 = [];
+            foreach ($data->{'Ulimits'} as $value_8) {
+                $values_8[] = $this->denormalizer->denormalize($value_8, 'Docker\\API\\Model\\ResourcesUlimitsItem', 'json', $context);
             }
-            $object->setUlimits($values_7);
+            $object->setUlimits($values_8);
         }
         if (property_exists($data, 'CpuCount') && $data->{'CpuCount'} !== null) {
             $object->setCpuCount($data->{'CpuCount'});
@@ -164,11 +171,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setIOMaximumBandwidth($data->{'IOMaximumBandwidth'});
         }
         if (property_exists($data, 'Binds') && $data->{'Binds'} !== null) {
-            $values_8 = [];
-            foreach ($data->{'Binds'} as $value_8) {
-                $values_8[] = $value_8;
+            $values_9 = [];
+            foreach ($data->{'Binds'} as $value_9) {
+                $values_9[] = $value_9;
             }
-            $object->setBinds($values_8);
+            $object->setBinds($values_9);
         }
         if (property_exists($data, 'ContainerIDFile') && $data->{'ContainerIDFile'} !== null) {
             $object->setContainerIDFile($data->{'ContainerIDFile'});
@@ -180,15 +187,15 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setNetworkMode($data->{'NetworkMode'});
         }
         if (property_exists($data, 'PortBindings') && $data->{'PortBindings'} !== null) {
-            $values_9 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'PortBindings'} as $key => $value_9) {
-                $values_10 = [];
-                foreach ($value_9 as $value_10) {
-                    $values_10[] = $this->denormalizer->denormalize($value_10, 'Docker\\API\\Model\\PortBinding', 'json', $context);
+            $values_10 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'PortBindings'} as $key => $value_10) {
+                $values_11 = [];
+                foreach ($value_10 as $value_11) {
+                    $values_11[] = $this->denormalizer->denormalize($value_11, 'Docker\\API\\Model\\PortBinding', 'json', $context);
                 }
-                $values_9[$key] = $values_10;
+                $values_10[$key] = $values_11;
             }
-            $object->setPortBindings($values_9);
+            $object->setPortBindings($values_10);
         }
         if (property_exists($data, 'RestartPolicy') && $data->{'RestartPolicy'} !== null) {
             $object->setRestartPolicy($this->denormalizer->denormalize($data->{'RestartPolicy'}, 'Docker\\API\\Model\\RestartPolicy', 'json', $context));
@@ -200,67 +207,74 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setVolumeDriver($data->{'VolumeDriver'});
         }
         if (property_exists($data, 'VolumesFrom') && $data->{'VolumesFrom'} !== null) {
-            $values_11 = [];
-            foreach ($data->{'VolumesFrom'} as $value_11) {
-                $values_11[] = $value_11;
+            $values_12 = [];
+            foreach ($data->{'VolumesFrom'} as $value_12) {
+                $values_12[] = $value_12;
             }
-            $object->setVolumesFrom($values_11);
+            $object->setVolumesFrom($values_12);
         }
         if (property_exists($data, 'Mounts') && $data->{'Mounts'} !== null) {
-            $values_12 = [];
-            foreach ($data->{'Mounts'} as $value_12) {
-                $values_12[] = $this->denormalizer->denormalize($value_12, 'Docker\\API\\Model\\Mount', 'json', $context);
-            }
-            $object->setMounts($values_12);
-        }
-        if (property_exists($data, 'CapAdd') && $data->{'CapAdd'} !== null) {
             $values_13 = [];
-            foreach ($data->{'CapAdd'} as $value_13) {
-                $values_13[] = $value_13;
+            foreach ($data->{'Mounts'} as $value_13) {
+                $values_13[] = $this->denormalizer->denormalize($value_13, 'Docker\\API\\Model\\Mount', 'json', $context);
             }
-            $object->setCapAdd($values_13);
+            $object->setMounts($values_13);
         }
-        if (property_exists($data, 'CapDrop') && $data->{'CapDrop'} !== null) {
+        if (property_exists($data, 'Capabilities') && $data->{'Capabilities'} !== null) {
             $values_14 = [];
-            foreach ($data->{'CapDrop'} as $value_14) {
+            foreach ($data->{'Capabilities'} as $value_14) {
                 $values_14[] = $value_14;
             }
-            $object->setCapDrop($values_14);
+            $object->setCapabilities($values_14);
         }
-        if (property_exists($data, 'Dns') && $data->{'Dns'} !== null) {
+        if (property_exists($data, 'CapAdd') && $data->{'CapAdd'} !== null) {
             $values_15 = [];
-            foreach ($data->{'Dns'} as $value_15) {
+            foreach ($data->{'CapAdd'} as $value_15) {
                 $values_15[] = $value_15;
             }
-            $object->setDns($values_15);
+            $object->setCapAdd($values_15);
         }
-        if (property_exists($data, 'DnsOptions') && $data->{'DnsOptions'} !== null) {
+        if (property_exists($data, 'CapDrop') && $data->{'CapDrop'} !== null) {
             $values_16 = [];
-            foreach ($data->{'DnsOptions'} as $value_16) {
+            foreach ($data->{'CapDrop'} as $value_16) {
                 $values_16[] = $value_16;
             }
-            $object->setDnsOptions($values_16);
+            $object->setCapDrop($values_16);
         }
-        if (property_exists($data, 'DnsSearch') && $data->{'DnsSearch'} !== null) {
+        if (property_exists($data, 'Dns') && $data->{'Dns'} !== null) {
             $values_17 = [];
-            foreach ($data->{'DnsSearch'} as $value_17) {
+            foreach ($data->{'Dns'} as $value_17) {
                 $values_17[] = $value_17;
             }
-            $object->setDnsSearch($values_17);
+            $object->setDns($values_17);
         }
-        if (property_exists($data, 'ExtraHosts') && $data->{'ExtraHosts'} !== null) {
+        if (property_exists($data, 'DnsOptions') && $data->{'DnsOptions'} !== null) {
             $values_18 = [];
-            foreach ($data->{'ExtraHosts'} as $value_18) {
+            foreach ($data->{'DnsOptions'} as $value_18) {
                 $values_18[] = $value_18;
             }
-            $object->setExtraHosts($values_18);
+            $object->setDnsOptions($values_18);
         }
-        if (property_exists($data, 'GroupAdd') && $data->{'GroupAdd'} !== null) {
+        if (property_exists($data, 'DnsSearch') && $data->{'DnsSearch'} !== null) {
             $values_19 = [];
-            foreach ($data->{'GroupAdd'} as $value_19) {
+            foreach ($data->{'DnsSearch'} as $value_19) {
                 $values_19[] = $value_19;
             }
-            $object->setGroupAdd($values_19);
+            $object->setDnsSearch($values_19);
+        }
+        if (property_exists($data, 'ExtraHosts') && $data->{'ExtraHosts'} !== null) {
+            $values_20 = [];
+            foreach ($data->{'ExtraHosts'} as $value_20) {
+                $values_20[] = $value_20;
+            }
+            $object->setExtraHosts($values_20);
+        }
+        if (property_exists($data, 'GroupAdd') && $data->{'GroupAdd'} !== null) {
+            $values_21 = [];
+            foreach ($data->{'GroupAdd'} as $value_21) {
+                $values_21[] = $value_21;
+            }
+            $object->setGroupAdd($values_21);
         }
         if (property_exists($data, 'IpcMode') && $data->{'IpcMode'} !== null) {
             $object->setIpcMode($data->{'IpcMode'});
@@ -269,11 +283,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setCgroup($data->{'Cgroup'});
         }
         if (property_exists($data, 'Links') && $data->{'Links'} !== null) {
-            $values_20 = [];
-            foreach ($data->{'Links'} as $value_20) {
-                $values_20[] = $value_20;
+            $values_22 = [];
+            foreach ($data->{'Links'} as $value_22) {
+                $values_22[] = $value_22;
             }
-            $object->setLinks($values_20);
+            $object->setLinks($values_22);
         }
         if (property_exists($data, 'OomScoreAdj') && $data->{'OomScoreAdj'} !== null) {
             $object->setOomScoreAdj($data->{'OomScoreAdj'});
@@ -291,25 +305,25 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setReadonlyRootfs($data->{'ReadonlyRootfs'});
         }
         if (property_exists($data, 'SecurityOpt') && $data->{'SecurityOpt'} !== null) {
-            $values_21 = [];
-            foreach ($data->{'SecurityOpt'} as $value_21) {
-                $values_21[] = $value_21;
+            $values_23 = [];
+            foreach ($data->{'SecurityOpt'} as $value_23) {
+                $values_23[] = $value_23;
             }
-            $object->setSecurityOpt($values_21);
+            $object->setSecurityOpt($values_23);
         }
         if (property_exists($data, 'StorageOpt') && $data->{'StorageOpt'} !== null) {
-            $values_22 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'StorageOpt'} as $key_1 => $value_22) {
-                $values_22[$key_1] = $value_22;
+            $values_24 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'StorageOpt'} as $key_1 => $value_24) {
+                $values_24[$key_1] = $value_24;
             }
-            $object->setStorageOpt($values_22);
+            $object->setStorageOpt($values_24);
         }
         if (property_exists($data, 'Tmpfs') && $data->{'Tmpfs'} !== null) {
-            $values_23 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'Tmpfs'} as $key_2 => $value_23) {
-                $values_23[$key_2] = $value_23;
+            $values_25 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'Tmpfs'} as $key_2 => $value_25) {
+                $values_25[$key_2] = $value_25;
             }
-            $object->setTmpfs($values_23);
+            $object->setTmpfs($values_25);
         }
         if (property_exists($data, 'UTSMode') && $data->{'UTSMode'} !== null) {
             $object->setUTSMode($data->{'UTSMode'});
@@ -321,38 +335,38 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setShmSize($data->{'ShmSize'});
         }
         if (property_exists($data, 'Sysctls') && $data->{'Sysctls'} !== null) {
-            $values_24 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'Sysctls'} as $key_3 => $value_24) {
-                $values_24[$key_3] = $value_24;
+            $values_26 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'Sysctls'} as $key_3 => $value_26) {
+                $values_26[$key_3] = $value_26;
             }
-            $object->setSysctls($values_24);
+            $object->setSysctls($values_26);
         }
         if (property_exists($data, 'Runtime') && $data->{'Runtime'} !== null) {
             $object->setRuntime($data->{'Runtime'});
         }
         if (property_exists($data, 'ConsoleSize') && $data->{'ConsoleSize'} !== null) {
-            $values_25 = [];
-            foreach ($data->{'ConsoleSize'} as $value_25) {
-                $values_25[] = $value_25;
+            $values_27 = [];
+            foreach ($data->{'ConsoleSize'} as $value_27) {
+                $values_27[] = $value_27;
             }
-            $object->setConsoleSize($values_25);
+            $object->setConsoleSize($values_27);
         }
         if (property_exists($data, 'Isolation') && $data->{'Isolation'} !== null) {
             $object->setIsolation($data->{'Isolation'});
         }
         if (property_exists($data, 'MaskedPaths') && $data->{'MaskedPaths'} !== null) {
-            $values_26 = [];
-            foreach ($data->{'MaskedPaths'} as $value_26) {
-                $values_26[] = $value_26;
+            $values_28 = [];
+            foreach ($data->{'MaskedPaths'} as $value_28) {
+                $values_28[] = $value_28;
             }
-            $object->setMaskedPaths($values_26);
+            $object->setMaskedPaths($values_28);
         }
         if (property_exists($data, 'ReadonlyPaths') && $data->{'ReadonlyPaths'} !== null) {
-            $values_27 = [];
-            foreach ($data->{'ReadonlyPaths'} as $value_27) {
-                $values_27[] = $value_27;
+            $values_29 = [];
+            foreach ($data->{'ReadonlyPaths'} as $value_29) {
+                $values_29[] = $value_29;
             }
-            $object->setReadonlyPaths($values_27);
+            $object->setReadonlyPaths($values_29);
         }
 
         return $object;
@@ -440,11 +454,18 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             }
             $data->{'DeviceCgroupRules'} = $values_6;
         }
-        if (null !== $object->getDiskQuota()) {
-            $data->{'DiskQuota'} = $object->getDiskQuota();
+        if (null !== $object->getDeviceRequests()) {
+            $values_7 = [];
+            foreach ($object->getDeviceRequests() as $value_7) {
+                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+            }
+            $data->{'DeviceRequests'} = $values_7;
         }
         if (null !== $object->getKernelMemory()) {
             $data->{'KernelMemory'} = $object->getKernelMemory();
+        }
+        if (null !== $object->getKernelMemoryTCP()) {
+            $data->{'KernelMemoryTCP'} = $object->getKernelMemoryTCP();
         }
         if (null !== $object->getMemoryReservation()) {
             $data->{'MemoryReservation'} = $object->getMemoryReservation();
@@ -468,11 +489,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'PidsLimit'} = $object->getPidsLimit();
         }
         if (null !== $object->getUlimits()) {
-            $values_7 = [];
-            foreach ($object->getUlimits() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+            $values_8 = [];
+            foreach ($object->getUlimits() as $value_8) {
+                $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
             }
-            $data->{'Ulimits'} = $values_7;
+            $data->{'Ulimits'} = $values_8;
         }
         if (null !== $object->getCpuCount()) {
             $data->{'CpuCount'} = $object->getCpuCount();
@@ -487,11 +508,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'IOMaximumBandwidth'} = $object->getIOMaximumBandwidth();
         }
         if (null !== $object->getBinds()) {
-            $values_8 = [];
-            foreach ($object->getBinds() as $value_8) {
-                $values_8[] = $value_8;
+            $values_9 = [];
+            foreach ($object->getBinds() as $value_9) {
+                $values_9[] = $value_9;
             }
-            $data->{'Binds'} = $values_8;
+            $data->{'Binds'} = $values_9;
         }
         if (null !== $object->getContainerIDFile()) {
             $data->{'ContainerIDFile'} = $object->getContainerIDFile();
@@ -503,15 +524,15 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'NetworkMode'} = $object->getNetworkMode();
         }
         if (null !== $object->getPortBindings()) {
-            $values_9 = new \stdClass();
-            foreach ($object->getPortBindings() as $key => $value_9) {
-                $values_10 = [];
-                foreach ($value_9 as $value_10) {
-                    $values_10[] = $this->normalizer->normalize($value_10, 'json', $context);
+            $values_10 = new \stdClass();
+            foreach ($object->getPortBindings() as $key => $value_10) {
+                $values_11 = [];
+                foreach ($value_10 as $value_11) {
+                    $values_11[] = $this->normalizer->normalize($value_11, 'json', $context);
                 }
-                $values_9->{$key} = $values_10;
+                $values_10->{$key} = $values_11;
             }
-            $data->{'PortBindings'} = $values_9;
+            $data->{'PortBindings'} = $values_10;
         }
         if (null !== $object->getRestartPolicy()) {
             $data->{'RestartPolicy'} = $this->normalizer->normalize($object->getRestartPolicy(), 'json', $context);
@@ -523,67 +544,74 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'VolumeDriver'} = $object->getVolumeDriver();
         }
         if (null !== $object->getVolumesFrom()) {
-            $values_11 = [];
-            foreach ($object->getVolumesFrom() as $value_11) {
-                $values_11[] = $value_11;
+            $values_12 = [];
+            foreach ($object->getVolumesFrom() as $value_12) {
+                $values_12[] = $value_12;
             }
-            $data->{'VolumesFrom'} = $values_11;
+            $data->{'VolumesFrom'} = $values_12;
         }
         if (null !== $object->getMounts()) {
-            $values_12 = [];
-            foreach ($object->getMounts() as $value_12) {
-                $values_12[] = $this->normalizer->normalize($value_12, 'json', $context);
-            }
-            $data->{'Mounts'} = $values_12;
-        }
-        if (null !== $object->getCapAdd()) {
             $values_13 = [];
-            foreach ($object->getCapAdd() as $value_13) {
-                $values_13[] = $value_13;
+            foreach ($object->getMounts() as $value_13) {
+                $values_13[] = $this->normalizer->normalize($value_13, 'json', $context);
             }
-            $data->{'CapAdd'} = $values_13;
+            $data->{'Mounts'} = $values_13;
         }
-        if (null !== $object->getCapDrop()) {
+        if (null !== $object->getCapabilities()) {
             $values_14 = [];
-            foreach ($object->getCapDrop() as $value_14) {
+            foreach ($object->getCapabilities() as $value_14) {
                 $values_14[] = $value_14;
             }
-            $data->{'CapDrop'} = $values_14;
+            $data->{'Capabilities'} = $values_14;
         }
-        if (null !== $object->getDns()) {
+        if (null !== $object->getCapAdd()) {
             $values_15 = [];
-            foreach ($object->getDns() as $value_15) {
+            foreach ($object->getCapAdd() as $value_15) {
                 $values_15[] = $value_15;
             }
-            $data->{'Dns'} = $values_15;
+            $data->{'CapAdd'} = $values_15;
         }
-        if (null !== $object->getDnsOptions()) {
+        if (null !== $object->getCapDrop()) {
             $values_16 = [];
-            foreach ($object->getDnsOptions() as $value_16) {
+            foreach ($object->getCapDrop() as $value_16) {
                 $values_16[] = $value_16;
             }
-            $data->{'DnsOptions'} = $values_16;
+            $data->{'CapDrop'} = $values_16;
         }
-        if (null !== $object->getDnsSearch()) {
+        if (null !== $object->getDns()) {
             $values_17 = [];
-            foreach ($object->getDnsSearch() as $value_17) {
+            foreach ($object->getDns() as $value_17) {
                 $values_17[] = $value_17;
             }
-            $data->{'DnsSearch'} = $values_17;
+            $data->{'Dns'} = $values_17;
         }
-        if (null !== $object->getExtraHosts()) {
+        if (null !== $object->getDnsOptions()) {
             $values_18 = [];
-            foreach ($object->getExtraHosts() as $value_18) {
+            foreach ($object->getDnsOptions() as $value_18) {
                 $values_18[] = $value_18;
             }
-            $data->{'ExtraHosts'} = $values_18;
+            $data->{'DnsOptions'} = $values_18;
         }
-        if (null !== $object->getGroupAdd()) {
+        if (null !== $object->getDnsSearch()) {
             $values_19 = [];
-            foreach ($object->getGroupAdd() as $value_19) {
+            foreach ($object->getDnsSearch() as $value_19) {
                 $values_19[] = $value_19;
             }
-            $data->{'GroupAdd'} = $values_19;
+            $data->{'DnsSearch'} = $values_19;
+        }
+        if (null !== $object->getExtraHosts()) {
+            $values_20 = [];
+            foreach ($object->getExtraHosts() as $value_20) {
+                $values_20[] = $value_20;
+            }
+            $data->{'ExtraHosts'} = $values_20;
+        }
+        if (null !== $object->getGroupAdd()) {
+            $values_21 = [];
+            foreach ($object->getGroupAdd() as $value_21) {
+                $values_21[] = $value_21;
+            }
+            $data->{'GroupAdd'} = $values_21;
         }
         if (null !== $object->getIpcMode()) {
             $data->{'IpcMode'} = $object->getIpcMode();
@@ -592,11 +620,11 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'Cgroup'} = $object->getCgroup();
         }
         if (null !== $object->getLinks()) {
-            $values_20 = [];
-            foreach ($object->getLinks() as $value_20) {
-                $values_20[] = $value_20;
+            $values_22 = [];
+            foreach ($object->getLinks() as $value_22) {
+                $values_22[] = $value_22;
             }
-            $data->{'Links'} = $values_20;
+            $data->{'Links'} = $values_22;
         }
         if (null !== $object->getOomScoreAdj()) {
             $data->{'OomScoreAdj'} = $object->getOomScoreAdj();
@@ -614,25 +642,25 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'ReadonlyRootfs'} = $object->getReadonlyRootfs();
         }
         if (null !== $object->getSecurityOpt()) {
-            $values_21 = [];
-            foreach ($object->getSecurityOpt() as $value_21) {
-                $values_21[] = $value_21;
+            $values_23 = [];
+            foreach ($object->getSecurityOpt() as $value_23) {
+                $values_23[] = $value_23;
             }
-            $data->{'SecurityOpt'} = $values_21;
+            $data->{'SecurityOpt'} = $values_23;
         }
         if (null !== $object->getStorageOpt()) {
-            $values_22 = new \stdClass();
-            foreach ($object->getStorageOpt() as $key_1 => $value_22) {
-                $values_22->{$key_1} = $value_22;
+            $values_24 = new \stdClass();
+            foreach ($object->getStorageOpt() as $key_1 => $value_24) {
+                $values_24->{$key_1} = $value_24;
             }
-            $data->{'StorageOpt'} = $values_22;
+            $data->{'StorageOpt'} = $values_24;
         }
         if (null !== $object->getTmpfs()) {
-            $values_23 = new \stdClass();
-            foreach ($object->getTmpfs() as $key_2 => $value_23) {
-                $values_23->{$key_2} = $value_23;
+            $values_25 = new \stdClass();
+            foreach ($object->getTmpfs() as $key_2 => $value_25) {
+                $values_25->{$key_2} = $value_25;
             }
-            $data->{'Tmpfs'} = $values_23;
+            $data->{'Tmpfs'} = $values_25;
         }
         if (null !== $object->getUTSMode()) {
             $data->{'UTSMode'} = $object->getUTSMode();
@@ -644,38 +672,38 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
             $data->{'ShmSize'} = $object->getShmSize();
         }
         if (null !== $object->getSysctls()) {
-            $values_24 = new \stdClass();
-            foreach ($object->getSysctls() as $key_3 => $value_24) {
-                $values_24->{$key_3} = $value_24;
+            $values_26 = new \stdClass();
+            foreach ($object->getSysctls() as $key_3 => $value_26) {
+                $values_26->{$key_3} = $value_26;
             }
-            $data->{'Sysctls'} = $values_24;
+            $data->{'Sysctls'} = $values_26;
         }
         if (null !== $object->getRuntime()) {
             $data->{'Runtime'} = $object->getRuntime();
         }
         if (null !== $object->getConsoleSize()) {
-            $values_25 = [];
-            foreach ($object->getConsoleSize() as $value_25) {
-                $values_25[] = $value_25;
+            $values_27 = [];
+            foreach ($object->getConsoleSize() as $value_27) {
+                $values_27[] = $value_27;
             }
-            $data->{'ConsoleSize'} = $values_25;
+            $data->{'ConsoleSize'} = $values_27;
         }
         if (null !== $object->getIsolation()) {
             $data->{'Isolation'} = $object->getIsolation();
         }
         if (null !== $object->getMaskedPaths()) {
-            $values_26 = [];
-            foreach ($object->getMaskedPaths() as $value_26) {
-                $values_26[] = $value_26;
+            $values_28 = [];
+            foreach ($object->getMaskedPaths() as $value_28) {
+                $values_28[] = $value_28;
             }
-            $data->{'MaskedPaths'} = $values_26;
+            $data->{'MaskedPaths'} = $values_28;
         }
         if (null !== $object->getReadonlyPaths()) {
-            $values_27 = [];
-            foreach ($object->getReadonlyPaths() as $value_27) {
-                $values_27[] = $value_27;
+            $values_29 = [];
+            foreach ($object->getReadonlyPaths() as $value_29) {
+                $values_29[] = $value_29;
             }
-            $data->{'ReadonlyPaths'} = $values_27;
+            $data->{'ReadonlyPaths'} = $values_29;
         }
 
         return $data;

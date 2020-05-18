@@ -40,7 +40,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param \Docker\API\Model\ContainersCreatePostBody $body            Container to create
      * @param array                                      $queryParameters {
      *
-     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9_-]+`.
+     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -105,8 +105,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
      *
-     *     @var bool $follow Return the logs as a stream.
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -216,7 +215,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerStartNotFoundException
      * @throws \Docker\API\Exception\ContainerStartInternalServerErrorException
      *
-     * @return \Docker\API\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerStart(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -235,7 +234,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @throws \Docker\API\Exception\ContainerStopNotFoundException
      * @throws \Docker\API\Exception\ContainerStopInternalServerErrorException
      *
-     * @return \Docker\API\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface|null
+     * @return \Psr\Http\Message\ResponseInterface|null
      */
     public function containerStop(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -320,7 +319,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Use the cgroups freezer to suspend all processes in a container.
+     * Use the freezer cgroup to suspend all processes in a container.
      *
      * @param string $id    ID or name of the container
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -585,9 +584,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var int $shmsize Size of `/dev/shm` in bytes. The size must be greater than 0. If omitted the system uses 64MB.
      *     @var bool $squash Squash the resulting images layers into a single layer. *(Experimental release only.)*
      *     @var string $labels arbitrary key/value labels to set on the image, as a JSON map of string pairs
-     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported standard values are: `bridge`, `host`, `none`, and `container:<name|id>`. Any other value is taken as a custom network's name to which this container should connect to.
+     *     @var string $networkmode Sets the networking mode for the run commands during build. Supported
+
      *     @var string $platform Platform in the format os[/arch[/variant]]
      *     @var string $target Target build stage
+     *     @var string $outputs BuildKit output configuration
      * }
      *
      * @param array $headerParameters {
@@ -639,6 +640,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $fromSrc Source to import. The value may be a URL from which the image can be retrieved or `-` to read the image from the request body. This parameter may only be used when importing an image.
      *     @var string $repo Repository name given to an image when it is imported. The repo may include a tag. This parameter may only be used when importing an image.
      *     @var string $tag Tag or digest. If empty when pulling an image, this causes all tags for the given image to be pulled.
+     *     @var string $message set commit message for imported image
      *     @var string $platform Platform in the format os[/arch[/variant]]
      * }
      *
@@ -855,6 +857,18 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function systemPing(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \Docker\API\Endpoint\SystemPing(), $fetch);
+    }
+
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @throws \Docker\API\Exception\SystemPingHeadInternalServerErrorException
+     *
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
+    public function systemPingHead(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Docker\API\Endpoint\SystemPingHead(), $fetch);
     }
 
     /**
@@ -1711,8 +1725,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array  $queryParameters {
      *
      *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes. This version number should be the value as currently set on the service *before* the update. You can find the current version by calling `GET /services/{id}`
-     *     @var string $registryAuthFrom If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
-     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
+     *     @var string $registryAuthFrom If the `X-Registry-Auth` header is not specified, this parameter
+
+     *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback
+
      * }
      *
      * @param array $headerParameters {
@@ -1735,16 +1751,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Get `stdout` and `stderr` logs from a service.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
+     * Get `stdout` and `stderr` logs from a service. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID or name of the service
      * @param array  $queryParameters {
      *
      *     @var bool $details show service context and extra details provided to logs
-     *     @var bool $follow Return the logs as a stream.
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -1800,16 +1814,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Get `stdout` and `stderr` logs from a task.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
+     * Get `stdout` and `stderr` logs from a task. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID of the task
      * @param array  $queryParameters {
      *
      *     @var bool $details show task context and extra details provided to logs
-     *     @var bool $follow Return the logs as a stream.
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -2034,7 +2046,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.39');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.40');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }

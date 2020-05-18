@@ -37,9 +37,9 @@ class ContainersIdJsonGetResponse200
      */
     protected $args;
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
      *
-     * @var ContainersIdJsonGetResponse200State
+     * @var ContainerState
      */
     protected $state;
     /**
@@ -82,6 +82,10 @@ class ContainersIdJsonGetResponse200
      * @var string
      */
     protected $driver;
+    /**
+     * @var string
+     */
+    protected $platform;
     /**
      * @var string
      */
@@ -230,21 +234,21 @@ class ContainersIdJsonGetResponse200
     }
 
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
      *
-     * @return ContainersIdJsonGetResponse200State
+     * @return ContainerState
      */
-    public function getState(): ?ContainersIdJsonGetResponse200State
+    public function getState(): ?ContainerState
     {
         return $this->state;
     }
 
     /**
-     * The state of the container.
+     * ContainerState stores container's running state. It's part of ContainerJSONBase.
      *
-     * @param ContainersIdJsonGetResponse200State $state
+     * @param ContainerState $state
      */
-    public function setState(?ContainersIdJsonGetResponse200State $state): self
+    public function setState(?ContainerState $state): self
     {
         $this->state = $state;
 
@@ -417,6 +421,24 @@ class ContainersIdJsonGetResponse200
     public function setDriver(?string $driver): self
     {
         $this->driver = $driver;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlatform(): ?string
+    {
+        return $this->platform;
+    }
+
+    /**
+     * @param string $platform
+     */
+    public function setPlatform(?string $platform): self
+    {
+        $this->platform = $platform;
 
         return $this;
     }

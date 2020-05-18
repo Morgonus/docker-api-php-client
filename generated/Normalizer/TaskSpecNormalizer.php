@@ -65,7 +65,7 @@ class TaskSpecNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (property_exists($data, 'Networks') && $data->{'Networks'} !== null) {
             $values = [];
             foreach ($data->{'Networks'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\TaskSpecNetworksItem', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Docker\\API\\Model\\NetworkAttachmentConfig', 'json', $context);
             }
             $object->setNetworks($values);
         }

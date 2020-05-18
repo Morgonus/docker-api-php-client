@@ -15,7 +15,7 @@ class ContainerPause extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected $id;
 
     /**
-     * Use the cgroups freezer to suspend all processes in a container.
+     * Use the freezer cgroup to suspend all processes in a container.
      *
      * @param string $id ID or name of the container
      */

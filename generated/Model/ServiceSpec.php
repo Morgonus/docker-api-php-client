@@ -49,9 +49,9 @@ class ServiceSpec
      */
     protected $rollbackConfig;
     /**
-     * Array of network names or IDs to attach the service to.
+     * Specifies which networks the service should attach to.
      *
-     * @var ServiceSpecNetworksItem[]
+     * @var NetworkAttachmentConfig[]
      */
     protected $networks;
     /**
@@ -194,9 +194,9 @@ class ServiceSpec
     }
 
     /**
-     * Array of network names or IDs to attach the service to.
+     * Specifies which networks the service should attach to.
      *
-     * @return ServiceSpecNetworksItem[]
+     * @return NetworkAttachmentConfig[]
      */
     public function getNetworks(): ?array
     {
@@ -204,9 +204,9 @@ class ServiceSpec
     }
 
     /**
-     * Array of network names or IDs to attach the service to.
+     * Specifies which networks the service should attach to.
      *
-     * @param ServiceSpecNetworksItem[] $networks
+     * @param NetworkAttachmentConfig[] $networks
      */
     public function setNetworks(?array $networks): self
     {

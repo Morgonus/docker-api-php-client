@@ -16,7 +16,7 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @param \Docker\API\Model\ContainersCreatePostBody $body            Container to create
      * @param array                                      $queryParameters {
      *
-     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9_-]+`.
+     *     @var string $name Assign the specified name to the container. Must match `/?[a-zA-Z0-9][a-zA-Z0-9_.-]+`.
      * }
      */
     public function __construct(\Docker\API\Model\ContainersCreatePostBody $body, array $queryParameters = [])
