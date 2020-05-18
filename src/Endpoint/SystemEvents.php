@@ -24,6 +24,12 @@ class SystemEvents extends BaseEndpoint implements ProvideAmpArtaxClientOptions,
         return [ArtaxClient::OP_TRANSFER_TIMEOUT => 0];
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param SerializerInterface $serializer
+     * @param string $fetchMode
+     * @return mixed
+     */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if (Client::FETCH_OBJECT === $fetchMode) {
@@ -31,7 +37,7 @@ class SystemEvents extends BaseEndpoint implements ProvideAmpArtaxClientOptions,
                 return new EventStream($response->getBody(), $serializer);
             }
 
-            return $this->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $serializer,"");
+            return $this->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $serializer);
         }
 
         if (Client::FETCH_RESPONSE === $fetchMode) {

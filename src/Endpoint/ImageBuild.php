@@ -15,6 +15,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ImageBuild extends BaseEndpoint
 {
+    /**
+     * @param SerializerInterface $serializer
+     * @param null $streamFactory
+     * @return array
+     */
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         $body = $this->body;
@@ -26,6 +31,12 @@ class ImageBuild extends BaseEndpoint
         return [[], $body];
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param SerializerInterface $serializer
+     * @param string $fetchMode
+     * @return mixed
+     */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if (Client::FETCH_OBJECT === $fetchMode) {

@@ -39,11 +39,13 @@ class ContextBuilder
     private $entrypoint;
 
     /**
-     * @param \Symfony\Component\Filesystem\Filesystem
+     * @param \Symfony\Component\Filesystem\Filesystem $fs
      */
     public function __construct(Filesystem $fs = null)
     {
-        $this->fs = $fs ?: new Filesystem();
+        /** @var Filesystem $s */
+        $s = $fs ?: new Filesystem();
+        $this->fs = $s;
         $this->format = Context::FORMAT_STREAM;
     }
 
@@ -342,8 +344,8 @@ class ContextBuilder
 
         if (!\array_key_exists($hash, $this->files)) {
             $file = \tempnam($directory, '');
-            $this->fs->dumpFile($file, $content);
-            $this->files[$hash] = \basename($file);
+            $this->fs->dumpFile((string)$file, $content);
+            $this->files[$hash] = (string)\basename((string)$file);
         }
 
         return $this->files[$hash];
@@ -360,13 +362,14 @@ class ContextBuilder
     private function getFileFromStream($directory, $stream)
     {
         $file = \tempnam($directory, '');
-        $target = \fopen($file, 'w');
+        /** @var resource $target */
+        $target = \fopen((string)$file, 'w');
         if (0 === \stream_copy_to_stream($stream, $target)) {
             throw new \RuntimeException('Failed to write stream to file');
         }
         \fclose($target);
 
-        return \basename($file);
+        return \basename((string)$file);
     }
 
     /**
@@ -379,7 +382,7 @@ class ContextBuilder
      */
     private function getFileFromDisk($directory, $source)
     {
-        $hash = 'DISK-'.\md5(\realpath($source));
+        $hash = 'DISK-'.\md5((string)\realpath($source));
         if (!\array_key_exists($hash, $this->files)) {
             // Check if source is a directory or a file.
             if (\is_dir($source)) {

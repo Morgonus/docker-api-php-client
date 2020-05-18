@@ -88,6 +88,10 @@ class Docker extends Client
         return $this->executePsr7Endpoint(new SystemEvents($queryParameters), $fetch);
     }
 
+    /**
+     * @param null $httpClient
+     * @return Docker
+     */
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {

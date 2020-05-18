@@ -2,9 +2,11 @@ parameters:
   level: 8
   paths:
     - src
-    - tests
   excludes_analyse:
-    - src/Manager/ImageManager.php
-    - src/Manager/ContainerManager.php
+    - src/Stream/ArtaxCallbackStream.php
+    - src/DockerAsyncClient.php
+    - src/DockerAsync.php
+    - src/Context/Context.php
+    - src/Client/AmpArtaxStreamEndpointTrait.php
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false

@@ -20,7 +20,9 @@ class AttachWebsocketStream
 
     public function __construct(StreamInterface $stream)
     {
-        $this->socket = $stream->detach();
+        /** @var resource $r */
+        $r =$stream->detach();
+        $this->socket = $r;
     }
 
     /**
@@ -151,7 +153,7 @@ class AttachWebsocketStream
     /**
      * Force to have something of the expected size (block).
      *
-     * @param $length
+     * @param int $length
      *
      * @return string
      */
@@ -169,9 +171,9 @@ class AttachWebsocketStream
     /**
      * Write to the socket.
      *
-     * @param $data
+     * @param string $data
      *
-     * @return int
+     * @return int|false
      */
     private function socketWrite($data)
     {

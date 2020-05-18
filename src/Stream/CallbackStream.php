@@ -8,8 +8,14 @@ use Psr\Http\Message\StreamInterface;
 
 abstract class CallbackStream
 {
+    /**
+     * @var StreamInterface $stream
+     */
     protected $stream;
 
+    /**
+     * @var array
+     */
     private $onNewFrameCallables = [];
 
     public function __construct(StreamInterface $stream)
