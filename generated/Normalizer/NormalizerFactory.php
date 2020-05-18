@@ -109,6 +109,7 @@ class NormalizerFactory
         $normalizers[] = new TaskSpecContainerSpecSecretsItemFileNormalizer();
         $normalizers[] = new TaskSpecContainerSpecConfigsItemNormalizer();
         $normalizers[] = new TaskSpecContainerSpecConfigsItemFileNormalizer();
+        $normalizers[] = new TaskSpecNetworkAttachmentSpecNormalizer();
         $normalizers[] = new TaskSpecResourcesNormalizer();
         $normalizers[] = new TaskSpecRestartPolicyNormalizer();
         $normalizers[] = new TaskSpecPlacementNormalizer();

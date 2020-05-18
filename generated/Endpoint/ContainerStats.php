@@ -16,6 +16,8 @@ class ContainerStats extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
 
     /**
      * This endpoint returns a live stream of a container’s resource usage.
+
+    The `precpu_stats` is the CPU statistic of the *previous* read, and is
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {

@@ -161,6 +161,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 
     /**
      * This endpoint returns a live stream of a container’s resource usage.
+
+    The `precpu_stats` is the CPU statistic of the *previous* read, and is
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
@@ -2023,7 +2025,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\HttpClientDiscovery::find();
             $plugins = [];
-            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.37');
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('v1.38');
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }

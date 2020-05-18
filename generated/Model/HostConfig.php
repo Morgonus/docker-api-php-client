@@ -408,6 +408,18 @@ class HostConfig
      * @var string
      */
     protected $isolation;
+    /**
+     * The list of paths to be masked inside the container (this overrides the default set of paths).
+     *
+     * @var string[]
+     */
+    protected $maskedPaths;
+    /**
+     * The list of paths to be set as read-only inside the container (this overrides the default set of paths).
+     *
+     * @var string[]
+     */
+    protected $readonlyPaths;
 
     /**
      * An integer value representing this container's relative CPU weight versus other containers.
@@ -1857,6 +1869,50 @@ class HostConfig
     public function setIsolation(?string $isolation): self
     {
         $this->isolation = $isolation;
+
+        return $this;
+    }
+
+    /**
+     * The list of paths to be masked inside the container (this overrides the default set of paths).
+     *
+     * @return string[]
+     */
+    public function getMaskedPaths(): ?array
+    {
+        return $this->maskedPaths;
+    }
+
+    /**
+     * The list of paths to be masked inside the container (this overrides the default set of paths).
+     *
+     * @param string[] $maskedPaths
+     */
+    public function setMaskedPaths(?array $maskedPaths): self
+    {
+        $this->maskedPaths = $maskedPaths;
+
+        return $this;
+    }
+
+    /**
+     * The list of paths to be set as read-only inside the container (this overrides the default set of paths).
+     *
+     * @return string[]
+     */
+    public function getReadonlyPaths(): ?array
+    {
+        return $this->readonlyPaths;
+    }
+
+    /**
+     * The list of paths to be set as read-only inside the container (this overrides the default set of paths).
+     *
+     * @param string[] $readonlyPaths
+     */
+    public function setReadonlyPaths(?array $readonlyPaths): self
+    {
+        $this->readonlyPaths = $readonlyPaths;
 
         return $this;
     }

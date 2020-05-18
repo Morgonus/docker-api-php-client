@@ -144,6 +144,12 @@ class TaskSpecContainerSpec
      * @var string
      */
     protected $isolation;
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @var bool
+     */
+    protected $init;
 
     /**
      * The image name to use for the container.
@@ -625,6 +631,28 @@ class TaskSpecContainerSpec
     public function setIsolation(?string $isolation): self
     {
         $this->isolation = $isolation;
+
+        return $this;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @return bool
+     */
+    public function getInit(): ?bool
+    {
+        return $this->init;
+    }
+
+    /**
+     * Run an init inside the container that forwards signals and reaps processes. This field is omitted if empty, and the default (as configured on the daemon) is used.
+     *
+     * @param bool $init
+     */
+    public function setInit(?bool $init): self
+    {
+        $this->init = $init;
 
         return $this;
     }

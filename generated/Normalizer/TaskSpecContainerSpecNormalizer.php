@@ -140,6 +140,9 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'Isolation') && $data->{'Isolation'} !== null) {
             $object->setIsolation($data->{'Isolation'});
         }
+        if (property_exists($data, 'Init') && $data->{'Init'} !== null) {
+            $object->setInit($data->{'Init'});
+        }
 
         return $object;
     }
@@ -248,6 +251,9 @@ class TaskSpecContainerSpecNormalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getIsolation()) {
             $data->{'Isolation'} = $object->getIsolation();
+        }
+        if (null !== $object->getInit()) {
+            $data->{'Init'} = $object->getInit();
         }
 
         return $data;

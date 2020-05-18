@@ -340,6 +340,20 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'Isolation') && $data->{'Isolation'} !== null) {
             $object->setIsolation($data->{'Isolation'});
         }
+        if (property_exists($data, 'MaskedPaths') && $data->{'MaskedPaths'} !== null) {
+            $values_26 = [];
+            foreach ($data->{'MaskedPaths'} as $value_26) {
+                $values_26[] = $value_26;
+            }
+            $object->setMaskedPaths($values_26);
+        }
+        if (property_exists($data, 'ReadonlyPaths') && $data->{'ReadonlyPaths'} !== null) {
+            $values_27 = [];
+            foreach ($data->{'ReadonlyPaths'} as $value_27) {
+                $values_27[] = $value_27;
+            }
+            $object->setReadonlyPaths($values_27);
+        }
 
         return $object;
     }
@@ -648,6 +662,20 @@ class HostConfigNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getIsolation()) {
             $data->{'Isolation'} = $object->getIsolation();
+        }
+        if (null !== $object->getMaskedPaths()) {
+            $values_26 = [];
+            foreach ($object->getMaskedPaths() as $value_26) {
+                $values_26[] = $value_26;
+            }
+            $data->{'MaskedPaths'} = $values_26;
+        }
+        if (null !== $object->getReadonlyPaths()) {
+            $values_27 = [];
+            foreach ($object->getReadonlyPaths() as $value_27) {
+                $values_27[] = $value_27;
+            }
+            $data->{'ReadonlyPaths'} = $values_27;
         }
 
         return $data;

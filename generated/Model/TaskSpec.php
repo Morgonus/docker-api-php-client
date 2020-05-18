@@ -13,17 +13,29 @@ namespace Docker\API\Model;
 class TaskSpec
 {
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @var TaskSpecPluginSpec
      */
     protected $pluginSpec;
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @var TaskSpecContainerSpec
      */
     protected $containerSpec;
+    /**
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     *
+     * @var TaskSpecNetworkAttachmentSpec
+     */
+    protected $networkAttachmentSpec;
     /**
      * Resource requirements which apply to each individual container created as part of the service.
      *
@@ -64,7 +76,9 @@ class TaskSpec
     protected $logDriver;
 
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @return TaskSpecPluginSpec
      */
@@ -74,7 +88,9 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `ContainerSpec`. *(Experimental release only.)*.
+     * Plugin spec for the service.  *(Experimental release only.)*.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @param TaskSpecPluginSpec $pluginSpec
      */
@@ -86,7 +102,9 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @return TaskSpecContainerSpec
      */
@@ -96,13 +114,41 @@ class TaskSpec
     }
 
     /**
-     * Invalid when specified with `PluginSpec`.
+     * Container spec for the service.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
      *
      * @param TaskSpecContainerSpec $containerSpec
      */
     public function setContainerSpec(?TaskSpecContainerSpec $containerSpec): self
     {
         $this->containerSpec = $containerSpec;
+
+        return $this;
+    }
+
+    /**
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     *
+     * @return TaskSpecNetworkAttachmentSpec
+     */
+    public function getNetworkAttachmentSpec(): ?TaskSpecNetworkAttachmentSpec
+    {
+        return $this->networkAttachmentSpec;
+    }
+
+    /**
+     * Read-only spec type for non-swarm containers attached to swarm overlay.
+
+    > **Note**: ContainerSpec, NetworkAttachmentSpec, and PluginSpec are
+     *
+     * @param TaskSpecNetworkAttachmentSpec $networkAttachmentSpec
+     */
+    public function setNetworkAttachmentSpec(?TaskSpecNetworkAttachmentSpec $networkAttachmentSpec): self
+    {
+        $this->networkAttachmentSpec = $networkAttachmentSpec;
 
         return $this;
     }

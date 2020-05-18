@@ -341,7 +341,7 @@ class SystemInfo
      */
     protected $isolation = 'default';
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * @var string
      */
@@ -1548,7 +1548,7 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * @return string
      */
@@ -1558,7 +1558,7 @@ class SystemInfo
     }
 
     /**
-     * Name and, optional, path of the the `docker-init` binary.
+     * Name and, optional, path of the `docker-init` binary.
      *
      * @param string $initBinary
      */

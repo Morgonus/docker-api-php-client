@@ -25,7 +25,7 @@ class IndexInfo
      */
     protected $mirrors;
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
 
     > **Warning**: Insecure registries can be useful when running a local
      *
@@ -84,7 +84,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
 
     > **Warning**: Insecure registries can be useful when running a local
      *
@@ -96,7 +96,7 @@ class IndexInfo
     }
 
     /**
-     * Indicates if the the registry is part of the list of insecure.
+     * Indicates if the registry is part of the list of insecure.
 
     > **Warning**: Insecure registries can be useful when running a local
      *
