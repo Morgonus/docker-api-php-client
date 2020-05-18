@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Docker\Tests\Resource;
 
 use Docker\API\Model\EventsGetResponse200;
+use Docker\Docker;
 use Docker\Tests\TestCase;
+use Psr\Http\Message\ResponseInterface;
 
 class SystemResourceTest extends TestCase
 {
     /**
      * Return a container manager.
+     * @return Docker
      */
     private function getManager()
     {
@@ -25,7 +28,6 @@ class SystemResourceTest extends TestCase
         ]);
 
         $lastEvent = null;
-
         $stream->onFrame(function ($event) use (&$lastEvent): void {
             $lastEvent = $event;
         });

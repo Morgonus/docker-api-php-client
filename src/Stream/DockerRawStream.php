@@ -92,7 +92,7 @@ class DockerRawStream
     /**
      * Force to have something of the expected size (block).
      *
-     * @param $length
+     * @param int $length
      *
      * @return string
      */

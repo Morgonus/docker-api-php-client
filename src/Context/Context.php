@@ -86,7 +86,7 @@ class Context implements ContextInterface
      */
     public function getDockerfileContent()
     {
-        return \file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
+        return (string)\file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
     }
 
     /**

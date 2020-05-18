@@ -7,6 +7,7 @@ namespace Docker\Endpoint;
 use Docker\API\Endpoint\ImageBuild as BaseEndpoint;
 use Docker\Stream\BuildStream;
 use Docker\Stream\TarStream;
+use Http\Message\StreamFactory;
 use Jane\OpenApiRuntime\Client\Client;
 use Jane\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ImageBuild extends BaseEndpoint
 {
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
         $body = $this->body;
@@ -25,6 +27,12 @@ class ImageBuild extends BaseEndpoint
         return [[], $body];
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param SerializerInterface $serializer
+     * @param string $fetchMode
+     * @return mixed
+     */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if (Client::FETCH_OBJECT === $fetchMode) {

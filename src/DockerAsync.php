@@ -19,6 +19,10 @@ use function Amp\call;
  */
 class DockerAsync extends ClientAsync
 {
+    /**
+     * @param null $httpClient
+     * @return DockerAsync
+     */
     public static function create($httpClient = null)
     {
         if (null === $httpClient) {

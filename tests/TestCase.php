@@ -8,6 +8,9 @@ use Docker\Docker;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @var Docker $docker
+     */
     private static $docker;
 
     public static function getDocker(): Docker

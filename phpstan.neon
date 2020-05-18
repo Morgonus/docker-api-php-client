@@ -1,0 +1,12 @@
+parameters:
+  level: 8
+  paths:
+    - src
+  excludes_analyse:
+    - src/Stream/ArtaxCallbackStream.php
+    - src/DockerAsyncClient.php
+    - src/DockerAsync.php
+    - src/Context/Context.php
+    - src/Client/AmpArtaxStreamEndpointTrait.php
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false

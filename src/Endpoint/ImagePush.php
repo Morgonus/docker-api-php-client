@@ -18,6 +18,12 @@ class ImagePush extends BaseEndpoint
         return \str_replace(['{name}'], [\urlencode($this->name)], '/images/{name}/push');
     }
 
+    /**
+     * @param ResponseInterface $response
+     * @param SerializerInterface $serializer
+     * @param string $fetchMode
+     * @return mixed
+     */
     public function parsePSR7Response(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
     {
         if (Client::FETCH_OBJECT === $fetchMode) {

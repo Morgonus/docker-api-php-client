@@ -18,6 +18,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DockerAsyncClient implements Client
 {
+    /**
+     * @var DefaultClient
+     */
     private $client;
 
     public function __construct(array $options = [])
@@ -76,7 +79,7 @@ class DockerAsyncClient implements Client
             $tlsContext = $tlsContext->withCertificate($certificate);
 
             if (\getenv('DOCKER_PEER_NAME')) {
-                $tlsContext = $tlsContext->withPeerName(\getenv('DOCKER_PEER_NAME'));
+                $tlsContext = $tlsContext->withPeerName((string)\getenv('DOCKER_PEER_NAME'));
             }
 
             $options['ssl'] = $tlsContext;

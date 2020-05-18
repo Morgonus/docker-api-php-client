@@ -11,9 +11,21 @@ use function Amp\call;
 
 class ArtaxCallbackStream
 {
+    /**
+     * @var InputStream
+     */
     private $stream;
+    /**
+     * @var array
+     */
     private $onNewFrameCallables = [];
+    /**
+     * @var callable|null
+     */
     private $chunkTransformer;
+    /**
+     * @var CancellationTokenSource
+     */
     private $cancellationTokenSource;
 
     public function __construct(

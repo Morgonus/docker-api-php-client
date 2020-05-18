@@ -31,7 +31,7 @@ trait AmpArtaxStreamEndpointTrait
             $responseTransformer = null;
             if (Client::FETCH_OBJECT === $fetchMode) {
                 $responseTransformer = function ($chunk) use ($response, $serializer) {
-                    return $this->transformResponseBody($chunk, $response->getStatus(), $serializer);
+                    return $this->transformResponseBody($chunk, $response->getStatus(), $serializer,"");
                 };
             }
 

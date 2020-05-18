@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class MultiJsonStreamTest extends TestCase
 {
-    public function jsonStreamDataProvider()
+    public function jsonStreamDataProvider():array
     {
         return [
             [
@@ -31,8 +31,8 @@ class MultiJsonStreamTest extends TestCase
     }
 
     /**
-     * @param $jsonStream
-     * @param $jsonParts
+     * @param string $jsonStream
+     * @param array $jsonParts
      * @dataProvider jsonStreamDataProvider
      */
     public function testReadJsonEscapedDoubleQuote(string $jsonStream, array $jsonParts): void
@@ -56,6 +56,8 @@ class MultiJsonStreamTest extends TestCase
             ->method('getDecodeClass')
             ->willReturn('BuildInfo');
 
-        $stub->wait();
+        /** @var MultiJsonStream $s */
+        $s = $stub;
+        $s->wait();
     }
 }
