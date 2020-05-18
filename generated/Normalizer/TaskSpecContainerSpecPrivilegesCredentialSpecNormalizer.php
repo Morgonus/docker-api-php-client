@@ -38,6 +38,9 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
             return null;
         }
         $object = new \Docker\API\Model\TaskSpecContainerSpecPrivilegesCredentialSpec();
+        if (property_exists($data, 'Config') && $data->{'Config'} !== null) {
+            $object->setConfig($data->{'Config'});
+        }
         if (property_exists($data, 'File') && $data->{'File'} !== null) {
             $object->setFile($data->{'File'});
         }
@@ -51,6 +54,9 @@ class TaskSpecContainerSpecPrivilegesCredentialSpecNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getConfig()) {
+            $data->{'Config'} = $object->getConfig();
+        }
         if (null !== $object->getFile()) {
             $data->{'File'} = $object->getFile();
         }

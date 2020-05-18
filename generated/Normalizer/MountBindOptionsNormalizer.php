@@ -41,6 +41,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         if (property_exists($data, 'Propagation') && $data->{'Propagation'} !== null) {
             $object->setPropagation($data->{'Propagation'});
         }
+        if (property_exists($data, 'NonRecursive') && $data->{'NonRecursive'} !== null) {
+            $object->setNonRecursive($data->{'NonRecursive'});
+        }
 
         return $object;
     }
@@ -50,6 +53,9 @@ class MountBindOptionsNormalizer implements DenormalizerInterface, NormalizerInt
         $data = new \stdClass();
         if (null !== $object->getPropagation()) {
             $data->{'Propagation'} = $object->getPropagation();
+        }
+        if (null !== $object->getNonRecursive()) {
+            $data->{'NonRecursive'} = $object->getNonRecursive();
         }
 
         return $data;

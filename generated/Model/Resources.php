@@ -115,17 +115,23 @@ class Resources
      */
     protected $deviceCgroupRules;
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @var int
+     * @var DeviceRequest[]
      */
-    protected $diskQuota;
+    protected $deviceRequests;
     /**
      * Kernel memory limit in bytes.
      *
      * @var int
      */
     protected $kernelMemory;
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @var int
+     */
+    protected $kernelMemoryTCP;
     /**
      * Memory soft limit in bytes.
      *
@@ -163,7 +169,7 @@ class Resources
      */
     protected $init;
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @var int
      */
@@ -574,23 +580,23 @@ class Resources
     }
 
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @return int
+     * @return DeviceRequest[]
      */
-    public function getDiskQuota(): ?int
+    public function getDeviceRequests(): ?array
     {
-        return $this->diskQuota;
+        return $this->deviceRequests;
     }
 
     /**
-     * Disk limit (in bytes).
+     * a list of requests for devices to be sent to device drivers.
      *
-     * @param int $diskQuota
+     * @param DeviceRequest[] $deviceRequests
      */
-    public function setDiskQuota(?int $diskQuota): self
+    public function setDeviceRequests(?array $deviceRequests): self
     {
-        $this->diskQuota = $diskQuota;
+        $this->deviceRequests = $deviceRequests;
 
         return $this;
     }
@@ -613,6 +619,28 @@ class Resources
     public function setKernelMemory(?int $kernelMemory): self
     {
         $this->kernelMemory = $kernelMemory;
+
+        return $this;
+    }
+
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @return int
+     */
+    public function getKernelMemoryTCP(): ?int
+    {
+        return $this->kernelMemoryTCP;
+    }
+
+    /**
+     * Hard limit for kernel TCP buffer memory (in bytes).
+     *
+     * @param int $kernelMemoryTCP
+     */
+    public function setKernelMemoryTCP(?int $kernelMemoryTCP): self
+    {
+        $this->kernelMemoryTCP = $kernelMemoryTCP;
 
         return $this;
     }
@@ -750,7 +778,7 @@ class Resources
     }
 
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @return int
      */
@@ -760,7 +788,7 @@ class Resources
     }
 
     /**
-     * Tune a container's pids limit. Set -1 for unlimited.
+     * Tune a container's PIDs limit. Set `0` or `-1` for unlimited, or `null` to not change.
      *
      * @param int $pidsLimit
      */

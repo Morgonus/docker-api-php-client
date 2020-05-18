@@ -150,6 +150,12 @@ class TaskSpecContainerSpec
      * @var bool
      */
     protected $init;
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     *
+     * @var string[]
+     */
+    protected $sysctls;
 
     /**
      * The image name to use for the container.
@@ -653,6 +659,28 @@ class TaskSpecContainerSpec
     public function setInit(?bool $init): self
     {
         $this->init = $init;
+
+        return $this;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     *
+     * @return string[]
+     */
+    public function getSysctls(): ?\ArrayObject
+    {
+        return $this->sysctls;
+    }
+
+    /**
+     * Set kernel namedspaced parameters (sysctls) in the container.
+     *
+     * @param string[] $sysctls
+     */
+    public function setSysctls(?\ArrayObject $sysctls): self
+    {
+        $this->sysctls = $sysctls;
 
         return $this;
     }

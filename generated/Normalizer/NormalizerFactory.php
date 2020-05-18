@@ -19,6 +19,7 @@ class NormalizerFactory
         $normalizers[] = new PortNormalizer();
         $normalizers[] = new MountPointNormalizer();
         $normalizers[] = new DeviceMappingNormalizer();
+        $normalizers[] = new DeviceRequestNormalizer();
         $normalizers[] = new ThrottleDeviceNormalizer();
         $normalizers[] = new MountNormalizer();
         $normalizers[] = new MountBindOptionsNormalizer();
@@ -34,6 +35,8 @@ class NormalizerFactory
         $normalizers[] = new GenericResourcesItemNamedResourceSpecNormalizer();
         $normalizers[] = new GenericResourcesItemDiscreteResourceSpecNormalizer();
         $normalizers[] = new HealthConfigNormalizer();
+        $normalizers[] = new HealthNormalizer();
+        $normalizers[] = new HealthcheckResultNormalizer();
         $normalizers[] = new HostConfigNormalizer();
         $normalizers[] = new HostConfigLogConfigNormalizer();
         $normalizers[] = new ContainerConfigNormalizer();
@@ -116,7 +119,6 @@ class NormalizerFactory
         $normalizers[] = new TaskSpecPlacementNormalizer();
         $normalizers[] = new TaskSpecPlacementPreferencesItemNormalizer();
         $normalizers[] = new TaskSpecPlacementPreferencesItemSpreadNormalizer();
-        $normalizers[] = new TaskSpecNetworksItemNormalizer();
         $normalizers[] = new TaskSpecLogDriverNormalizer();
         $normalizers[] = new TaskNormalizer();
         $normalizers[] = new TaskStatusNormalizer();
@@ -126,7 +128,6 @@ class NormalizerFactory
         $normalizers[] = new ServiceSpecModeReplicatedNormalizer();
         $normalizers[] = new ServiceSpecUpdateConfigNormalizer();
         $normalizers[] = new ServiceSpecRollbackConfigNormalizer();
-        $normalizers[] = new ServiceSpecNetworksItemNormalizer();
         $normalizers[] = new EndpointPortConfigNormalizer();
         $normalizers[] = new EndpointSpecNormalizer();
         $normalizers[] = new ServiceNormalizer();
@@ -143,6 +144,7 @@ class NormalizerFactory
         $normalizers[] = new SecretNormalizer();
         $normalizers[] = new ConfigSpecNormalizer();
         $normalizers[] = new ConfigNormalizer();
+        $normalizers[] = new ContainerStateNormalizer();
         $normalizers[] = new SystemInfoNormalizer();
         $normalizers[] = new PluginsInfoNormalizer();
         $normalizers[] = new RegistryServiceConfigNormalizer();
@@ -151,11 +153,11 @@ class NormalizerFactory
         $normalizers[] = new CommitNormalizer();
         $normalizers[] = new SwarmInfoNormalizer();
         $normalizers[] = new PeerNodeNormalizer();
+        $normalizers[] = new NetworkAttachmentConfigNormalizer();
         $normalizers[] = new ContainersCreatePostBodyNormalizer();
         $normalizers[] = new ContainersCreatePostBodyNetworkingConfigNormalizer();
         $normalizers[] = new ContainersCreatePostResponse201Normalizer();
         $normalizers[] = new ContainersIdJsonGetResponse200Normalizer();
-        $normalizers[] = new ContainersIdJsonGetResponse200StateNormalizer();
         $normalizers[] = new ContainersIdTopGetResponse200Normalizer();
         $normalizers[] = new ContainersIdChangesGetResponse200ItemNormalizer();
         $normalizers[] = new ContainersIdUpdatePostBodyNormalizer();

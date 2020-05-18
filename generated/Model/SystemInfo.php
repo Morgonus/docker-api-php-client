@@ -129,6 +129,12 @@ class SystemInfo
      */
     protected $cPUSet;
     /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @var bool
+     */
+    protected $pidsLimit;
+    /**
      * Indicates if OOM killer disable is supported on the host.
      *
      * @var bool
@@ -791,6 +797,28 @@ class SystemInfo
     public function setCPUSet(?bool $cPUSet): self
     {
         $this->cPUSet = $cPUSet;
+
+        return $this;
+    }
+
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @return bool
+     */
+    public function getPidsLimit(): ?bool
+    {
+        return $this->pidsLimit;
+    }
+
+    /**
+     * Indicates if the host kernel has PID limit support enabled.
+     *
+     * @param bool $pidsLimit
+     */
+    public function setPidsLimit(?bool $pidsLimit): self
+    {
+        $this->pidsLimit = $pidsLimit;
 
         return $this;
     }

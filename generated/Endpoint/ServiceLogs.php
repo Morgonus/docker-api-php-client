@@ -15,16 +15,14 @@ class ServiceLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected $id;
 
     /**
-     * Get `stdout` and `stderr` logs from a service.
-
-     **Note**: This endpoint works only for services with the `json-file` or `journald` logging drivers.
+     * Get `stdout` and `stderr` logs from a service. See also [`/containers/{id}/logs`](#operation/ContainerLogs).
+     **Note**: This endpoint works only for services with the `local`, `json-file` or `journald` logging drivers.
      *
      * @param string $id              ID or name of the service
      * @param array  $queryParameters {
      *
      *     @var bool $details show service context and extra details provided to logs
-     *     @var bool $follow Return the logs as a stream.
-
+     *     @var bool $follow keep connection after returning logs
      *     @var bool $stdout Return logs from `stdout`
      *     @var bool $stderr Return logs from `stderr`
      *     @var int $since Only return logs since this time, as a UNIX timestamp
@@ -89,9 +87,6 @@ class ServiceLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
-        if (101 === $status) {
-            return json_decode($body);
-        }
         if (200 === $status) {
             return json_decode($body);
         }

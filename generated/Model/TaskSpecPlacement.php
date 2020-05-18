@@ -13,7 +13,7 @@ namespace Docker\API\Model;
 class TaskSpecPlacement
 {
     /**
-     * An array of constraints.
+     * An array of constraint expressions to limit the set of nodes where.
      *
      * @var string[]
      */
@@ -25,6 +25,12 @@ class TaskSpecPlacement
      */
     protected $preferences;
     /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @var int
+     */
+    protected $maxReplicas = 0;
+    /**
      * Platforms stores all the platforms that the service's image can.
      *
      * @var Platform[]
@@ -32,7 +38,7 @@ class TaskSpecPlacement
     protected $platforms;
 
     /**
-     * An array of constraints.
+     * An array of constraint expressions to limit the set of nodes where.
      *
      * @return string[]
      */
@@ -42,7 +48,7 @@ class TaskSpecPlacement
     }
 
     /**
-     * An array of constraints.
+     * An array of constraint expressions to limit the set of nodes where.
      *
      * @param string[] $constraints
      */
@@ -71,6 +77,28 @@ class TaskSpecPlacement
     public function setPreferences(?array $preferences): self
     {
         $this->preferences = $preferences;
+
+        return $this;
+    }
+
+    /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @return int
+     */
+    public function getMaxReplicas(): ?int
+    {
+        return $this->maxReplicas;
+    }
+
+    /**
+     * Maximum number of replicas for per node (default value is 0, which is unlimited).
+     *
+     * @param int $maxReplicas
+     */
+    public function setMaxReplicas(?int $maxReplicas): self
+    {
+        $this->maxReplicas = $maxReplicas;
 
         return $this;
     }

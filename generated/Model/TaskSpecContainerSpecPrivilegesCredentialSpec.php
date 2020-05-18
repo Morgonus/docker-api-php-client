@@ -13,9 +13,17 @@ namespace Docker\API\Model;
 class TaskSpecContainerSpecPrivilegesCredentialSpec
 {
     /**
+     * Load credential spec from a Swarm Config with the given ID.
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+     *
+     * @var string
+     */
+    protected $config;
+    /**
      * Load credential spec from this file. The file is read by the daemon, and must be present in the.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @var string
      */
@@ -23,16 +31,42 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     /**
      * Load credential spec from this value in the Windows registry. The specified registry value must be.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @var string
      */
     protected $registry;
 
     /**
+     * Load credential spec from a Swarm Config with the given ID.
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+     *
+     * @return string
+     */
+    public function getConfig(): ?string
+    {
+        return $this->config;
+    }
+
+    /**
+     * Load credential spec from a Swarm Config with the given ID.
+
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
+     *
+     * @param string $config
+     */
+    public function setConfig(?string $config): self
+    {
+        $this->config = $config;
+
+        return $this;
+    }
+
+    /**
      * Load credential spec from this file. The file is read by the daemon, and must be present in the.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @return string
      */
@@ -44,7 +78,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     /**
      * Load credential spec from this file. The file is read by the daemon, and must be present in the.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @param string $file
      */
@@ -58,7 +92,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     /**
      * Load credential spec from this value in the Windows registry. The specified registry value must be.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @return string
      */
@@ -70,7 +104,7 @@ class TaskSpecContainerSpecPrivilegesCredentialSpec
     /**
      * Load credential spec from this value in the Windows registry. The specified registry value must be.
 
-    > **Note**: `CredentialSpec.File` and `CredentialSpec.Registry` are mutually exclusive.
+    > **Note**: `CredentialSpec.File`, `CredentialSpec.Registry`, and `CredentialSpec.Config` are mutually exclusive.
      *
      * @param string $registry
      */

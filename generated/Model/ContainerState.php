@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace Docker\API\Model;
 
-class ContainersIdJsonGetResponse200State
+class ContainerState
 {
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
      *
      * @var string
      */
@@ -74,9 +74,15 @@ class ContainersIdJsonGetResponse200State
      * @var string
      */
     protected $finishedAt;
+    /**
+     * Health stores information about the container's healthcheck results.
+     *
+     * @var Health
+     */
+    protected $health;
 
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
      *
      * @return string
      */
@@ -86,7 +92,7 @@ class ContainersIdJsonGetResponse200State
     }
 
     /**
-     * The status of the container. For example, `"running"` or `"exited"`.
+     * String representation of the container state. Can be one of "created",.
      *
      * @param string $status
      */
@@ -305,6 +311,28 @@ class ContainersIdJsonGetResponse200State
     public function setFinishedAt(?string $finishedAt): self
     {
         $this->finishedAt = $finishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Health stores information about the container's healthcheck results.
+     *
+     * @return Health
+     */
+    public function getHealth(): ?Health
+    {
+        return $this->health;
+    }
+
+    /**
+     * Health stores information about the container's healthcheck results.
+     *
+     * @param Health $health
+     */
+    public function setHealth(?Health $health): self
+    {
+        $this->health = $health;
 
         return $this;
     }

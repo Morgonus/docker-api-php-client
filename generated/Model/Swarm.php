@@ -55,6 +55,12 @@ class Swarm
      */
     protected $rootRotationInProgress;
     /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @var int
+     */
+    protected $dataPathPort = 4789;
+    /**
      * Default Address Pool specifies default subnet pools for global scope networks.
      *
      * @var string[]
@@ -223,6 +229,28 @@ class Swarm
     public function setRootRotationInProgress(?bool $rootRotationInProgress): self
     {
         $this->rootRotationInProgress = $rootRotationInProgress;
+
+        return $this;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @return int
+     */
+    public function getDataPathPort(): ?int
+    {
+        return $this->dataPathPort;
+    }
+
+    /**
+     * DataPathPort specifies the data path port number for data traffic.
+     *
+     * @param int $dataPathPort
+     */
+    public function setDataPathPort(?int $dataPathPort): self
+    {
+        $this->dataPathPort = $dataPathPort;
 
         return $this;
     }

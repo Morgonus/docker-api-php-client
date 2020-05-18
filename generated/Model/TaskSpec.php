@@ -65,7 +65,9 @@ class TaskSpec
      */
     protected $runtime;
     /**
-     * @var TaskSpecNetworksItem[]
+     * Specifies which networks the service should attach to.
+     *
+     * @var NetworkAttachmentConfig[]
      */
     protected $networks;
     /**
@@ -260,7 +262,9 @@ class TaskSpec
     }
 
     /**
-     * @return TaskSpecNetworksItem[]
+     * Specifies which networks the service should attach to.
+     *
+     * @return NetworkAttachmentConfig[]
      */
     public function getNetworks(): ?array
     {
@@ -268,7 +272,9 @@ class TaskSpec
     }
 
     /**
-     * @param TaskSpecNetworksItem[] $networks
+     * Specifies which networks the service should attach to.
+     *
+     * @param NetworkAttachmentConfig[] $networks
      */
     public function setNetworks(?array $networks): self
     {

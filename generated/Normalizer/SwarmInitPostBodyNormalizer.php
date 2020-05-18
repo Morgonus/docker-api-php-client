@@ -47,6 +47,9 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         if (property_exists($data, 'DataPathAddr') && $data->{'DataPathAddr'} !== null) {
             $object->setDataPathAddr($data->{'DataPathAddr'});
         }
+        if (property_exists($data, 'DataPathPort') && $data->{'DataPathPort'} !== null) {
+            $object->setDataPathPort($data->{'DataPathPort'});
+        }
         if (property_exists($data, 'DefaultAddrPool') && $data->{'DefaultAddrPool'} !== null) {
             $values = [];
             foreach ($data->{'DefaultAddrPool'} as $value) {
@@ -78,6 +81,9 @@ class SwarmInitPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
         }
         if (null !== $object->getDataPathAddr()) {
             $data->{'DataPathAddr'} = $object->getDataPathAddr();
+        }
+        if (null !== $object->getDataPathPort()) {
+            $data->{'DataPathPort'} = $object->getDataPathPort();
         }
         if (null !== $object->getDefaultAddrPool()) {
             $values = [];

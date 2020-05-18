@@ -17,19 +17,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NetworkAttachmentConfigNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Docker\\API\\Model\\ServiceSpecNetworksItem';
+        return $type === 'Docker\\API\\Model\\NetworkAttachmentConfig';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Docker\API\Model\ServiceSpecNetworksItem;
+        return $data instanceof \Docker\API\Model\NetworkAttachmentConfig;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -37,7 +37,7 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
         if (!is_object($data)) {
             return null;
         }
-        $object = new \Docker\API\Model\ServiceSpecNetworksItem();
+        $object = new \Docker\API\Model\NetworkAttachmentConfig();
         if (property_exists($data, 'Target') && $data->{'Target'} !== null) {
             $object->setTarget($data->{'Target'});
         }
@@ -47,6 +47,13 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
                 $values[] = $value;
             }
             $object->setAliases($values);
+        }
+        if (property_exists($data, 'DriverOpts') && $data->{'DriverOpts'} !== null) {
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data->{'DriverOpts'} as $key => $value_1) {
+                $values_1[$key] = $value_1;
+            }
+            $object->setDriverOpts($values_1);
         }
 
         return $object;
@@ -64,6 +71,13 @@ class ServiceSpecNetworksItemNormalizer implements DenormalizerInterface, Normal
                 $values[] = $value;
             }
             $data->{'Aliases'} = $values;
+        }
+        if (null !== $object->getDriverOpts()) {
+            $values_1 = new \stdClass();
+            foreach ($object->getDriverOpts() as $key => $value_1) {
+                $values_1->{$key} = $value_1;
+            }
+            $data->{'DriverOpts'} = $values_1;
         }
 
         return $data;
