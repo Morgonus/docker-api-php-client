@@ -59,6 +59,16 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (property_exists($data, 'RootRotationInProgress') && $data->{'RootRotationInProgress'} !== null) {
             $object->setRootRotationInProgress($data->{'RootRotationInProgress'});
         }
+        if (property_exists($data, 'DefaultAddrPool') && $data->{'DefaultAddrPool'} !== null) {
+            $values = [];
+            foreach ($data->{'DefaultAddrPool'} as $value) {
+                $values[] = $value;
+            }
+            $object->setDefaultAddrPool($values);
+        }
+        if (property_exists($data, 'SubnetSize') && $data->{'SubnetSize'} !== null) {
+            $object->setSubnetSize($data->{'SubnetSize'});
+        }
         if (property_exists($data, 'JoinTokens') && $data->{'JoinTokens'} !== null) {
             $object->setJoinTokens($this->denormalizer->denormalize($data->{'JoinTokens'}, 'Docker\\API\\Model\\JoinTokens', 'json', $context));
         }
@@ -89,6 +99,16 @@ class SwarmNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getRootRotationInProgress()) {
             $data->{'RootRotationInProgress'} = $object->getRootRotationInProgress();
+        }
+        if (null !== $object->getDefaultAddrPool()) {
+            $values = [];
+            foreach ($object->getDefaultAddrPool() as $value) {
+                $values[] = $value;
+            }
+            $data->{'DefaultAddrPool'} = $values;
+        }
+        if (null !== $object->getSubnetSize()) {
+            $data->{'SubnetSize'} = $object->getSubnetSize();
         }
         if (null !== $object->getJoinTokens()) {
             $data->{'JoinTokens'} = $this->normalizer->normalize($object->getJoinTokens(), 'json', $context);

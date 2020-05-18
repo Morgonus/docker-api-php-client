@@ -1,5 +1,5 @@
 {
-    "name": "docker-php/docker-php",
+    "name": "morgonus/docker-php",
     "license": "MIT",
     "type": "library",
     "description": "A Docker PHP client",
@@ -41,7 +41,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.24-dev"
+            "dev-master": "1.39-dev"
         }
     },
     "prefer-stable": true,

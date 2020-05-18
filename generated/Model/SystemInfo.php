@@ -370,6 +370,18 @@ class SystemInfo
      * @var string[]
      */
     protected $securityOptions;
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * @var string
+     */
+    protected $productLicense;
+    /**
+     * List of warnings / informational messages about missing features, or.
+     *
+     * @var string[]
+     */
+    protected $warnings;
 
     /**
      * Unique identifier of the daemon.
@@ -1653,6 +1665,50 @@ class SystemInfo
     public function setSecurityOptions(?array $securityOptions): self
     {
         $this->securityOptions = $securityOptions;
+
+        return $this;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * @return string
+     */
+    public function getProductLicense(): ?string
+    {
+        return $this->productLicense;
+    }
+
+    /**
+     * Reports a summary of the product license on the daemon.
+     *
+     * @param string $productLicense
+     */
+    public function setProductLicense(?string $productLicense): self
+    {
+        $this->productLicense = $productLicense;
+
+        return $this;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+     *
+     * @return string[]
+     */
+    public function getWarnings(): ?array
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * List of warnings / informational messages about missing features, or.
+     *
+     * @param string[] $warnings
+     */
+    public function setWarnings(?array $warnings): self
+    {
+        $this->warnings = $warnings;
 
         return $this;
     }

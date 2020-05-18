@@ -183,7 +183,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
     }
 
     /**
-     * Resize the TTY for a container. You must restart the container for the resize to take effect.
+     * Resize the TTY for a container.
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {
@@ -495,12 +495,13 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
     /**
      * Upload a tar archive to be extracted to a path in the filesystem of container id.
      *
-     * @param string $id              ID or name of the container
-     * @param string $inputStream     the input stream must be a tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz
-     * @param array  $queryParameters {
+     * @param string                                            $id              ID or name of the container
+     * @param string|resource|\Psr\Http\Message\StreamInterface $inputStream     the input stream must be a tar archive compressed with one of the following algorithms: identity (no compression), gzip, bzip2, xz
+     * @param array                                             $queryParameters {
      *
      *     @var string $path path to a directory in the container to extract the archive’s contents into
-     *     @var string $noOverwriteDirNonDir If “1”, “true”, or “True” then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa.
+     *     @var string $noOverwriteDirNonDir if “1”, “true”, or “True” then it will be an error if unpacking the given content would cause an existing directory to be replaced with a non-directory and vice versa
+     *     @var string $copyUIDGID If “1”, “true”, then it will copy UID/GID maps to the dest file or dir
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -512,7 +513,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
      *
      * @return \Amp\Promise<\Amp\Artax\Response|null>
      */
-    public function putContainerArchive(string $id, string $inputStream, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function putContainerArchive(string $id, $inputStream, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeArtaxEndpoint(new \Docker\API\Endpoint\PutContainerArchive($id, $inputStream, $queryParameters), $fetch);
     }
@@ -609,15 +610,23 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
     }
 
     /**
+     * @param array $queryParameters {
+     *
+     *     @var int $keep-storage Amount of disk space in bytes to keep for cache
+     *     @var bool $all Remove all types of build cache
+     *     @var string $filters A JSON encoded value of the filters (a `map[string][]string`) to process on the list of build cache objects. Available filters:
+
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @throws \Docker\API\Exception\BuildPruneInternalServerErrorException
      *
      * @return \Amp\Promise<\Docker\API\Model\BuildPrunePostResponse200|\Amp\Artax\Response|null>
      */
-    public function buildPrune(string $fetch = self::FETCH_OBJECT)
+    public function buildPrune(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeArtaxEndpoint(new \Docker\API\Endpoint\BuildPrune(), $fetch);
+        return $this->executeArtaxEndpoint(new \Docker\API\Endpoint\BuildPrune($queryParameters), $fetch);
     }
 
     /**
@@ -1701,7 +1710,7 @@ class ClientAsync extends \Jane\OpenApiRuntime\Client\AmpArtaxClient
      * @param string $id              ID or name of service
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes.
+     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes. This version number should be the value as currently set on the service *before* the update. You can find the current version by calling `GET /services/{id}`
      *     @var string $registryAuthFrom If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
      *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
      * }
