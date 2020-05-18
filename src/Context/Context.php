@@ -1,18 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Docker\Context;
 
-use Symfony\Component\Process\Process;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 /**
- * Docker\Context\Context
+ * Docker\Context\Context.
  */
 class Context implements ContextInterface
 {
-    const FORMAT_STREAM = 'stream';
+    public const FORMAT_STREAM = 'stream';
 
-    const FORMAT_TAR = 'tar';
+    public const FORMAT_TAR = 'tar';
+
+    /**
+     * @var bool Whether to remove the context directory
+     */
+    private $cleanup = false;
 
     /**
      * @var string
@@ -20,9 +28,14 @@ class Context implements ContextInterface
     private $directory;
 
     /**
-     * @var resource|false Tar process
+     * @var process Tar process
      */
     private $process;
+
+    /**
+     * @var Filesystem
+     */
+    private $fs;
 
     /**
      * @var resource Tar stream
@@ -37,15 +50,17 @@ class Context implements ContextInterface
     /**
      * @param string     $directory Directory of context
      * @param string     $format    Format to use when sending the call (stream or tar: string)
+     * @param Filesystem $fs        filesystem object for cleaning the context directory on destruction
      */
-    public function __construct($directory, $format = self::FORMAT_STREAM)
+    public function __construct($directory, $format = self::FORMAT_STREAM, Filesystem $fs = null)
     {
         $this->directory = $directory;
         $this->format = $format;
+        $this->fs = $fs ?? new Filesystem();
     }
 
     /**
-     * Get directory of Context
+     * Get directory of Context.
      *
      * @return string
      */
@@ -55,32 +70,31 @@ class Context implements ContextInterface
     }
 
     /**
-     * Set directory of Context
+     * Set directory of Context.
      *
      * @param string $directory Targeted directory
-     * @return void
      */
-    public function setDirectory($directory)
+    public function setDirectory($directory): void
     {
         $this->directory = $directory;
     }
 
     /**
-     * Return content of Dockerfile of this context
+     * Return content of Dockerfile of this context.
      *
      * @return string Content of dockerfile
      */
     public function getDockerfileContent()
     {
-        return (string)file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
+        return \file_get_contents($this->directory.DIRECTORY_SEPARATOR.'Dockerfile');
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isStreamed()
     {
-        return $this->format === self::FORMAT_STREAM;
+        return self::FORMAT_STREAM === $this->format;
     }
 
     /**
@@ -92,7 +106,7 @@ class Context implements ContextInterface
     }
 
     /**
-     * Return the context as a tar archive
+     * Return the context as a tar archive.
      *
      * @throws \Symfony\Component\Process\Exception\ProcessFailedException
      *
@@ -111,26 +125,40 @@ class Context implements ContextInterface
     }
 
     /**
-     * Return a stream for this context
+     * Return a stream for this context.
      *
      * @return resource Stream resource in memory
      */
     public function toStream()
     {
-        $this->process = proc_open("/usr/bin/env tar c .", [["pipe", "r"], ["pipe", "w"], ["pipe", "w"]], $pipes, $this->directory);
-        $this->stream  = $pipes[1];
+        if (!\is_resource($this->process)) {
+            $this->process = \proc_open('/usr/bin/env tar c .', [['pipe', 'r'], ['pipe', 'w'], ['pipe', 'w']], $pipes, $this->directory);
+            $this->stream = $pipes[1];
+        }
 
         return $this->stream;
     }
 
     public function __destruct()
     {
-        if (is_resource($this->process)) {
-            proc_close($this->process);
+        if (\is_resource($this->stream)) {
+            \fclose($this->stream);
         }
 
-        if (is_resource($this->stream)) {
-            fclose($this->stream);
+        if (\is_resource($this->process)) {
+            \proc_close($this->process);
         }
+
+        if ($this->cleanup) {
+            $this->fs->remove($this->directory);
+        }
+    }
+
+    /**
+     * @param bool $value whether to remove the context directory
+     */
+    public function setCleanup(bool $value): void
+    {
+        $this->cleanup = $value;
     }
 }
