@@ -53,6 +53,7 @@ class NormalizerFactory
         $normalizers[] = new IPAMNormalizer();
         $normalizers[] = new NetworkContainerNormalizer();
         $normalizers[] = new BuildInfoNormalizer();
+        $normalizers[] = new BuildCacheNormalizer();
         $normalizers[] = new ImageIDNormalizer();
         $normalizers[] = new CreateImageInfoNormalizer();
         $normalizers[] = new PushImageInfoNormalizer();

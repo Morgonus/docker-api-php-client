@@ -31,11 +31,23 @@ class SwarmInitPostBody
      */
     protected $dataPathAddr;
     /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @var string[]
+     */
+    protected $defaultAddrPool;
+    /**
      * Force creation of a new swarm.
      *
      * @var bool
      */
     protected $forceNewCluster;
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @var int
+     */
+    protected $subnetSize;
     /**
      * User modifiable swarm configuration.
      *
@@ -110,6 +122,28 @@ class SwarmInitPostBody
     }
 
     /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @return string[]
+     */
+    public function getDefaultAddrPool(): ?array
+    {
+        return $this->defaultAddrPool;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @param string[] $defaultAddrPool
+     */
+    public function setDefaultAddrPool(?array $defaultAddrPool): self
+    {
+        $this->defaultAddrPool = $defaultAddrPool;
+
+        return $this;
+    }
+
+    /**
      * Force creation of a new swarm.
      *
      * @return bool
@@ -127,6 +161,28 @@ class SwarmInitPostBody
     public function setForceNewCluster(?bool $forceNewCluster): self
     {
         $this->forceNewCluster = $forceNewCluster;
+
+        return $this;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @return int
+     */
+    public function getSubnetSize(): ?int
+    {
+        return $this->subnetSize;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @param int $subnetSize
+     */
+    public function setSubnetSize(?int $subnetSize): self
+    {
+        $this->subnetSize = $subnetSize;
 
         return $this;
     }

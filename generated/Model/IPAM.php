@@ -27,7 +27,7 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @var string[][]
+     * @var string[]
      */
     protected $options;
 
@@ -78,9 +78,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @return string[][]
+     * @return string[]
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?\ArrayObject
     {
         return $this->options;
     }
@@ -88,9 +88,9 @@ class IPAM
     /**
      * Driver-specific options, specified as a map.
      *
-     * @param string[][] $options
+     * @param string[] $options
      */
-    public function setOptions(?array $options): self
+    public function setOptions(?\ArrayObject $options): self
     {
         $this->options = $options;
 

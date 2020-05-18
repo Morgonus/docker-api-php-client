@@ -18,7 +18,7 @@ class ServiceUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @param string $id              ID or name of service
      * @param array  $queryParameters {
      *
-     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes.
+     *     @var int $version The version number of the service object being updated. This is required to avoid conflicting writes. This version number should be the value as currently set on the service *before* the update. You can find the current version by calling `GET /services/{id}`
      *     @var string $registryAuthFrom If the X-Registry-Auth header is not specified, this parameter indicates where to find registry authorization credentials. The valid values are `spec` and `previous-spec`.
      *     @var string $rollback Set to this parameter to `previous` to cause a server-side rollback to the previous service spec. The supplied spec will be ignored in this case.
      * }

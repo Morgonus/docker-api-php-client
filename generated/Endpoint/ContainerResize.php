@@ -15,7 +15,7 @@ class ContainerResize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected $id;
 
     /**
-     * Resize the TTY for a container. You must restart the container for the resize to take effect.
+     * Resize the TTY for a container.
      *
      * @param string $id              ID or name of the container
      * @param array  $queryParameters {

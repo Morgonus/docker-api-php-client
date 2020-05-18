@@ -48,7 +48,11 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setDataPathAddr($data->{'DataPathAddr'});
         }
         if (property_exists($data, 'RemoteAddrs') && $data->{'RemoteAddrs'} !== null) {
-            $object->setRemoteAddrs($data->{'RemoteAddrs'});
+            $values = [];
+            foreach ($data->{'RemoteAddrs'} as $value) {
+                $values[] = $value;
+            }
+            $object->setRemoteAddrs($values);
         }
         if (property_exists($data, 'JoinToken') && $data->{'JoinToken'} !== null) {
             $object->setJoinToken($data->{'JoinToken'});
@@ -70,7 +74,11 @@ class SwarmJoinPostBodyNormalizer implements DenormalizerInterface, NormalizerIn
             $data->{'DataPathAddr'} = $object->getDataPathAddr();
         }
         if (null !== $object->getRemoteAddrs()) {
-            $data->{'RemoteAddrs'} = $object->getRemoteAddrs();
+            $values = [];
+            foreach ($object->getRemoteAddrs() as $value) {
+                $values[] = $value;
+            }
+            $data->{'RemoteAddrs'} = $values;
         }
         if (null !== $object->getJoinToken()) {
             $data->{'JoinToken'} = $object->getJoinToken();

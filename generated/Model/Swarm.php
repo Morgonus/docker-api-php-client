@@ -55,6 +55,18 @@ class Swarm
      */
     protected $rootRotationInProgress;
     /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @var string[]
+     */
+    protected $defaultAddrPool;
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @var int
+     */
+    protected $subnetSize = 24;
+    /**
      * JoinTokens contains the tokens workers and managers need to join the swarm.
      *
      * @var JoinTokens
@@ -211,6 +223,50 @@ class Swarm
     public function setRootRotationInProgress(?bool $rootRotationInProgress): self
     {
         $this->rootRotationInProgress = $rootRotationInProgress;
+
+        return $this;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @return string[]
+     */
+    public function getDefaultAddrPool(): ?array
+    {
+        return $this->defaultAddrPool;
+    }
+
+    /**
+     * Default Address Pool specifies default subnet pools for global scope networks.
+     *
+     * @param string[] $defaultAddrPool
+     */
+    public function setDefaultAddrPool(?array $defaultAddrPool): self
+    {
+        $this->defaultAddrPool = $defaultAddrPool;
+
+        return $this;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @return int
+     */
+    public function getSubnetSize(): ?int
+    {
+        return $this->subnetSize;
+    }
+
+    /**
+     * SubnetSize specifies the subnet size of the networks created from the default subnet pool.
+     *
+     * @param int $subnetSize
+     */
+    public function setSubnetSize(?int $subnetSize): self
+    {
+        $this->subnetSize = $subnetSize;
 
         return $this;
     }
