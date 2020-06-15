@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.1",
         "jane-php/open-api-runtime": "4.2.0",
         "jane-php/open-api": "4.2.0",
         "jane-php/json-schema": "4.2.0",
