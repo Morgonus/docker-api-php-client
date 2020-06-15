@@ -15,7 +15,6 @@ php:
 
 env:
   global:
-    - SONAR-COMMAND="/opt/sonar-scanner"
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
@@ -39,9 +38,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install docker-ce
   - sudo apt-get install unzip wget nodejs
-  - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
-  - unzip sonar-scanner-cli-4.2.0.1873-linux.zip
-  - mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
   - travis_retry composer self-update
 
 install:
@@ -52,12 +48,10 @@ install:
 script:
   - $TEST_COMMAND
   - $LINT_COMMAND
-  - $SONAR_COMMAND
 
 after_success:
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
   - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.xml; fi
-  - if [[ "$SONAR" = true ]]; then /opt/sonar-scanner/bin/sonar-scanner; fi
 
 after_script:
   - sudo cat /var/log/upstart/docker.log
