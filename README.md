@@ -5,6 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/morgonus/docker-api-php-client?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/morgonus/docker-api-php-client?style=for-the-badge)
 ![Scrutinizer coverage (GitHub/BitBucket)](https://img.shields.io/scrutinizer/coverage/g/Morgonus/docker-api-php-client?style=for-the-badge)
+![Read the Docs](https://img.shields.io/readthedocs/docker-api-php-client?style=for-the-badge)
 
 ## Requirements ##
 * [PHP 7.3 or higher](https://www.php.net/)
