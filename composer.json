@@ -40,5 +40,4 @@
         "lint": "vendor/bin/phpstan analyse --configuration phpstan.neon"
     },
     "prefer-stable": true,
-    "minimum-stability": "dev"
 }
