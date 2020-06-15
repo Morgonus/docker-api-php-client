@@ -39,11 +39,6 @@
         "test-ci": "vendor/bin/phpunit --coverage-clover build/coverage.xml",
         "lint": "vendor/bin/phpstan analyse --configuration phpstan.neon"
     },
-    "extra": {
-        "branch-alias": {
-            "master": "1.40"
-        }
-    },
     "prefer-stable": true,
     "minimum-stability": "dev"
 }
