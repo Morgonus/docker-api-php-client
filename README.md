@@ -20,3 +20,6 @@ Once composer is installed, execute the following command in your project root t
 ```sh
 composer require morgonus/docker-api-php-client
 ```
+
+# Documentation
+[Documentation](https://docker-api-php-client.readthedocs.io/en/latest/)

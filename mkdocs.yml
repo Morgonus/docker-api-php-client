@@ -1,0 +1,8 @@
+site_name: Docker API Client Library for PHP
+site_url: https://docker-api-php-client.readthedocs.io/
+site_description: Docker API Client Library for PHP
+repo_url: https://github.com/Morgonus/docker-api-php-client
+
+pages:
+  Home: index.md
+  Installation: installation.md
