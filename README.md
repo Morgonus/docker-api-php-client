@@ -1,5 +1,6 @@
 # Docker API Client Library for PHP #
 ![Travis (.com)](https://img.shields.io/travis/com/Morgonus/docker-api-php-client?label=Travis%20CI%20Build&style=for-the-badge)
+![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/Morgonus_docker-api-php-client?server=https%3A%2F%2Fsonarcloud.io&style=for-the-badge)
 
 ## Requirements ##
 * [PHP 7.3 or higher](https://www.php.net/)

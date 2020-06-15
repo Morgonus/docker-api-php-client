@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Docker PHP Tests Suite" tests="46" assertions="87" errors="0" failures="0" skipped="0" time="50.618971">
+    <testsuite name="Docker\Tests\Context\ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" tests="21" assertions="45" errors="0" failures="0" skipped="0" time="0.044482">
+      <testcase name="testWritesContextToDisk" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="13" assertions="1" time="0.002950"/>
+      <testcase name="testHasDefaultFrom" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="21" assertions="2" time="0.000909"/>
+      <testcase name="testUsesCustomFrom" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="29" assertions="2" time="0.000735"/>
+      <testcase name="testMultipleFrom" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="39" assertions="1" time="0.000792"/>
+      <testcase name="testCreatesTmpDirectory" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="50" assertions="1" time="0.000698"/>
+      <testcase name="testWriteTmpFiles" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="58" assertions="2" time="0.000864"/>
+      <testcase name="testWriteTmpFileFromStream" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="73" assertions="3" time="0.000843"/>
+      <testcase name="testWriteTmpFileFromDisk" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="90" assertions="4" time="0.000978"/>
+      <testcase name="testWriteTmpDirFromDisk" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="107" assertions="4" time="0.001134"/>
+      <testcase name="testWritesAddCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="126" assertions="1" time="0.000878"/>
+      <testcase name="testWritesRunCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="141" assertions="2" time="0.000760"/>
+      <testcase name="testWritesEnvCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="155" assertions="2" time="0.000743"/>
+      <testcase name="testWritesCopyCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="169" assertions="2" time="0.000742"/>
+      <testcase name="testWritesWorkdirCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="183" assertions="2" time="0.000747"/>
+      <testcase name="testWritesExposeCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="197" assertions="2" time="0.000809"/>
+      <testcase name="testWritesUserCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="211" assertions="2" time="0.001261"/>
+      <testcase name="testWritesVolumeCommands" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="223" assertions="2" time="0.000961"/>
+      <testcase name="testWritesCommandCommand" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="235" assertions="3" time="0.001204"/>
+      <testcase name="testWritesEntrypointCommand" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="249" assertions="3" time="0.001081"/>
+      <testcase name="testTar" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="263" assertions="2" time="0.024292"/>
+      <testcase name="testTraverseSymlinks" class="Docker\Tests\Context\ContextBuilderTest" classname="Docker.Tests.Context.ContextBuilderTest" file="/Disk/Project/Docker-Php/tests/Context/ContextBuilderTest.php" line="273" assertions="2" time="0.001101"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Context\ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" tests="5" assertions="7" errors="0" failures="0" skipped="0" time="0.034807">
+      <testcase name="testReturnsValidTarContent" class="Docker\Tests\Context\ContextTest" classname="Docker.Tests.Context.ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" line="14" assertions="1" time="0.014360"/>
+      <testcase name="testReturnsValidTarStream" class="Docker\Tests\Context\ContextTest" classname="Docker.Tests.Context.ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" line="25" assertions="1" time="0.007949"/>
+      <testcase name="testDirectorySetter" class="Docker\Tests\Context\ContextTest" classname="Docker.Tests.Context.ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" line="33" assertions="2" time="0.000551"/>
+      <testcase name="testTarFailed" class="Docker\Tests\Context\ContextTest" classname="Docker.Tests.Context.ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" line="44" assertions="1" time="0.010705"/>
+      <testcase name="testRemovesFilesOnDestruct" class="Docker\Tests\Context\ContextTest" classname="Docker.Tests.Context.ContextTest" file="/Disk/Project/Docker-Php/tests/Context/ContextTest.php" line="57" assertions="2" time="0.001242"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\DockerAsyncTest" file="/Disk/Project/Docker-Php/tests/DockerAsyncTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="8.629891">
+      <testcase name="testStaticConstructor" class="Docker\Tests\DockerAsyncTest" classname="Docker.Tests.DockerAsyncTest" file="/Disk/Project/Docker-Php/tests/DockerAsyncTest.php" line="15" assertions="1" time="0.036582"/>
+      <testcase name="testAsync" class="Docker\Tests\DockerAsyncTest" classname="Docker.Tests.DockerAsyncTest" file="/Disk/Project/Docker-Php/tests/DockerAsyncTest.php" line="20" assertions="1" time="6.934096"/>
+      <testcase name="testSystemEventsAllowTheConsumptionOfDockerEvents" class="Docker\Tests\DockerAsyncTest" classname="Docker.Tests.DockerAsyncTest" file="/Disk/Project/Docker-Php/tests/DockerAsyncTest.php" line="45" assertions="1" time="1.659213"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\DockerClientFactoryTest" file="/Disk/Project/Docker-Php/tests/DockerClientFactoryTest.php" tests="4" assertions="14" errors="0" failures="0" skipped="0" time="0.015264">
+      <testcase name="testStaticConstructor" class="Docker\Tests\DockerClientFactoryTest" classname="Docker.Tests.DockerClientFactoryTest" file="/Disk/Project/Docker-Php/tests/DockerClientFactoryTest.php" line="18" assertions="1" time="0.006975"/>
+      <testcase name="testCreateFromEnvWithoutCertPath" class="Docker\Tests\DockerClientFactoryTest" classname="Docker.Tests.DockerClientFactoryTest" file="/Disk/Project/Docker-Php/tests/DockerClientFactoryTest.php" line="27" assertions="2" time="0.001340"/>
+      <testcase name="testCreateCustomCa" class="Docker\Tests\DockerClientFactoryTest" classname="Docker.Tests.DockerClientFactoryTest" file="/Disk/Project/Docker-Php/tests/DockerClientFactoryTest.php" line="33" assertions="5" time="0.003766"/>
+      <testcase name="testCreateCustomPeerName" class="Docker\Tests\DockerClientFactoryTest" classname="Docker.Tests.DockerClientFactoryTest" file="/Disk/Project/Docker-Php/tests/DockerClientFactoryTest.php" line="52" assertions="6" time="0.003183"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\DockerTest" file="/Disk/Project/Docker-Php/tests/DockerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.013211">
+      <testcase name="testCreate" class="Docker\Tests\DockerTest" classname="Docker.Tests.DockerTest" file="/Disk/Project/Docker-Php/tests/DockerTest.php" line="11" assertions="1" time="0.013211"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Resource\ContainerResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ContainerResourceTest.php" tests="3" assertions="4" errors="0" failures="0" skipped="0" time="5.534913">
+      <testcase name="testAttach" class="Docker\Tests\Resource\ContainerResourceTest" classname="Docker.Tests.Resource.ContainerResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ContainerResourceTest.php" line="32" assertions="1" time="1.801660"/>
+      <testcase name="testAttachWebsocket" class="Docker\Tests\Resource\ContainerResourceTest" classname="Docker.Tests.Resource.ContainerResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ContainerResourceTest.php" line="59" assertions="2" time="1.593580"/>
+      <testcase name="testLogs" class="Docker\Tests\Resource\ContainerResourceTest" classname="Docker.Tests.Resource.ContainerResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ContainerResourceTest.php" line="103" assertions="1" time="2.139673"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Resource\ExecResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ExecResourceTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="4.053610">
+      <testcase name="testStartStream" class="Docker\Tests\Resource\ExecResourceTest" classname="Docker.Tests.Resource.ExecResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ExecResourceTest.php" line="24" assertions="2" time="2.166428"/>
+      <testcase name="testExecFind" class="Docker\Tests\Resource\ExecResourceTest" classname="Docker.Tests.Resource.ExecResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ExecResourceTest.php" line="56" assertions="1" time="1.887182"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Resource\ImageResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ImageResourceTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="29.112359">
+      <testcase name="testBuild" class="Docker\Tests\Resource\ImageResourceTest" classname="Docker.Tests.Resource.ImageResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ImageResourceTest.php" line="22" assertions="2" time="20.611277"/>
+      <testcase name="testCreate" class="Docker\Tests\Resource\ImageResourceTest" classname="Docker.Tests.Resource.ImageResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ImageResourceTest.php" line="43" assertions="2" time="8.426298"/>
+      <testcase name="testPushStream" class="Docker\Tests\Resource\ImageResourceTest" classname="Docker.Tests.Resource.ImageResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/ImageResourceTest.php" line="63" assertions="2" time="0.074784"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Resource\SystemResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/SystemResourceTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="3.143876">
+      <testcase name="testGetEvents" class="Docker\Tests\Resource\SystemResourceTest" classname="Docker.Tests.Resource.SystemResourceTest" file="/Disk/Project/Docker-Php/tests/Resource/SystemResourceTest.php" line="23" assertions="1" time="3.143876"/>
+    </testsuite>
+    <testsuite name="Docker\Tests\Stream\MultiJsonStreamTest" file="/Disk/Project/Docker-Php/tests/Stream/MultiJsonStreamTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.036559">
+      <testsuite name="Docker\Tests\Stream\MultiJsonStreamTest::testReadJsonEscapedDoubleQuote" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.036559">
+        <testcase name="testReadJsonEscapedDoubleQuote with data set #0" class="Docker\Tests\Stream\MultiJsonStreamTest" classname="Docker.Tests.Stream.MultiJsonStreamTest" file="/Disk/Project/Docker-Php/tests/Stream/MultiJsonStreamTest.php" line="38" assertions="1" time="0.021288"/>
+        <testcase name="testReadJsonEscapedDoubleQuote with data set #1" class="Docker\Tests\Stream\MultiJsonStreamTest" classname="Docker.Tests.Stream.MultiJsonStreamTest" file="/Disk/Project/Docker-Php/tests/Stream/MultiJsonStreamTest.php" line="38" assertions="1" time="0.007953"/>
+        <testcase name="testReadJsonEscapedDoubleQuote with data set #2" class="Docker\Tests\Stream\MultiJsonStreamTest" classname="Docker.Tests.Stream.MultiJsonStreamTest" file="/Disk/Project/Docker-Php/tests/Stream/MultiJsonStreamTest.php" line="38" assertions="1" time="0.007318"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

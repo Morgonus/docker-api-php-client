@@ -1,5 +1,10 @@
 language: php
 sudo: required
+dist: xenial
+
+addons:
+  sonarcloud:
+    organization: morgonus
 
 services:
   - docker
@@ -18,6 +23,7 @@ env:
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
+    - SONAR_COMMAND="sonar-scanner"
 
 matrix:
   allow_failures:
@@ -48,10 +54,14 @@ install:
 script:
   - $TEST_COMMAND
   - $LINT_COMMAND
+  - php vendor/bin/phpunit
+  - $SONAR_COMMAND
+
 
 after_success:
+  - if [[ "$COVERAGE" = true ]]; then vendor/bin/phpunit --coverage-clover=coverage.clover; fi
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-  - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --format=php-clover build/coverage.xml; fi
+  - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --access-token="0e196f4fccde66a08ad662bbcd892293ed9d1ec538fc02e387c2d2ef2c6dd54a" --format=php-clover coverage.clover; fi
 
 after_script:
   - sudo cat /var/log/upstart/docker.log

@@ -23,5 +23,10 @@
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
+    <logging>
+        <!-- and this is where your report will be written -->
+        <log type="coverage-clover" target="build/phpunit.coverage.xml"/>
+        <log type="junit" target="build/phpunit.xml"/>
 
+    </logging>
 </phpunit>
