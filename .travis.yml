@@ -16,7 +16,6 @@ cache:
 php:
   - 7.3
   - 7.4
-  - hhvm
 
 env:
   global:
@@ -25,8 +24,6 @@ env:
     - DOCKER_VERSION=19.03.8
 
 matrix:
-  allow_failures:
-    - php: hhvm
   fast_finish: true
   include:
     - php: 7.3
