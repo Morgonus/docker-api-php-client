@@ -39,5 +39,5 @@
         "test-ci": "vendor/bin/phpunit --coverage-clover build/coverage.xml",
         "lint": "vendor/bin/phpstan analyse --configuration phpstan.neon"
     },
-    "prefer-stable": true,
+    "prefer-stable": true
 }
