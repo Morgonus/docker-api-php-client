@@ -61,8 +61,7 @@ after_success:
   - if [[ "$COVERAGE" = true ]]; then vendor/bin/phpunit --coverage-clover=coverage.clover; fi
   - if [[ "$COVERAGE" = true ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
   - if [[ "$COVERAGE" = true ]]; then php ocular.phar code-coverage:upload --access-token="0e196f4fccde66a08ad662bbcd892293ed9d1ec538fc02e387c2d2ef2c6dd54a" --format=php-clover coverage.clover; fi
-  - if [[ "$SONAR" = true ]]; then php vendor/bin/phpunit; fi
-  - if [[ "$SONAR" = true ]]; then sonar-scanner; fi
+  - if [[ "$SONAR" = true ]]; then php vendor/bin/phpunit &&sonar-scanner; fi
 
 after_script:
   - sudo cat /var/log/upstart/docker.log
