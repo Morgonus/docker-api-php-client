@@ -4,5 +4,5 @@ site_description: Docker API Client Library for PHP
 repo_url: https://github.com/Morgonus/docker-api-php-client
 
 pages:
-  - Home: docs/index.md
-  - Installation: docs/installation.md
+  - Home: index.md
+  - Installation: installation.md
