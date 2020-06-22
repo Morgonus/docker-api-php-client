@@ -20,16 +20,6 @@ class DockerClientFactoryTest extends TestCase
         $this->assertInstanceOf(HttpClient::class, DockerClientFactory::create());
     }
 
-    /**
-     * @expectedException \RuntimeException
-     * @expectedExceptionMessage Connection to docker has been set to use TLS, but no PATH is defined for certificate in DOCKER_CERT_PATH docker environment variable
-     */
-    public function testCreateFromEnvWithoutCertPath(): void
-    {
-        \putenv('DOCKER_TLS_VERIFY=1');
-        DockerClientFactory::createFromEnv();
-    }
-
     public function testCreateCustomCa(): void
     {
         \putenv('DOCKER_TLS_VERIFY=1');
