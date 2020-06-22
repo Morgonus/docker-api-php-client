@@ -94,7 +94,7 @@ class ContainerResourceTest extends TestCase
             $output .= $data;
         }
 
-        $this->assertContains('echo', $output);
+        $this->assertStringContainsString('echo', $output);
 
         // Exit the container
         $webSocketStream->write("exit\n");

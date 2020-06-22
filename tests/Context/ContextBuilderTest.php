@@ -242,7 +242,7 @@ DOCKERFILE
 
         $contextBuilder->command('changed');
         $content = $contextBuilder->getContext()->getDockerfileContent();
-        $this->assertNotContains('CMD test123', $content);
+        $this->assertStringNotContainsString('CMD test123', $content);
         $this->assertStringEndsWith("\nCMD changed", $content);
     }
 
@@ -256,7 +256,7 @@ DOCKERFILE
 
         $contextBuilder->entrypoint('changed');
         $content = $contextBuilder->getContext()->getDockerfileContent();
-        $this->assertNotContains('ENTRYPOINT test123', $content);
+        $this->assertStringNotContainsString('ENTRYPOINT test123', $content);
         $this->assertStringEndsWith("\nENTRYPOINT changed", $content);
     }
 
@@ -266,7 +266,7 @@ DOCKERFILE
         $contextBuilder->setFormat(Context::FORMAT_TAR);
         $context = $contextBuilder->getContext();
         $content = $context->read();
-        $this->assertInternalType('string', $content);
+        $this->assertIsString($content);
         $this->assertSame($context->toTar(), $content);
     }
 

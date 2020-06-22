@@ -37,7 +37,7 @@ class ImageResourceTest extends TestCase
         });
         $buildStream->wait();
 
-        $this->assertContains('Successfully', $lastMessage);
+        $this->assertStringContainsString('Successfully', $lastMessage);
     }
 
     public function testCreate(): void
@@ -57,7 +57,7 @@ class ImageResourceTest extends TestCase
         });
         $createImageStream->wait();
 
-        $this->assertContains('Pulling from library/registry', $firstMessage);
+        $this->assertStringContainsString('Pulling from library/registry', $firstMessage);
     }
 
     public function testPushStream(): void
@@ -86,6 +86,6 @@ class ImageResourceTest extends TestCase
         });
         $pushImageStream->wait();
 
-        $this->assertContains('repository [localhost:5000/test-image]', $firstMessage);
+        $this->assertStringContainsString('repository [localhost:5000/test-image]', $firstMessage);
     }
 }

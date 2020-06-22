@@ -16,7 +16,7 @@ class ContextTest extends TestCase
         $directory = __DIR__.DIRECTORY_SEPARATOR.'context-test';
 
         $context = new Context($directory);
-        $process = new Process('/usr/bin/env tar c .', $directory);
+        $process = new Process(['tar','c','.'], $directory);
         $process->run();
 
         $this->assertSame(\strlen($process->getOutput()), \strlen($context->toTar()));
@@ -27,7 +27,7 @@ class ContextTest extends TestCase
         $directory = __DIR__.DIRECTORY_SEPARATOR.'context-test';
 
         $context = new Context($directory);
-        $this->assertInternalType('resource', $context->toStream());
+        $this->assertIsResource($context->toStream());
     }
 
     public function testDirectorySetter(): void
@@ -36,22 +36,6 @@ class ContextTest extends TestCase
         $this->assertSame('abc', $context->getDirectory());
         $context->setDirectory('def');
         $this->assertSame('def', $context->getDirectory());
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Process\Exception\ProcessFailedException
-     */
-    public function testTarFailed(): void
-    {
-        $directory = __DIR__.DIRECTORY_SEPARATOR.'context-test';
-        $path = \getenv('PATH');
-        \putenv('PATH=/');
-        $context = new Context($directory);
-        try {
-            $context->toTar();
-        } finally {
-            \putenv("PATH=$path");
-        }
     }
 
     public function testRemovesFilesOnDestruct(): void
