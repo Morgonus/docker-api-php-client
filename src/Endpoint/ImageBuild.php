@@ -16,6 +16,11 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ImageBuild extends BaseEndpoint
 {
 
+    /**
+     * @param SerializerInterface $serializer
+     * @param mixed $streamFactory
+     * @return array
+     */
     public function getBody(SerializerInterface $serializer, $streamFactory = null): array
     {
         $body = $this->body;
