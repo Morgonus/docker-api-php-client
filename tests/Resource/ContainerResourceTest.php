@@ -37,6 +37,7 @@ class ContainerResourceTest extends TestCase
         $containerConfig->setAttachStdout(true);
         $containerConfig->setLabels(new \ArrayObject(['docker-php-test' => 'true']));
         $containerCreateResult = $this->getManager()->containerCreate($containerConfig);
+        dd($containerCreateResult);
         $dockerRawStream = $this->getManager()->containerAttach($containerCreateResult->getId(), [
             'stream' => true,
             'stdout' => true,
