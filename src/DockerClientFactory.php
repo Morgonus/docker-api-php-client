@@ -27,7 +27,6 @@ final class DockerClientFactory
             $config['remote_socket'] = 'unix:///var/run/docker.sock';
         }
 
-        dd($config);
 
         $messageFactory = new GuzzleMessageFactory();
         $socketClient = new Client($messageFactory, $config,$config);
