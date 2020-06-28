@@ -25,7 +25,6 @@ class Docker extends Client
      */
     public function containerAttach(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        dd($id);
         return $this->executePsr7Endpoint(new ContainerAttach($id, $queryParameters), $fetch);
     }
 
