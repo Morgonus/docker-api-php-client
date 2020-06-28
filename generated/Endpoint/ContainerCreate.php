@@ -14,6 +14,10 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      */
     public function __construct(\Docker\API\Model\ContainersCreatePostBody $requestBody, array $queryParameters = array())
     {
+        dd([
+            $requestBody,
+            $queryParameters
+        ]);
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
