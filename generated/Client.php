@@ -2,6 +2,10 @@
 
 namespace Docker\API;
 
+use Docker\API\Exception\ContainerInspectInternalServerErrorException;
+use Docker\API\Exception\ContainerInspectNotFoundException;
+use Docker\API\Model\ContainersIdJsonGetResponse200;
+
 class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
@@ -68,13 +72,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param string $id ID or name of the container
      * @param array $queryParameters {
-     *     @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Docker\API\Exception\ContainerInspectNotFoundException
-     * @throws \Docker\API\Exception\ContainerInspectInternalServerErrorException
+     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @return null|ContainersIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface
+     *@throws ContainerInspectInternalServerErrorException
      *
-     * @return null|\Docker\API\Model\ContainersIdJsonGetResponse200|\Psr\Http\Message\ResponseInterface
+     * @throws ContainerInspectNotFoundException
+     * @var bool $size Return the size of container as fields `SizeRw` and `SizeRootFs`
+     * }
      */
     public function containerInspect(string $id, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
