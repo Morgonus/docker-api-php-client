@@ -2,24 +2,25 @@ language: php
 sudo: required
 dist: xenial
 
+services:
+  - docker
+
 addons:
   sonarcloud:
     organization: morgonus
+
 cache:
   directories:
     - $HOME/.composer/cache
 
-php:
-  - 7.2
-  - 7.3
-  - 7.4
+php: 7.4
 
 env:
   global:
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
+  matrix:
     - DOCKER_VERSION=19.03.11~ce-0~ubuntu
-
 
 before_install:
   - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
@@ -27,7 +28,7 @@ before_install:
   - travis_retry composer self-update
   - sudo apt-get update
   - sudo apt-cache madison docker-ce
-  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-ce
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-ce=${DOCKER_VERSION}
   - sudo docker ps
   - sudo docker version
 
