@@ -44,7 +44,7 @@ before_install:
   - sudo apt-get install docker-ce
   - sudo apt-get install unzip wget nodejs
   - travis_retry composer self-update
-  - sudo docker ls
+  - sudo docker ps
   - sudo docker version
 
 install:
