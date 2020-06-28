@@ -18,17 +18,15 @@ env:
   global:
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
-    - DOCKER_VERSION=19.03.8
+    - DOCKER_VERSION=19.03.11-ce-0~ubuntu
 
 before_install:
-  - sudo apt-cache madison docker-engine
   - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
   - sudo apt-get install unzip wget nodejs
   - travis_retry composer self-update
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - sudo apt-cache madison docker-ce
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y --force-yes docker-ce=${DOCKER_VERSION}
   - sudo docker ps
   - sudo docker version
 
