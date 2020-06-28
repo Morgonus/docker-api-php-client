@@ -66,7 +66,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     public function containerCreate(\Docker\API\Model\ContainersCreatePostBody $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         $result =  $this->executePsr7Endpoint(new \Docker\API\Endpoint\ContainerCreate($requestBody, $queryParameters), $fetch);
-        dd($result);
         return $result;
     }
     /**
