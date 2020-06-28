@@ -13,24 +13,13 @@ cache:
 php:
   - 7.2
   - 7.3
-  - hhvm
+  - 7.4
 
 env:
   global:
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
     - DOCKER_VERSION=19.03.8
-
-matrix:
-  allow_failures:
-    - php: hhvm
-  fast_finish: true
-  include:
-    - php: 7.3
-      sudo: required
-      services:
-        - docker
-      env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" COVERAGE=true SONAR=true TEST_COMMAND="composer test-ci"
 
 before_install:
   - sudo apt-cache madison docker-engine
