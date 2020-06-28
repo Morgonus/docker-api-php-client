@@ -18,7 +18,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         if (null === self::$docker) {
             self::$docker = Docker::create();
         }
-
         return self::$docker;
     }
 }

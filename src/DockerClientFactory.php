@@ -10,13 +10,16 @@ use Http\Client\Common\Plugin\ContentLengthPlugin;
 use Http\Client\Common\Plugin\DecoderPlugin;
 use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
-use Http\Client\Socket\Client as SocketHttpClient;
+use Http\Client\Socket\Client;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 
 final class DockerClientFactory
 {
     /**
      * ( .
+     * @param array $config
+     * @param PluginClientFactory|null $pluginClientFactory
+     * @return HttpClient
      */
     public static function create(array $config = [], PluginClientFactory $pluginClientFactory = null): HttpClient
     {
@@ -24,8 +27,10 @@ final class DockerClientFactory
             $config['remote_socket'] = 'unix:///var/run/docker.sock';
         }
 
+
         $messageFactory = new GuzzleMessageFactory();
-        $socketClient = new SocketHttpClient($messageFactory, $config);
+        $socketClient = new Client($messageFactory, $config,$config);
+
         $host = \preg_match('/unix:\/\//', $config['remote_socket']) ? 'http://localhost' : $config['remote_socket'];
 
         $pluginClientFactory = $pluginClientFactory ?? new PluginClientFactory();

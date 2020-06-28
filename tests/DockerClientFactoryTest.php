@@ -31,7 +31,6 @@ class DockerClientFactoryTest extends TestCase
 
         $contexts = \get_resources('stream-context');
         $this->assertCount($count + 1, $contexts);
-
         // Get the last stream context.
         $context = \stream_context_get_options(\end($contexts));
         $this->assertSame('/tmp/ca.pem', $context['ssl']['cafile']);
