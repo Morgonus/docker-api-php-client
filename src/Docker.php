@@ -90,9 +90,10 @@ class Docker extends Client
 
     /**
      * @param null $httpClient
+     * @param array $additionalPlugins
      * @return Docker
      */
-    public static function create($httpClient = null)
+    public static function create($httpClient = null,array $additionalPlugins=[])
     {
         if (null === $httpClient) {
             $httpClient = DockerClientFactory::createFromEnv();
