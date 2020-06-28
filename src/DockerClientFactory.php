@@ -23,6 +23,7 @@ final class DockerClientFactory
      */
     public static function create(array $config = [], PluginClientFactory $pluginClientFactory = null): HttpClient
     {
+        dd($config);
         if (!\array_key_exists('remote_socket', $config)) {
             $config['remote_socket'] = 'unix:///var/run/docker.sock';
         }
