@@ -18,7 +18,7 @@ env:
   global:
     - LINT_COMMAND="composer lint"
     - TEST_COMMAND="composer test"
-    - DOCKER_VERSION=19.03.11-ce-0~ubuntu
+    - DOCKER_VERSION=19.03.11~ce-0~ubuntu
 
 before_install:
   - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
